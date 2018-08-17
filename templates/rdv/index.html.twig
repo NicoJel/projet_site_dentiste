@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://cdn.alloyui.com/3.0.1/aui-css/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('/rendezvous/rendezvous.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+
+    <h1>Prise de rendez-vous</h1>
+
+    <div id="wrapper">
+        <div id="myScheduler"></div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>
+    <script src="{{ asset('/rendezvous/rendezvous.js') }}"></script>
+
+{% endblock %}
+
+
