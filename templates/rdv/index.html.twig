@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block stylesheets %}
+    <link href="https://cdn.alloyui.com/3.0.1/aui-css/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('/rendezvous/rendezvous.css') }}" />
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Prise de rendez-vous</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/RdvController.php'|file_link(0) }}">src/Controller/RdvController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/rdv/index.html.twig'|file_link(0) }}">templates/rdv/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div id="wrapper">
+        <div id="myScheduler"></div>
+    </div>
+
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>
+    <script src="{{ asset('/rendezvous/rendezvous.js') }}"></script>
+
+{% endblock %}
+
+
