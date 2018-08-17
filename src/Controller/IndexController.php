@@ -21,4 +21,12 @@ class IndexController extends AbstractController
     {
         return $this->render('index/cabinet.html.twig');
     }
+
+    /**
+     * @Route("/sante")
+     */
+    public function sante()
+    {
+        return $this->render('index/sante.html.twig');
+    }
 }
