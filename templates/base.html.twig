@@ -9,6 +9,36 @@
         {% endblock %}
     </head>
     <body>
+    {#% if app.user.role == 'ROLE_ADMIN' %#}
+    {% if is_granted('ROLE_ADMIN') %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+        <div class="container navbar-nav">
+            <a href="#" class="navbar-brand">
+                Admin
+            </a>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{{ path('app_admin_patient_index') }}" class="nav-link">
+                            Gestion des patients
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_admin_rdv_index') }}" class="nav-link">
+                            Planning des rendez-vous
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_admin_acte_index') }}" class="nav-link">
+                            Gestion des actes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+
     <nav class="navbar navbar-expand-md navbar-dark bg-info">
         <div class="container navbar-nav">
             <a href="{{ path('app_index_index') }}" class="navbar-brand">
