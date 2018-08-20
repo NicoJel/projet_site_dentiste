@@ -4,11 +4,10 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PatientRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
  * @UniqueEntity(fields={"mail"}, message="Il existe déjà un utilisateur avec cet email")
  */
 class Utilisateur
@@ -51,7 +50,7 @@ class Utilisateur
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=100, unique=true)
      */
     private $mail;
 
@@ -77,6 +76,11 @@ class Utilisateur
      * @ORM\OneToMany(targetEntity="Rdv", mappedBy="utilisateur")
      */
     private $rdv;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $role = 'ROLE_USER';
 
     public function getId(): ?int
     {
@@ -112,7 +116,7 @@ class Utilisateur
         return $this->dateNaissance;
     }
 
-    public function setDateNaissance(int $dateNaissance): self
+    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
     {
         $this->dateNaissance = $dateNaissance;
 
@@ -133,13 +137,8 @@ class Utilisateur
      */
     public function setCivilite($civilite): self
     {
-        if (!in_array($civilite, self::getCivilite())) {
-        // -- classe d'exception en cas de valeur non prise en charge par l'application
-        throw new UnexpectedValueException(
-            "'$civilite' n'est pas une civilité reconnue"
-        );
-    }
         $this->civilite = $civilite;
+
         return $this;
     }
 
@@ -245,5 +244,77 @@ class Utilisateur
         return $this;
     }
 
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Transforme un objet User en chaîne de caractère
+     * @return string
+     */
+    public function serialize(): string
+    {
+        return serialize([
+            $this->id,
+            $this->nom,
+            $this->prenom,
+            $this->civilite,
+            $this->dateNaissance,
+            $this->mail,
+            $this->adresse,
+            $this->commentaire,
+            $this->password
+        ]);
+    }
+
+    /**
+     * Transforme une chaîne générée par serialize en objet user
+     * @param string $serialized
+     */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->nom,
+            $this->prenom,
+            $this->civilite,
+            $this->dateNaissance,
+            $this->mail,
+            $this->adresse,
+            $this->commentaire,
+            $this->password
+            ) = unserialize($serialized);
+    }
+
+    /**
+     * Rôle sous forme d'un array
+     * @return array
+     */
+    public function getRoles()
+    {
+        return [$this->role];
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * quel attribut va servir d'identifiant
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->mail;
+    }
 
 }

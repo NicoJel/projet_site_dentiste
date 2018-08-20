@@ -34,7 +34,7 @@ class UtilisateurType extends AbstractType
             ->add('dateNaissance',
                 BirthdayType::class,
                 [
-                    'label' => 'Date de Naissance'
+                    'label' => 'Date de Naissance',
                 ]
             )
             ->add('civilite',
@@ -69,7 +69,8 @@ class UtilisateurType extends AbstractType
             ->add('commentaire',
                 TextareaType::class,
                 [
-                    'label' => 'Commentaire'
+                    'label' => 'Commentaire',
+                    'required' => false
                 ]
             )
             ->add(
