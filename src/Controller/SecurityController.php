@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
@@ -27,6 +28,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+                dump($utilisateur);
                 /**
                  * -- encode le mdp à partir de la config encoders pour l'objet
                  * Utilisateur à partir de son mdp en clair reçu du formulaire
@@ -39,11 +41,11 @@ class SecurityController extends AbstractController
                 $utilisateur->setPassword($password);
 
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
+                $em->persist($utilisateur);
                 $em->flush();
 
-                $this->addFlash('success', 'Votre compte est créé');
-                return $this->redirectToRoute('app_index_index');
+                $this->addFlash('success', 'Votre compte a été créé');
+                return $this->redirectToRoute(app_index_index);
             } else {
                 $this->addFlash(
                     'error',
@@ -56,6 +58,27 @@ class SecurityController extends AbstractController
             'security/inscription.html.twig',
             [
                 'form' => $form->createView()
+            ]
+        );
+    }
+
+    /**
+     * @Route("/connexion")
+     */
+    public function login(AuthenticationUtils $authenticationUtils)
+    {
+        // traitement du formulaire par Security
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        if (!empty($error)) {
+            $this->addFlash('error', 'Identifiants incorrects');
+        }
+
+        return $this->render(
+            'security/login.html.twig',
+            [
+                'last_username' => $lastUsername
             ]
         );
     }
