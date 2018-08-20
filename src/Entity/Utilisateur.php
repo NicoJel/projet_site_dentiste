@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Exception\UnexpectedValueException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PatientRepository")
+ * @UniqueEntity(fields={"mail"}, message="Il existe déjà un utilisateur avec cet email")
  */
 class Utilisateur
 {
@@ -32,12 +36,12 @@ class Utilisateur
     private $dateNaissance;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=3)
      */
-    private $sexe;
+    private $civilite;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=20)
      */
     private $telephone;
 
@@ -47,7 +51,7 @@ class Utilisateur
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $mail;
 
@@ -55,6 +59,18 @@ class Utilisateur
      * @ORM\Column(type="text", nullable=true)
      */
     private $commentaire;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * mot de passe en clair pour interagir avec le formulaire
+     * @var string
+     * @Assert\NotBlank(message="mdp obligatoire")
+     */
+    private $plainpassword;
 
     /**
      * @var Rdv
@@ -93,7 +109,7 @@ class Utilisateur
 
     public function getDateNaissance(): ?\DateTimeInterface
     {
-        return $this->age;
+        return $this->dateNaissance;
     }
 
     public function setDateNaissance(int $dateNaissance): self
@@ -103,15 +119,27 @@ class Utilisateur
         return $this;
     }
 
-    public function getSexe(): ?string
+    /**
+     * @return mixed
+     */
+    public function getCivilite()
     {
-        return $this->sexe;
+        return $this->civilite;
     }
 
-    public function setSexe(string $sexe): self
+    /**
+     * @param mixed $civilite
+     * @return Utilisateur
+     */
+    public function setCivilite($civilite): self
     {
-        $this->sexe = $sexe;
-
+        if (!in_array($civilite, self::getCivilite())) {
+        // -- classe d'exception en cas de valeur non prise en charge par l'application
+        throw new UnexpectedValueException(
+            "'$civilite' n'est pas une civilité reconnue"
+        );
+    }
+        $this->civilite = $civilite;
         return $this;
     }
 
@@ -160,6 +188,42 @@ class Utilisateur
     {
         $this->commentaire = $commentaire;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     * @return Utilisateur
+     */
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainpassword(): ?string
+    {
+        return $this->plainpassword;
+    }
+
+    /**
+     * @param string $plainpassword
+     * @return Utilisateur
+     */
+    public function setPlainpassword(string $plainpassword): Utilisateur
+    {
+        $this->plainpassword = $plainpassword;
         return $this;
     }
 

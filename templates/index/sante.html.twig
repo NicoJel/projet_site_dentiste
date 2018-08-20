@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dr Filitika, Chirurgien dentiste à Nouméa - Nouvelle Calédonie{% endblock %}
+
+{% block body %}
+
+    <h3>Santé dentaire : les réponses aux questions les plus fréquentes que vous vous posez</h3>
+
+    <div class="card-deck">
+        {#<div class="card">
+            <img class="card-img-top" src="{{ asset('img/1.png/100px160/') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Veuillez cliquer ci-dessus</p>
+            </div>
+        </div>#}
+        {#<div class="container1">
+            <div class="row">
+                <div class="card text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="img/1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Veuillez cliquer ci-dessous</p>
+                        <a href="#" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+                <div class="card text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="img/1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Veuillez cliquer ci-dessous</p>
+                        <a href="#" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+                <div class="card text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="img/1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Veuillez cliquer ci-dessous</p>
+                        <a href="#" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+            </div>
+        </div>                                 #}
+        {#<div class="container2">
+            <div class="row">
+                <div class="card text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="img/1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Veuillez cliquer ci-dessous</p>
+                        <a href="#" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+                <div class="card text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="img/1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Veuillez cliquer ci-dessous</p>
+                        <a href="#" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+            </div>
+        </div>#}
+    </div>
+
+
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="img/1.png" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Veuillez cliquer ci-dessous</p>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent () }}
+    <link href="{{ asset('css/sante.css') }}">
+{% endblock %}
