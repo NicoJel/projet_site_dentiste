@@ -5,14 +5,26 @@
 
     <h4>Inscription</h4>
 
+    <div class="col-6">
+
     {{ form_start(form) }}
 
-    {{ form_end(form) }}
+        {{ form_row(form.civilite) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.dateNaissance) }}
+        {{ form_row(form.dateNaissance) }}
+        {{ form_row(form.telephone) }}
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.mail) }}
+        {{ form_row(form.commentaire) }}
+        {{ form_row(form.plainPassword) }}
 
-
-    <div class="form-btn-group text-right">
-        <button class="btn btn-info" type="submit">
-            Enregistrer
-        </button>
+        <div class="form-btn-group">
+            <button class="btn btn-info" type="submit">
+                Enregistrer
+            </button>
+        </div>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
