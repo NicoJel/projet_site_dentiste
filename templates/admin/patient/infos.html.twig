@@ -3,17 +3,17 @@
 {% block body %}
     <div class="container">
 
-        <h4>{{ patient.nom }} {{ patient.prenom }}</h4>
+        <h4 class="text-center">{{ patient.nom }} {{ patient.prenom }}</h4>
 
         <dl class="row">
 
                 <dt class="col-sm-3">Patient</dt>
-                <dd class="col-sm-9">{{ patient.civilite }} {{ patient.nom }} {{ patient.prenom }}</dd>
+                <dd class="col-sm-9">{{ patient.civilite }} {{ patient.prenom }} {{ patient.nom }}</dd>
 
                 <dt class="col-sm-3">Adresse Postale</dt>
                 <dd class="col-sm-9">
                     <p>{{ patient.adresse }}</p>
-                    <p>{{ patient.cp }}{{ patient.ville }}</p>
+                    <p>{{ patient.cp }} {{ patient.ville }}</p>
                 </dd>
 
                 <dt class="col-sm-3">Date de naissance</dt>
@@ -26,6 +26,9 @@
                 <dd class="col-sm-9">{{ patient.mail }}</dd>
 
                 <dt class="col-sm-3">Commentaire</dt>
+                <dd class="col-sm-9">{{ patient.commentaire }}</dd>
+
+                <dt class="col-sm-3">Rendez-vous</dt>
                 <dd class="col-sm-9">{{ patient.commentaire }}</dd>
             </dl>
     </div>

@@ -373,10 +373,6 @@ class Utilisateur implements UserInterface, \Serializable
         return $this->mail;
     }
 
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
-    }
 
     public function __toString()
     {
