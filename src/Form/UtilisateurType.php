@@ -34,7 +34,8 @@ class UtilisateurType extends AbstractType
             ->add('dateNaissance',
                 BirthdayType::class,
                 [
-                    'label' => 'Date de Naissance',
+                    'widget'    => 'single_text',
+                    'label'     => 'Date de Naissance',
                 ]
             )
             ->add('civilite',
@@ -47,7 +48,19 @@ class UtilisateurType extends AbstractType
                     ],
                     'expanded' => true
                 ]
-)
+            )
+            ->add(  'ville',
+                    TextType::class,
+                [
+                    'label' => 'Ville'
+                ]
+            )
+            ->add(  'cp',
+                    TextType::class,
+                [
+                    'label' => 'CP'
+                ]
+            )
             ->add('telephone',
                 TextType::class,
                 [
@@ -70,7 +83,10 @@ class UtilisateurType extends AbstractType
                 TextareaType::class,
                 [
                     'label' => 'Commentaire',
-                    'required' => false
+                    'required' => false,
+                    'attr' => [
+                        'placeholder' => "Toutes remarques utiles pour votre profil",
+                    ]
                 ]
             )
             ->add(

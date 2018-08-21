@@ -40,6 +40,11 @@ class Utilisateur implements UserInterface, \Serializable
      */
     private $civilite;
 
+    public function eraseCredentials()
+    {
+
+    }
+
     /**
      * @ORM\Column(type="string", length=20)
      */
@@ -52,6 +57,7 @@ class Utilisateur implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
+     * @Assert\NotBlank(message="email obligatoire")
      */
     private $mail;
 
@@ -62,6 +68,7 @@ class Utilisateur implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      */
     private $password;
 
@@ -82,6 +89,18 @@ class Utilisateur implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=20)
      */
     private $role = 'ROLE_USER';
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="integer", length=5)
+     * @Assert\Length(max="5", maxMessage="Le code postal ne doit pas dépasser 5 chiffres")
+     *
+     */
+    private $cp;
 
     public function getId(): ?int
     {
@@ -254,6 +273,42 @@ class Utilisateur implements UserInterface, \Serializable
     {
         $this->role = $role;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     * @return Utilisateur
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * @param mixed $cp
+     * @return Utilisateur
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
         return $this;
     }
 

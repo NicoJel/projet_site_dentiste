@@ -79,6 +79,9 @@ body{
 .competences{
     background-color: #4ec8d3;
     display: flex;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
 .logos{
     justify-content: space-between;

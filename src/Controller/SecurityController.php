@@ -20,7 +20,6 @@ class SecurityController extends AbstractController
      * @Route("/inscription")
      */
     public function inscription(
-
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder
     )
