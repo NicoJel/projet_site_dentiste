@@ -25,13 +25,18 @@ class SecurityController extends AbstractController
     )
     {
         $utilisateur = new Utilisateur();
+
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-
+                dump($utilisateur);
+                /*
+                 * -- encode le mdp à partir de la config encoders pour l'objet
+                 * Utilisateur à partir de son mdp en clair reçu du formulaire
+                 */
                 $password = $passwordEncoder->encodePassword(
                     $utilisateur,
                     $utilisateur->getPlainpassword()
@@ -40,6 +45,7 @@ class SecurityController extends AbstractController
                 $utilisateur->setPassword($password);
 
                 $em = $this->getDoctrine()->getManager();
+
                 $em->persist($utilisateur);
                 $em->flush();
 
@@ -75,7 +81,7 @@ class SecurityController extends AbstractController
         }
 
         return $this->render(
-            'security/connexion.html.twig',
+            'security/login.html.twig',
             [
                 'last_username' => $lastUsername
             ]
