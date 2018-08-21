@@ -10,6 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+/**
+ * Class SecurityController
+ * @package App\Controller
+ */
 class SecurityController extends AbstractController
 {
     /**
@@ -28,11 +32,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                dump($utilisateur);
-                /**
-                 * -- encode le mdp à partir de la config encoders pour l'objet
-                 * Utilisateur à partir de son mdp en clair reçu du formulaire
-                 */
+
                 $password = $passwordEncoder->encodePassword(
                     $utilisateur,
                     $utilisateur->getPlainpassword()
@@ -45,7 +45,7 @@ class SecurityController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('success', 'Votre compte a été créé');
-                return $this->redirectToRoute(app_index_index);
+                return $this->redirectToRoute('app_index_index');
             } else {
                 $this->addFlash(
                     'error',
@@ -76,7 +76,7 @@ class SecurityController extends AbstractController
         }
 
         return $this->render(
-            'security/login.html.twig',
+            'security/connexion.html.twig',
             [
                 'last_username' => $lastUsername
             ]

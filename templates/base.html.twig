@@ -9,7 +9,7 @@
         {% endblock %}
     </head>
     <body>
-    {#% if app.user.role == 'ROLE_ADMIN' %#}
+
     {% if is_granted('ROLE_ADMIN') %}
     <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
         <div class="container navbar-nav">
@@ -24,12 +24,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('app_admin_rdv_index') }}" class="nav-link">
+                        <a href="" class="nav-link">
                             Planning des rendez-vous
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('app_admin_acte_index') }}" class="nav-link">
+                        <a href="" class="nav-link">
                             Gestion des actes
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ path('app_security_inscription') }}">
                     Espace patient
                 </a>
             </li>
