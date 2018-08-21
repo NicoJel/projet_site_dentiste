@@ -1,7 +1,7 @@
 security:
     #encodage du mdp pour l'utilisateur
     encoders:
-        App\entity\User:
+        App\Entity\Utilisateur:
             algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
