@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h4>Gestion des patients</h4>
+
+        <table class="table table-striped">
+            <thead>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th width="200px"></th>
+            </thead>
+            <tbody>
+            {% for patient in patients %}
+                <tr>
+                    <td>{{ patient.nom }}</td>
+                    <td>{{ patient.prenom }}</td>
+                    <td>{{ patient.dateNaissance|date('d/m/Y') }}</td>
+                    <td>{{ patient.telephone }}</td>
+                    <td>{{ patient.mail }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_patient_infos', {id: patient.id}) }}"
+                           class="btn btn-sm btn-outline-info">
+                            Infos
+                        </a>
+                        <a href="{{ path('app_admin_patient_delete', {id: patient.id}) }}"
+                           class="btn btn-sm btn-outline-danger">
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

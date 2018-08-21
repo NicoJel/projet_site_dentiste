@@ -375,4 +375,9 @@ class Utilisateur implements UserInterface, \Serializable
         return $this->mail;
     }
 
+
+    public function __toString()
+    {
+        return $this->nom . ' ' . $this->prenom;
+    }
 }
