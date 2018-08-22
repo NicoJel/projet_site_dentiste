@@ -22,3 +22,8 @@
         opacity: 0;
     }
 }
+
+.navbar-admin {
+    padding: 0;
+    background-color: #055873;
+}
