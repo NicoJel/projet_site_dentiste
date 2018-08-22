@@ -7,6 +7,7 @@ form{
 .info-perso, .info-connexion{
     padding: 10px;
     margin: 20px;
+    margin-bottom: 40px;
 }
 
 /** Animation info perso **/
@@ -20,7 +21,7 @@ form{
     opacity: 0;
     color: #4bb3bd;
 }
-.info-perso:hover .msg-info-perso{
+.container:hover .msg-info-perso{
     animation: ease-in-out 900ms apparitionPerso forwards;
 }
 @keyframes apparitionPerso {
@@ -65,7 +66,7 @@ form{
     border-right: 2px solid #4bb3bd;
     transform: scale3d(1,0,1);
 }
-.centrer:hover::before, .centrer:hover::after{
+.container:hover .centrer::before, .container:hover .centrer::after{
     transform: scale3d(1,1,1);
     transition: transform 1s;
 }
@@ -109,6 +110,7 @@ form{
 .date-naissance p{
     margin: 0 5px 0 0;
 }
+
 #utilisateur_dateNaissance select{
     margin: 2px 5px;
 }
@@ -137,7 +139,7 @@ form{
     opacity: 0;
     color: #4bb3bd;
 }
-.info-connexion:hover .msg-info-connexion{
+.container:hover .msg-info-connexion{
     animation: ease-in-out 900ms apparitionConnexion forwards;
 }
 @keyframes apparitionConnexion {
@@ -186,7 +188,7 @@ form{
     border-right: 2px solid #4bb3bd;
     transform: scale3d(1,0,1);
 }
-.centrer-connexion:hover::before, .centrer-connexion:hover::after{
+.container:hover .centrer-connexion::before, .container:hover .centrer-connexion::after{
     transform: scale3d(1,1,1);
     transition: transform 1s;
 }
@@ -213,5 +215,15 @@ form{
 }
 .div-boutons div{
     margin: 10px;
+}
+
+
+@media screen and (max-width: 770px) {
+    .date-naissance{
+        flex-direction: column;
+    }
+    .flashMessage{
+        width: 100%;
+    }
 }
 

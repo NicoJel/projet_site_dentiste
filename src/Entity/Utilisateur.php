@@ -22,21 +22,23 @@ class Utilisateur implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Le nom est obligatoire")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Le prénom est obligatoire")
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateNaissance;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=3, nullable=true)
      */
     private $civilite;
 
@@ -46,18 +48,19 @@ class Utilisateur implements UserInterface, \Serializable
     }
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $telephone;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=100, unique=true)
-     * @Assert\NotBlank(message="email obligatoire")
+     * @ORM\Column(type="string", length=100, unique=true, nullable=false)
+     * @Assert\NotBlank(message="L'email est obligatoire")
+     * @Assert\Email(message="L'email n'est pas valide")
      */
     private $mail;
 
@@ -67,15 +70,14 @@ class Utilisateur implements UserInterface, \Serializable
     private $commentaire;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=false)
      *
      */
     private $password;
 
     /**
      * mot de passe en clair pour interagir avec le formulaire
-     * @var string
-     * @Assert\NotBlank(message="mdp obligatoire")
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
      */
     private $plainpassword;
 
@@ -91,12 +93,12 @@ class Utilisateur implements UserInterface, \Serializable
     private $role = 'ROLE_USER';
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $ville;
 
     /**
-     * @ORM\Column(type="integer", length=5)
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\Length(max="5", maxMessage="Le code postal ne doit pas dépasser 5 chiffres")
      *
      */
@@ -136,7 +138,7 @@ class Utilisateur implements UserInterface, \Serializable
         return $this->dateNaissance;
     }
 
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
+    public function setDateNaissance(\DateTimeInterface $dateNaissance = null): self
     {
         $this->dateNaissance = $dateNaissance;
 

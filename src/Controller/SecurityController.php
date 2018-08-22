@@ -51,7 +51,7 @@ class SecurityController extends AbstractController
             } else {
                 $this->addFlash(
                     'error',
-                    'Le formulaire contient encore des erreurs'
+                    'Le formulaire contient des erreurs'
                 );
             }
         }
