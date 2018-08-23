@@ -11,6 +11,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+/**
+ * Class SecurityController
+ * @package App\Controller
+ */
 class SecurityController extends AbstractController
 {
     /**
@@ -21,6 +25,7 @@ class SecurityController extends AbstractController
         UserPasswordEncoderInterface $passwordEncoder
     )
     {
+
         $utilisateur = new Utilisateur();
 
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
@@ -47,7 +52,7 @@ class SecurityController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('success', 'Votre compte a été créé');
-                return $this->redirectToRoute('app_index_index');
+                return $this->redirectToRoute('app_security_login');
             } else {
                 $this->addFlash(
                     'error',
@@ -59,7 +64,7 @@ class SecurityController extends AbstractController
         return $this->render(
             'security/inscription.html.twig',
             [
-                'form' => $form->createView()
+                'form' => $form->createView(),
             ]
         );
     }
@@ -77,6 +82,8 @@ class SecurityController extends AbstractController
             $this->addFlash('error', 'Identifiants incorrects');
         }
 
+
+
         return $this->render(
             'security/connexion.html.twig',
             [
@@ -84,4 +91,5 @@ class SecurityController extends AbstractController
             ]
         );
     }
+
 }

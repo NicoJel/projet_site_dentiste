@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -82,7 +83,7 @@ class Utilisateur implements UserInterface, \Serializable
     private $plainpassword;
 
     /**
-     * @var Rdv
+     * @var Collection
      * @ORM\OneToMany(targetEntity="Rdv", mappedBy="utilisateur")
      */
     private $rdv;
@@ -251,16 +252,16 @@ class Utilisateur implements UserInterface, \Serializable
     /**
      * @return Rdv
      */
-    public function getRdv(): Rdv
+    public function getRdv(): Collection
     {
         return $this->rdv;
     }
 
     /**
-     * @param Rdv $rdv
+     * @param Collection $rdv
      * @return Utilisateur
      */
-    public function setRdv(Rdv $rdv): Utilisateur
+    public function setRdv(Collection $rdv): Utilisateur
     {
         $this->rdv = $rdv;
         return $this;
@@ -378,6 +379,6 @@ class Utilisateur implements UserInterface, \Serializable
 
     public function __toString()
     {
-        return $this->nom . ' ' . $this->prenom;
+        return $this->prenom . ' ' . $this->nom;
     }
 }

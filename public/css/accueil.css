@@ -1,24 +1,62 @@
-
-/** LE BODY **/
 body{
-    background-image: url("../img/accueil/dentiste-femme-750x410.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
     max-height: 100%;
 }
+.backgroundAccueil{
+    height: 100%;
+    width: 100%;
+    margin-top: -10px;
+}
+.imgBackground{
+    position: absolute;
+    top: 56px;
+    z-index: -1;
+    overflow: hidden;
+    max-height: 100%;
+    width: 100%;
+    opacity: 0;
+    animation: forwards ease-in-out apparitionImg;
+    animation-delay: 400ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionImg {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+/** Chargement de la page **/
+
+.accueil{
+    opacity: 0;
+    animation: apparitionAccueil forwards ease-in-out;
+    animation-delay: 400ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionAccueil {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
 
 /** L'ACCUEIL **/
 .accueil{
     display: flex;
     flex-direction: column;
-    margin: 10% 0 15% 50%;
+    padding: 10% 0 25% 70%;
     align-items: center;
 }
 .titre{
     text-align: center;
     font-weight: normal;
     font-size: 1.2em;
+    color: white;
 }
 .titre span{
     font-weight: bold;
@@ -58,6 +96,9 @@ body{
 
 .lien{
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .lien a{
     text-decoration: none;
@@ -129,22 +170,36 @@ body{
 
 
 /** L'animation de chargement **/
+.competences{
+    opacity: 0;
+    animation: ease-in-out forwards apparitionDivComp;
+    animation-delay: 200ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionDivComp {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 .logo-carie, .logo-conseils, .logo-mutuelle, .logo-calendrier{
     opacity: 0;
-    animation-duration: 1.3s;
+    animation-duration: 1s;
     animation-name: show;
     animation-timing-function: ease-in-out;
-    animation-delay: 100ms;
+    animation-delay: 900ms;
     animation-fill-mode: forwards;
 }
 .logo-conseils{
-    animation-delay: 600ms;
-}
-.logo-mutuelle{
     animation-delay: 1100ms;
 }
+.logo-mutuelle{
+    animation-delay: 1400ms;
+}
 .logo-calendrier{
-    animation-delay: 1600ms;
+    animation-delay: 1700ms;
 }
 @keyframes show{
     from{
@@ -156,6 +211,36 @@ body{
 }
 
 
+/************ MEDIA QUERIES ************/
+
+@media screen and (max-width: 1040px) {
+    .imgBackground{
+        display: none;
+    }
+    .footer{
+        background-color: #e8ffff;
+    }
+    body{
+        background-image: url("../img/accueil/femme02.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100%;
+        width: 100%;
+    }
+    .lien{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .accueil{
+        padding: 15% 0 15% 0;
+        margin: 0 auto;
+    }
+}
+
 
 @media screen and (max-width: 770px) {
     .logos{
@@ -163,12 +248,17 @@ body{
     }
 }
 @media screen and (max-width: 700px){
-    .accueil{
-        margin: 30% auto;
-    }
+
     .lien{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    .accueil{
+        padding: 100px 0;
+        display: flex;
+        justify-content: center;
+    }
 }
+
+

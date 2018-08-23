@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Rdv;
+use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,8 +18,8 @@ class RdvController extends AbstractController
      */
     public function index()
     {
-        return $this->render('rdv/index.html.twig', [
 
-        ]);
+        return $this->render('rdv/index.html.twig');
     }
+
 }

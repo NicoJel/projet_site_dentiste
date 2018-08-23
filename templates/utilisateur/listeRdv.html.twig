@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/listeRdv.css') }}">
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <div class="img">
+        <img src="{{ asset('../img/listeRdv/scotland.jpg') }}" alt="img-cabinet">
+    </div>
+
+    <h4 class="titre">Voici vos rendez-vous {{ utilisateur.prenom }} {{ utilisateur.nom }}</h4>
+
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>Horaire</th>
+            <th>Motif</th>
+            <th>Modifier/Supprimer</th>
+        </tr>
+
+        {% for rdv in rdvs %}
+            <tr>
+                <td>rdv.date</td>
+                <td>rdv.heure</td>
+                <td>rdv.motif</td>
+                <td>
+                    <a class="btn btn-primary" href="">Modifier</a>
+                    <a class="btn btn-danger" href="">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <div class="boutons">
+        <a class="btn btn-outline-secondary" href="{{ path('app_utilisateur_profil', {id: app.user.id}) }}">Vers votre profil</a>
+        <a class="btn btn-primary" href="{{ path('app_index_index') }}">Retour à l'accueil</a>
+    </div>
+
+
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+
+{% endblock %}

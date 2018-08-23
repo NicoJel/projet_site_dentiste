@@ -16,7 +16,11 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return $this->render('index/index.html.twig');
+
+
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'IndexController',
+        ]);
     }
     /**
      * @Route("/cabinet")
@@ -33,4 +37,5 @@ class IndexController extends AbstractController
     {
         return $this->render('index/sante.html.twig');
     }
+
 }

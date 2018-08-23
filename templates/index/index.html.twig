@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-
     <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
 
 {% endblock %}
@@ -10,6 +9,8 @@
 {% block body %}
 
     <!-- Partie accueil -->
+    <div class="backgroundAccueil">
+        <img class="imgBackground" src="{{ asset('../img/accueil/femme02.jpg') }}" alt="femme-dentiste">
         <div class="accueil">
             <div>
                 <h1 class="titre">
@@ -28,6 +29,7 @@
                 </a>
             </div>
         </div>
+    </div>
 
 
     <!-- Bandeau compétences avec logos -->
