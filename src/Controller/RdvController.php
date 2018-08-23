@@ -15,7 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class RdvController extends AbstractController
 {
 
-    /*
+    /**
+     * @Route("/rendezvous")
+     */
     public function index()
     {
         $em = $this->getDoctrine()->getManager();
@@ -26,7 +28,7 @@ class RdvController extends AbstractController
         return $this->render('rdv/index.html.twig', [
             'rdvs' => $rdvs,
         ]);
-    }*/
+    }
 /*
     public function load()
     {
@@ -54,9 +56,7 @@ class RdvController extends AbstractController
     }
 */
 
-    /**
-     * @Route("/rendezvous")
-     */
+
     public function insertionEnBdd(Request $request)
     {
 
@@ -64,10 +64,6 @@ class RdvController extends AbstractController
         $repository = $em->getRepository(Rdv::class);
         $rdvs = $repository->findAll();
 
-
-        /*return $this->render('rdv/index.html.twig', [
-            'rdvs' => $rdvs,
-        ]);*/
 
         $rdv = new Rdv();
 

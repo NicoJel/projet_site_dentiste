@@ -58,7 +58,7 @@ class Utilisateur
 
     /**
      * @var Rdv
-     * @ORM\OneToMany(targetEntity="Rdv", mappedBy="Utilisateur")
+     * @ORM\OneToMany(targetEntity="Rdv", mappedBy="utilisateur")
      */
     private $rdv;
 

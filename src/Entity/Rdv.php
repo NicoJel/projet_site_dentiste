@@ -74,23 +74,6 @@ class Rdv
         return $this;
     }
     /**
-     * @return Motif
-     */
-    public function getMotif(): Motif
-    {
-        return $this->motif;
-    }
-    /**
-     * @param Motif $motif
-     * @return Rdv
-     */
-    public function setMotif(Motif $motif): Rdv
-    {
-        $this->motif = $motif;
-        return $this;
-    }
-
-    /**
      * @return Utilisateur
      */
     public function getUtilisateur(): Utilisateur
@@ -108,8 +91,22 @@ class Rdv
         return $this;
     }
 
+    /**
+     * @return Motif
+     */
+    public function getMotif(): Motif
+    {
+        return $this->motif;
+    }
 
-
-
+    /**
+     * @param Motif $motif
+     * @return Rdv
+     */
+    public function setMotif(Motif $motif): Rdv
+    {
+        $this->motif = $motif;
+        return $this;
+    }
 
 }
