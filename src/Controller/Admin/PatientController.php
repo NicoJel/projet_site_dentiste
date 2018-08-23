@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -24,6 +23,7 @@ class PatientController extends AbstractController
         $patients = $repository->findBy([], ['nom' => 'asc']);
 
         dump($patients);
+
 
         return $this->render(
             'admin/patient/index.html.twig',
@@ -69,4 +69,6 @@ class PatientController extends AbstractController
             ]
         );
     }
+
 }
+

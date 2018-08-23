@@ -87,7 +87,7 @@ use Symfony\Component\Routing\Annotation\Route;
     }
 
      /**
-      * @Route("/listeRdv/{id}", defaults={"id": null}, requirements={"id"="\d+"})
+      * @Route("/listerdv/{id}", defaults={"id": null}, requirements={"id"="\d+"})
       */
      public function listeRdv (Utilisateur $utilisateur)
      {

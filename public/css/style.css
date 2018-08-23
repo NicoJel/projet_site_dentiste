@@ -204,3 +204,8 @@ body{
         flex-direction: column;
     }
 }
+
+.navbar-admin {
+    padding: 0;
+    background-color: #055873;
+}

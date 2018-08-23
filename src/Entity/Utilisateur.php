@@ -147,6 +147,18 @@ class Utilisateur implements UserInterface, \Serializable
     }
 
     /**
+     * Création de la méthode getAge pour retourner l'âge directement dans le tableau des patients
+     */
+    public function getAge()
+    {
+        $now = new \DateTime('now');
+        $age = $this->getDateNaissance();
+        $difference = $now->diff($age);
+
+        return $difference->format('%y ans');
+    }
+
+    /**
      * @return mixed
      */
     public function getCivilite()
@@ -381,4 +393,5 @@ class Utilisateur implements UserInterface, \Serializable
     {
         return $this->prenom . ' ' . $this->nom;
     }
+
 }
