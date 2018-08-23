@@ -1,0 +1,21 @@
+{% extends '../../base.html.twig' %}
+
+{% block body %}
+
+    <!-- app/Resources/views/test.html.twig -->
+
+    <div class="sidebar-search">
+        <div class="input-group custom-search-form">
+            <input type="text" id="search" class="form-control" placeholder="Recherche...">
+        </div>
+        <!-- /input-group -->
+    </div>
+    <ul class="nav" id="side-menu">
+        <li>
+            <a href="#">Utilisateurs<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level" id="entitiesNav">
+            </ul>
+        </li>
+    </ul>
+
+{% endblock %}
