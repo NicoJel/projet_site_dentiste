@@ -3,9 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Dr Céline Filitika - Chirurgien Dentiste{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/P-prosternation.gif') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    {% block script %}
+    {% endblock %}
         {% block body %}
         Bienvenue sur le site du Dr Filitika, Chirurgien dentiste à Nouméa - Nouvelle Calédonie
         {% endblock %}

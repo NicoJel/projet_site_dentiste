@@ -58,7 +58,7 @@ class Utilisateur
 
     /**
      * @var Rdv
-     * @ORM\OneToMany(targetEntity="Rdv", mappedBy="utilisateur")
+     * @ORM\OneToMany(targetEntity="Rdv", mappedBy="Utilisateur")
      */
     private $rdv;
 
@@ -181,5 +181,9 @@ class Utilisateur
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->prenom . ' ' . $this->nom;
+    }
 
 }
