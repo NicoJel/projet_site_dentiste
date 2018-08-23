@@ -1,0 +1,29 @@
+.flashMessage{
+    position: relative;
+    font-size: 1.8em;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+/** Animation qui fait disparaitre les flash message de succès
+(les flash messages d'error restent grâce au js) **/
+.flashMessageAnimation{
+    animation-name: hide;
+    animation-delay: 2s;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes hide {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+.navbar-admin {
+    padding: 0;
+    background-color: #055873;
+}
