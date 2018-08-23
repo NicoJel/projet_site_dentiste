@@ -8,11 +8,7 @@
 {% block body %}
 <div class="container">
 
-
-    <h4>Inscription</h4>
-
-    {{ form_start(form) }}
-
+    <h4 class="p-4">Inscription</h4>
 
     <div class="info-perso centrer">
         <div class="msg-info-perso">Informations personnelles</div>
@@ -82,9 +78,9 @@
 
 </div>
 
-{% endblock %}
-
     {% block javascripts %}
         {{ parent() }}
         <script src="{{ asset('js/inscription.js') }}"></script>
     {% endblock %}
+
+{% endblock %}

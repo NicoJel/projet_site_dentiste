@@ -81,7 +81,10 @@ class UtilisateurType extends AbstractType
                 ]
             )
             ->add('mail',
-                EmailType::class
+                EmailType::class,
+                [
+                    'required' => true,
+                ]
             )
             ->add('commentaire',
                 TextareaType::class,
@@ -103,10 +106,12 @@ class UtilisateurType extends AbstractType
                     // options du 1er des deux champs
                     'first_options' => [
                         'label' => 'Mot de passe',
+                        'required' => true,
                     ],
                     // options du 2e
                     'second_options' => [
                         'label' => 'Confirmation du mot de passe',
+                        'required' => true,
                     ],
                     'invalid_message' => 'Les deux mots de passe ne sont pas identiques'
                 ]
