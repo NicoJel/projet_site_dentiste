@@ -125,6 +125,15 @@ body{
     }
 }
 
+/** la navbar admin **/
+#navbarAdmin {
+    padding: 0;
+    background-color: #055873;
+}
+
+.logo {
+    width: 160px;
+}
 
 /** LE FOOTER **/
 
@@ -203,13 +212,4 @@ body{
     .list-utilisateur{
         flex-direction: column;
     }
-}
-
-.navbar-admin {
-    padding: 0;
-    background-color: #055873;
-}
-
-.logo {
-    width: 250px;
 }
