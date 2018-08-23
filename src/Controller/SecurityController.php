@@ -69,6 +69,7 @@ class SecurityController extends AbstractController
         );
     }
 
+
     /**
      * @Route("/connexion")
      */

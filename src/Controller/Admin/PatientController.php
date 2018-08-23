@@ -4,9 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ *
  * Class PatientController
  * @package App\Controller\Admin
  */
@@ -66,6 +69,37 @@ class PatientController extends AbstractController
             'admin/patient/infos.html.twig',
             [
                 'patient' => $patient
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @Route("/test")
+     * @return Response
+     */
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $utilisateurs =  $em->getRepository(Utilisateur::class)->findBy(['nom' => 'asc']);
+
+        if(!$utilisateurs) {
+            $result['utilisateurs']['erreur'] = "Le patient n'existe pas";
+        } else {
+            $result['utilisateurs'] = $this->getRealEntities($utilisateurs);
+        }
+        return new Response(json_encode($result));
+    }
+
+    public function getRealEntities($utilisateurs){
+        foreach ($utilisateurs as $patient){
+            $utilisateursReels[$patient->getId()] = $entity->getFoo();
+        }
+        return $this->render(
+            'test.html.twig',
+            [
+                'utilisateurs' => $utilisateursReels
             ]
         );
     }

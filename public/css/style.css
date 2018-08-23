@@ -209,3 +209,7 @@ body{
     padding: 0;
     background-color: #055873;
 }
+
+.logo {
+    width: 250px;
+}

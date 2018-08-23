@@ -328,7 +328,7 @@ class Utilisateur implements UserInterface, \Serializable
     }
 
     /**
-     * Transforme un objet User en chaîne de caractère
+     * Transforme un objet Utilisateur en chaîne de caractère
      * @return string
      */
     public function serialize(): string
@@ -341,13 +341,15 @@ class Utilisateur implements UserInterface, \Serializable
             $this->dateNaissance,
             $this->mail,
             $this->adresse,
+            $this->cp,
+            $this->ville,
             $this->commentaire,
             $this->password
         ]);
     }
 
     /**
-     * Transforme une chaîne générée par serialize en objet user
+     * Transforme une chaîne générée par serialize en objet utilisateur
      * @param string $serialized
      */
     public function unserialize($serialized)
@@ -360,6 +362,8 @@ class Utilisateur implements UserInterface, \Serializable
             $this->dateNaissance,
             $this->mail,
             $this->adresse,
+            $this->cp,
+            $this->ville,
             $this->commentaire,
             $this->password
             ) = unserialize($serialized);
