@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('css/inscription.css') }}">
+        {% endblock %}
+
+{% block body %}
+<div class="container">
+
+
+    <h4>Inscription</h4>
+
+    {{ form_start(form) }}
+
+
+    <div class="info-perso centrer">
+        <div class="msg-info-perso">Informations personnelles</div>
+
+        <div class="civilite">
+            <p>Civilite</p> {{ form_widget(form.civilite) }}
+        </div>
+
+
+        <div class="nom-prenom">
+            {{ form_row(form.nom) }}
+
+            {{ form_row(form.prenom) }}
+        </div>
+
+        <div class="date-naissance-telephone">
+            <div class="date-naissance">
+                <p>Date de naissance</p>
+                {{ form_errors(form.dateNaissance) }}
+                {{ form_widget(form.dateNaissance) }}
+            </div>
+
+            <div class="telephone">
+                {{ form_row(form.telephone) }}
+            </div>
+        </div>
+
+            {{ form_row(form.adresse) }}
+
+        <div class="ville-cp">
+
+            {{ form_row(form.ville) }}
+
+            {{ form_row(form.cp) }}
+
+        </div>
+
+            {{ form_row(form.commentaire) }}
+
+    </div>
+
+    <div class="info-connexion centrer-connexion">
+
+        <div class="msg-info-connexion">Informations de connexion</div>
+
+            <p>Email <span class="span-email">(servira d'identifiant)</span></p>
+            {{ form_errors(form.mail) }}
+            {{ form_widget(form.mail) }}
+
+            {{ form_row(form.plainPassword) }}
+
+    </div>
+
+
+        <div class="div-boutons">
+            <div class="form-btn-group">
+                <button class="btn btn-info" type="submit">
+                    Enregistrer
+                </button>
+            </div>
+            <div>
+                <a href="{{ path('app_index_index') }}" class="btn btn-outline-secondary">Retour</a>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+
+</div>
+
+{% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/inscription.js') }}"></script>
+    {% endblock %}

@@ -1,13 +1,39 @@
 security:
+    #encodage du mdp pour l'utilisateur
+    encoders:
+        App\Entity\Utilisateur:
+            algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: ~ }
+        db:
+            entity:
+                class: App\Entity\Utilisateur
+                #l'identifiant est l'email
+                property: mail
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
+
+            # on utilise le provider db défini au-dessus dans la rubrique provider
+            provider: db
+
+            # sur tout le site
+            pattern: ^/
+            form_login:
+                # route du formulaire de login
+                login_path: app_security_login
+                check_path: app_security_login
+                #route vers laquelle on redirige après authentification
+                default_target_path: app_index_index
+            logout:
+                # route définie dans config/routes.yaml
+                path: app_security_logout
+                # route vers laquelle on redirige apres déconnexion
+                target: app_index_index
 
             # activate different ways to authenticate
 
@@ -20,5 +46,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/Admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

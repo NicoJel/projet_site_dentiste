@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+    <!-- Partie accueil -->
+    <div class="backgroundAccueil">
+        <img class="imgBackground" src="{{ asset('../img/accueil/femme02.jpg') }}" alt="femme-dentiste">
+        <div class="accueil">
+            <div>
+                <h1 class="titre">
+                    Bienvenue sur le site du <span><a class="souligne" href="#">Dr Filitika</a></span>
+                    <br>
+                    Chirurgien dentiste à Nouméa - Nouvelle Calédonie
+                </h1>
+            </div>
+
+            <div class="lien">
+                <a href="#" class="btn">
+                    Prise de RDV en ligne
+                </a>
+                <a href="#" class="btn">
+                    Téléphoner au 01.56.37.89.54
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bandeau compétences avec logos -->
+
+        <div class="competences">
+            <div class="container" id="competences">
+
+                <div class="logos">
+
+                    <div class="logo logo-carie">
+                        <div class="logo-img carie">
+                            <a href="#"><img src="../../logos/accueil/carie.png" alt="logo-carie"></a>
+                        </div>
+                        <a href="#"><p class="logo-text">Chirurgie dentaire</p></a>
+                    </div>
+
+                    <div class="logo logo-conseils">
+                        <div class="logo-img conseils">
+                            <a href="#"><img src="../../logos/accueil/conseils.png" alt="logo-conseils"></a>
+                        </div>
+                        <a href="#"><p class="logo-text">Conseils dentaires</p></a>
+                    </div>
+
+                    <div class="logo logo-mutuelle">
+                        <div class="logo-img mutuelle">
+                            <a href="#"><img src="../../logos/accueil/mutuelle.png" alt="logo-mutuelle"></a>
+                        </div>
+                        <a href="#"><p class="logo-text">Votre mutuelle se charge de tout</p></a>
+                    </div>
+
+                    <div class="logo logo-calendrier">
+                        <div class="logo-img calendrier">
+                            <a href="#"><img src="../../logos/accueil/calendrier.jpg" alt="logo-calendrier"></a>
+                        </div>
+                        <a href="#"><p class="logo-text">RDV simplifiés</p></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="../../js/accueil.js"></script>
+
+{% endblock %}

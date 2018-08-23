@@ -14,7 +14,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RdvController extends AbstractController
 {
-
     /**
      * @Route("/rendezvous")
      */
@@ -98,7 +97,4 @@ class RdvController extends AbstractController
         ]);
 
     }
-
 }
-
-
