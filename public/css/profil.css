@@ -1,0 +1,224 @@
+/** Image d'illustration **/
+
+.img{
+    overflow: hidden;
+    max-height: 260px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    animation: apparitionImg forwards ease-in-out;
+    animation-delay: 300ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionImg {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.img img{
+    display: block;
+    margin: 0 auto;
+}
+
+/** Le titre **/
+.titre{
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    animation: apparitionTitre forwards ease-in-out;
+    animation-delay: 600ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionTitre {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.titre h4, .titre img{
+    margin: 10px;
+}
+.titre img{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.lien-rdv{
+    margin: 10px;
+    position: relative;
+    display: inline;
+    opacity: 0;
+    animation: apparitionRdv forwards ease-in-out;
+    animation-delay: 750ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionRdv {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.info-bulle{
+    position: relative;
+}
+.info-bulle span, .lien-rdv span{
+    position: absolute;
+    width: 165px;
+    top: 20px;
+    left: 50px;
+    background-color: #4ec8d3;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    transform: scale(0) rotate(-12deg);
+    transition: all .25s;
+    opacity: 0;
+    box-shadow: 8px 8px 15px black;
+}
+.lien-rdv span{
+    width: 220px;
+    text-align: center;
+    top: 10px;
+    left: 150px;
+}
+.info-bulle:hover span, .info-bulle:focus span, .lien-rdv:hover span, .lien-rdv a:focus span{
+    transform: scale(1) rotate(0);
+    opacity: 0.8;
+}
+
+
+/** Le formulaire **/
+
+.nom-prenom, .dateNaissance-telephone, .ville-cp{
+    display: flex;
+    justify-content: space-around;
+}
+.prenom, .nom, .telephone, .dateNaissance, .ville, .cp{
+    width: 50%;
+    margin: 10px;
+}
+.adresse, .commentaire{
+    margin: 10px;
+}
+.boutons{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.boutons div{
+    margin: 10px;
+}
+
+.nom-prenom{
+    opacity: 0;
+    animation: apparitionPrenomNom forwards ease-in-out;
+    animation-delay: 900ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionPrenomNom {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.dateNaissance-telephone{
+    opacity: 0;
+    animation: apparitionDateNaissanceTelephone forwards ease-in-out;
+    animation-delay: 1200ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionDateNaissanceTelephone {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.adresse{
+    opacity: 0;
+    animation: apparitionAdresse forwards ease-in-out;
+    animation-delay: 1400ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionAdresse {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.ville-cp{
+    opacity: 0;
+    animation: apparitionVilleCp forwards ease-in-out;
+    animation-delay: 1600ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionVilleCp {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.commentaire{
+    opacity: 0;
+    animation: apparitionCommentaire forwards ease-in-out;
+    animation-delay: 1800ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionCommentaire {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.boutons{
+    opacity: 0;
+    animation: apparitionBoutons forwards ease-in-out;
+    animation-delay: 2000ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionBoutons {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .info-bulle span{
+        display: none;
+    }
+    .lien-rdv span{
+        top: -10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .boutons{
+        flex-direction: column;
+    }
+
+}
+

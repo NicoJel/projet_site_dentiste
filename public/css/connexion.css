@@ -1,0 +1,65 @@
+.img{
+    overflow: hidden;
+    max-height: 300px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    animation: apparitionImg forwards ease-in-out;
+    animation-delay: 200ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionImg {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+h4{
+    opacity: 0;
+    animation: forwards ease-in-out apparitionTitre;
+    animation-delay: 400ms;
+    animation-duration: 0.6s;
+    text-align: center;
+    margin-top: 30px;
+}
+@keyframes apparitionTitre {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.connexion{
+    opacity: 0;
+    animation: forwards ease-in-out apparitionConnexion;
+    animation-delay: 500ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionConnexion {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+form{
+    margin: 0 20%;
+}
+
+.footer{
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 480px) {
+    .boutons{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .boutons button, .boutons a{
+        margin: 10px;
+    }
+}

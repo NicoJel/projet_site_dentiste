@@ -1,0 +1,72 @@
+/** Image d'illustration **/
+
+.img{
+    overflow: hidden;
+    max-height: 260px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    animation: apparitionImg forwards ease-in-out;
+    animation-delay: 300ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionImg {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.img img{
+    display: block;
+    margin: 0 auto;
+}
+.titre{
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: apparitionTitre forwards ease-in-out;
+    animation-delay: 600ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionTitre {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.table{
+    opacity: 0;
+    animation: apparitionTable forwards ease-in-out;
+    animation-delay: 900ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionTable {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.boutons{
+    text-align: right;
+    opacity: 0;
+    animation: apparitionBoutons forwards ease-in-out;
+    animation-delay: 1200ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionBoutons {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.footer{
+    margin-top: 150px;
+}

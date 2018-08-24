@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/listeRdv.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+
+    <h1>Gestion de vos rdv</h1>
+
+    <table class="table">
+
+
+    </table>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('/js/listeRdv.js') }}"></script>
+
+{% endblock %}

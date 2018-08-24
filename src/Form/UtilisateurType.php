@@ -22,19 +22,23 @@ class UtilisateurType extends AbstractType
             ->add('nom',
                 TextType::class,
                 [
-                    'label' => 'Nom'
+                    'label' => 'Nom',
+                    'required' => true,
                 ]
             )
             ->add('prenom',
                 TextType::class,
                 [
-                    'label' => 'Prénom'
+                    'label' => 'Prénom',
+                    'required' => true,
                 ]
             )
             ->add('dateNaissance',
                 BirthdayType::class,
                 [
-                    'label' => 'Date de Naissance',
+                    'widget'    => 'single_text',
+                    'required' => false,
+                    'label'     => 'Date de Naissance',
                 ]
             )
             ->add('civilite',
@@ -47,30 +51,50 @@ class UtilisateurType extends AbstractType
                     ],
                     'expanded' => true
                 ]
-)
+            )
+            ->add(  'ville',
+                    TextType::class,
+                [
+                    'label' => 'Ville',
+                    'required' => false,
+                ]
+            )
+            ->add(  'cp',
+                    TextType::class,
+                [
+                    'label' => 'CP',
+                    'required' => false,
+                ]
+            )
             ->add('telephone',
                 TextType::class,
                 [
-                    'label' => 'Téléphone'
+                    'label' => 'Téléphone',
+                    'required' => false,
                 ]
             )
             ->add('adresse',
                 TextType::class,
                 [
-                    'label' => 'Adresse'
+                    'label' => 'Adresse',
+                    'required' => false,
                 ]
             )
             ->add('mail',
                 EmailType::class,
                 [
-                    'label' => 'Email'
+                    'required' => true,
                 ]
             )
             ->add('commentaire',
                 TextareaType::class,
                 [
                     'label' => 'Commentaire',
-                    'required' => false
+                    'required' => false,
+                    'attr' =>
+                        [
+                        'placeholder' => "Toutes remarques utiles pour votre profil",
+                        ]
                 ]
             )
             ->add(
@@ -81,11 +105,13 @@ class UtilisateurType extends AbstractType
                     'type' => PasswordType::class,
                     // options du 1er des deux champs
                     'first_options' => [
-                        'label' => 'Mot de passe'
+                        'label' => 'Mot de passe',
+                        'required' => true,
                     ],
                     // options du 2e
                     'second_options' => [
-                        'label' => 'Confirmation du mot de passe'
+                        'label' => 'Confirmation du mot de passe',
+                        'required' => true,
                     ],
                     'invalid_message' => 'Les deux mots de passe ne sont pas identiques'
                 ]

@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
  * @UniqueEntity(fields={"mail"}, message="Il existe déjà un utilisateur avec cet email")
  */
-class Utilisateur
+class Utilisateur implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -21,36 +23,45 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Le nom est obligatoire")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Le prénom est obligatoire")
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateNaissance;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=3, nullable=true)
      */
     private $civilite;
 
+    public function eraseCredentials()
+    {
+
+    }
+
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $telephone;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=100, unique=true)
+     * @ORM\Column(type="string", length=100, unique=true, nullable=false)
+     * @Assert\NotBlank(message="L'email est obligatoire")
+     * @Assert\Email(message="L'email n'est pas valide")
      */
     private $mail;
 
@@ -60,19 +71,19 @@ class Utilisateur
     private $commentaire;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     *
      */
     private $password;
 
     /**
      * mot de passe en clair pour interagir avec le formulaire
-     * @var string
-     * @Assert\NotBlank(message="mdp obligatoire")
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
      */
     private $plainpassword;
 
     /**
-     * @var Rdv
+     * @var Collection
      * @ORM\OneToMany(targetEntity="Rdv", mappedBy="utilisateur")
      */
     private $rdv;
@@ -81,6 +92,23 @@ class Utilisateur
      * @ORM\Column(type="string", length=20)
      */
     private $role = 'ROLE_USER';
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=5, nullable=true)
+     * @Assert\Length(max="5", maxMessage="Le code postal ne doit pas dépasser 5 chiffres")
+     *
+     */
+    private $cp;
+
+    /**
+     *
+     */
+    private $age;
 
     public function getId(): ?int
     {
@@ -116,12 +144,31 @@ class Utilisateur
         return $this->dateNaissance;
     }
 
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
+    public function setDateNaissance(\DateTimeInterface $dateNaissance = null): self
     {
         $this->dateNaissance = $dateNaissance;
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param mixed $age
+     * @return Utilisateur
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+        return $this;
+    }
+
 
     /**
      * @return mixed
@@ -229,16 +276,16 @@ class Utilisateur
     /**
      * @return Rdv
      */
-    public function getRdv(): Rdv
+    public function getRdv(): Collection
     {
         return $this->rdv;
     }
 
     /**
-     * @param Rdv $rdv
+     * @param Collection $rdv
      * @return Utilisateur
      */
-    public function setRdv(Rdv $rdv): Utilisateur
+    public function setRdv(Collection $rdv): Utilisateur
     {
         $this->rdv = $rdv;
         return $this;
@@ -257,7 +304,43 @@ class Utilisateur
     }
 
     /**
-     * Transforme un objet User en chaîne de caractère
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     * @return Utilisateur
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * @param mixed $cp
+     * @return Utilisateur
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+        return $this;
+    }
+
+    /**
+     * Transforme un objet Utilisateur en chaîne de caractère
      * @return string
      */
     public function serialize(): string
@@ -270,13 +353,15 @@ class Utilisateur
             $this->dateNaissance,
             $this->mail,
             $this->adresse,
+            $this->cp,
+            $this->ville,
             $this->commentaire,
             $this->password
         ]);
     }
 
     /**
-     * Transforme une chaîne générée par serialize en objet user
+     * Transforme une chaîne générée par serialize en objet utilisateur
      * @param string $serialized
      */
     public function unserialize($serialized)
@@ -289,6 +374,8 @@ class Utilisateur
             $this->dateNaissance,
             $this->mail,
             $this->adresse,
+            $this->cp,
+            $this->ville,
             $this->commentaire,
             $this->password
             ) = unserialize($serialized);
@@ -315,6 +402,12 @@ class Utilisateur
     public function getUsername()
     {
         return $this->mail;
+    }
+
+
+    public function __toString()
+    {
+        return $this->prenom . ' ' . $this->nom;
     }
 
 }

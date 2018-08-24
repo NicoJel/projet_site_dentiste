@@ -8,20 +8,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+/**
+ * Class SecurityController
+ * @package App\Controller
+ */
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/inscription")
      */
     public function inscription(
-
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder
     )
     {
+
         $utilisateur = new Utilisateur();
+
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
 
         $form->handleRequest($request);
@@ -29,7 +35,7 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 dump($utilisateur);
-                /**
+                /*
                  * -- encode le mdp à partir de la config encoders pour l'objet
                  * Utilisateur à partir de son mdp en clair reçu du formulaire
                  */
@@ -41,15 +47,16 @@ class SecurityController extends AbstractController
                 $utilisateur->setPassword($password);
 
                 $em = $this->getDoctrine()->getManager();
+
                 $em->persist($utilisateur);
                 $em->flush();
 
                 $this->addFlash('success', 'Votre compte a été créé');
-                return $this->redirectToRoute(app_index_index);
+                return $this->redirectToRoute('app_security_login');
             } else {
                 $this->addFlash(
                     'error',
-                    'Le formulaire contient encore des erreurs'
+                    'Le formulaire contient des erreurs'
                 );
             }
         }
@@ -57,7 +64,7 @@ class SecurityController extends AbstractController
         return $this->render(
             'security/inscription.html.twig',
             [
-                'form' => $form->createView()
+                'form' => $form->createView(),
             ]
         );
     }
@@ -75,11 +82,20 @@ class SecurityController extends AbstractController
             $this->addFlash('error', 'Identifiants incorrects');
         }
 
+        if (!empty($_POST)){
+            if (empty($error)){
+                $this->addFlash('success', 'Vous êtes connecté(e)');
+            }
+        }
+
+
+
         return $this->render(
-            'security/login.html.twig',
+            'security/connexion.html.twig',
             [
                 'last_username' => $lastUsername
             ]
         );
     }
+
 }

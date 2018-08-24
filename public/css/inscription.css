@@ -1,0 +1,229 @@
+h4{
+    margin-bottom: 40px;
+}
+form{
+    margin: 10px;
+}
+.info-perso, .info-connexion{
+    padding: 10px;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+/** Animation info perso **/
+
+    /* le message Info perso */
+.msg-info-perso {
+    position: absolute;
+    top: -28px;
+    font-style: italic;
+    font-size: 1.1em;
+    opacity: 0;
+    color: #4bb3bd;
+}
+.container:hover .msg-info-perso{
+    animation: ease-in-out 900ms apparitionPerso forwards;
+}
+@keyframes apparitionPerso {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+    /* Animation des bordures */
+.info-perso {
+    border: 0;
+    box-sizing: border-box;
+    position: relative;
+    vertical-align: middle;
+}
+.info-perso::before,
+.info-perso::after{
+    box-sizing: inherit;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.centrer::before, .centrer::after{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center;
+}
+.centrer::before{
+    border-top: 2px solid #4bb3bd;
+    border-bottom: 2px solid #4bb3bd;
+    transform: scale3d(0,1,1);
+}
+.centrer::after{
+    border-left: 2px solid #4bb3bd;
+    border-right: 2px solid #4bb3bd;
+    transform: scale3d(1,0,1);
+}
+.container:hover .centrer::before, .container:hover .centrer::after{
+    transform: scale3d(1,1,1);
+    transition: transform 1s;
+}
+
+
+
+/** Info perso **/
+
+.civilite{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.civilite p{
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+#utilisateur_civilite{
+    display: flex;
+    width: 20%;
+}
+#utilisateur_civilite .form-check{
+    margin: 5px;
+}
+.nom-prenom{
+    display: flex;
+    justify-content: space-between;
+}
+.nom-prenom div{
+    width: 45%;
+}
+.date-naissance-telephone{
+    display: flex;
+    justify-content: space-between;
+}
+.date-naissance{
+    display: flex;
+    align-items: center;
+    width: 45%;
+}
+.date-naissance p{
+    margin: 0 5px 0 0;
+}
+
+#utilisateur_dateNaissance select{
+    margin: 2px 5px;
+}
+.telephone{
+    width: 45%;
+    display: flex;
+}
+.ville-cp{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.ville-cp div{
+    width: 45%;
+}
+
+
+/** L'animation d'infos connexion **/
+
+    /* le message Info connexion */
+.msg-info-connexion {
+    position: absolute;
+    top: -28px;
+    font-style: italic;
+    font-size: 1.1em;
+    opacity: 0;
+    color: #4bb3bd;
+}
+.container:hover .msg-info-connexion{
+    animation: ease-in-out 900ms apparitionConnexion forwards;
+}
+@keyframes apparitionConnexion {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+    /* Animation des bordures */
+.info-connexion{
+    border: 0;
+    box-sizing: border-box;
+    position: relative;
+    vertical-align: middle;
+}
+.info-connexion::before,
+.info-connexion::after{
+    box-sizing: inherit;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.info-connexion::after{
+    top: 0;
+    left: 0.8px;
+}
+.centrer-connexion::before, .centrer-connexion::after{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center;
+}
+.centrer-connexion::before{
+    border-top: 2px solid #4bb3bd;
+    border-bottom: 2px solid #4bb3bd;
+    transform: scale3d(0,1,1);
+}
+.centrer-connexion::after{
+    border-left: 2px solid #4bb3bd;
+    border-right: 2px solid #4bb3bd;
+    transform: scale3d(1,0,1);
+}
+.container:hover .centrer-connexion::before, .container:hover .centrer-connexion::after{
+    transform: scale3d(1,1,1);
+    transition: transform 1s;
+}
+
+
+/** Infos de connexion **/
+
+.span-email{
+    font-style: italic;
+}
+#utilisateur_mail{
+    margin-bottom: 16px;
+}
+
+
+
+/** Boutons **/
+
+.div-boutons{
+    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: -20px;
+}
+.div-boutons div{
+    margin: 10px;
+}
+
+
+@media screen and (max-width: 770px) {
+    .date-naissance{
+        flex-direction: column;
+    }
+    .flashMessage{
+        width: 100%;
+    }
+}
+

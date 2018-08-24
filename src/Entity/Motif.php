@@ -26,6 +26,11 @@ class Motif
      */
     private $duree;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $couleur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Motif
     public function setDuree(int $duree): self
     {
         $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(string $couleur): self
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }

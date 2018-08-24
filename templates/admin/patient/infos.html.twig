@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h4 class="p-5 text-center">{{ patient.nom }} {{ patient.prenom }}</h4>
+
+        <dl class="row">
+
+                <dt class="col-sm-3">Patient</dt>
+                <dd class="col-sm-9">{{ patient.civilite }} {{ patient.prenom }} {{ patient.nom }}</dd>
+
+                <dt class="col-sm-3">Adresse Postale</dt>
+                <dd class="col-sm-9">
+                    <p>{{ patient.adresse }}</p>
+                    <p>{{ patient.cp }} {{ patient.ville }}</p>
+                </dd>
+
+                <dt class="col-sm-3">Date de naissance</dt>
+                <dd class="col-sm-9">{{ patient.dateNaissance|date("d/m/Y") }} ({{ patient.age }})</dd>
+
+
+                <dt class="col-sm-3">Téléphone</dt>
+                <dd class="col-sm-9">{{ patient.telephone }}</dd>
+
+                <dt class="col-sm-3">Mail</dt>
+                <dd class="col-sm-9">
+                    <a class="text-dark"
+                        href="mailto:{{ patient.mail }}">
+                        {{ patient.mail }}
+                    </a>
+                </dd>
+
+                <dt class="col-sm-3">Commentaire</dt>
+                <dd class="col-sm-9">{{ patient.commentaire }}</dd>
+
+                <dt class="col-sm-3">Rendez-vous</dt>
+                <dd class="col-sm-9"></dd>
+            </dl>
+
+        <div class="text-center">
+            <a href="{{ path('app_admin_patient_index') }}"
+               class="btn btn-lg btn-outline-info">
+                <i class="fas fa-undo"></i>
+            </a>
+        </div>
+    </div>
+{% endblock %}

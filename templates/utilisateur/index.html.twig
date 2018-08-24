@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+
+        {% endblock %}
+
+
+{% block body %}
+    <div class="container">
+
+        <div class="img">
+            <img src="{{ asset('../img/profil/fond_nature.jpg') }}" alt="img-cabinet">
+        </div>
+
+        <div class="titre">
+            <h4>Bienvenue sur votre profil {{ utilisateur.prenom }} {{ utilisateur.nom }}</h4>
+            <div class="info-bulle" id="logo">
+                <img src="{{ asset('../logos/profil/edition.png') }}" alt="">
+                <span>Modifier votre profil</span>
+            </div>
+        </div>
+
+        <div class="lien-rdv">
+            <a href="{{ path('app_utilisateur_listerdv', {id: app.user.id}) }}">Voir vos rendez-vous</a>
+            <span>Aller voir vos rendez-vous</span>
+        </div>
+
+
+        <form method="post" class="form-group">
+
+            <div class="nom-prenom">
+                <div id="prenom" class="prenom">
+                    <label for="prenom">Prénom : </label>
+                    <input name="prenom" class="form-control" disabled type="text" value="{{ utilisateur.prenom }}">
+                </div>
+                <div id="nom" class="nom">
+                    <label>Nom : </label>
+                    <input name="nom" class="form-control" disabled type="text" value="{{ utilisateur.nom }}">
+                </div>
+            </div>
+
+            <div class="dateNaissance-telephone">
+                <div id="dateNaissance" class="dateNaissance">
+                    <label>Date de naissance : </label>
+                    <input name="dateNaissance" class="form-control" disabled type="date" max="{{ aujourdhui | date('Y-m-d') }}" min="1920-01-01"
+                           {% if utilisateur.dateNaissance is null %}
+                            placeholder="non renseigné">
+                           {% else %}
+                           value="{{ utilisateur.dateNaissance | date('Y-m-d') }}"
+                           placeholder="{{ utilisateur.dateNaissance | date('Y-m-d') }}">
+                           {% endif %}
+                </div>
+                <div id="telephone" class="telephone">
+                    <label>Telephone : </label>
+                    <input name="telephone" class="form-control" disabled type="text"
+                            {% if utilisateur.telephone is null %}
+                           placeholder="non renseigné">
+                            {% else %}
+                           value="{{ utilisateur.telephone }}">
+                            {% endif %}
+                </div>
+            </div>
+            <div id="adresse" class="adresse">
+                <label>Adresse : </label>
+                <input name="adresse" disabled class="form-control" type="text"
+                        {% if utilisateur.adresse is null %}
+                       placeholder="non renseigné">
+                        {% else %}
+                       value="{{ utilisateur.adresse }}">
+                        {% endif %}
+            </div>
+            <div class="ville-cp">
+                <div id="ville" class="ville">
+                    <label>Ville : </label>
+                    <input name="ville" disabled class="form-control" type="text"
+                            {% if utilisateur.ville is null %}
+                           placeholder="non renseigné">
+                            {% else %}
+                           value="{{ utilisateur.ville }}">
+                            {% endif %}
+                </div>
+                <div id="cp" class="cp">
+                    <label>Code postal : </label>
+                    <input name="cp" disabled class="form-control" type="text"
+                            {% if utilisateur.cp is null %}
+                           placeholder="non renseigné">
+                            {% else %}
+                           value="{{ utilisateur.cp }}">
+                            {% endif %}
+                </div>
+            </div>
+
+            <div class="commentaire">
+                <label for="commentaire">Commentaire : </label>
+                <textarea disabled class="form-control" name="commentaire" id="commentaire" rows="10">{% if utilisateur.commentaire is null %}{% else %}{{ utilisateur.commentaire }}{% endif %}</textarea>
+            </div>
+
+            <div class="boutons">
+                <div>
+                    <button class="btn btn-primary modifProfil" id="modifier">
+                        Modifier votre profil
+                    </button>
+                </div>
+                <div>
+                    <a href="{{ path('app_utilisateur_listerdv', {id: app.user.id}) }}" class="btn btn-info">
+                        Voir vos rendez-vous
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ path('app_index_index') }}" class="btn btn-outline-secondary">
+                        Retour à l'accueil
+                    </a>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+{% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/profil.js') }}"></script>
+    {% endblock %}
