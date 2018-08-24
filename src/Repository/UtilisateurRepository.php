@@ -19,6 +19,17 @@ class UtilisateurRepository extends ServiceEntityRepository
         parent::__construct($registry, Utilisateur::class);
     }
 
+    public function findByNameLike($name)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $cnx = $this->getEntityManager()->getConnection();
+        $qb
+            ->andWhere($qb->expr()->like('u.nom', $qb->expr()->literal('%' . $name . '%')))
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Utilisateur[] Returns an array of Utilisateur objects
 //     */

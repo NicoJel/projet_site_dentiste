@@ -105,6 +105,11 @@ class Utilisateur implements UserInterface, \Serializable
      */
     private $cp;
 
+    /**
+     *
+     */
+    private $age;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,16 +152,23 @@ class Utilisateur implements UserInterface, \Serializable
     }
 
     /**
-     * Création de la méthode getAge pour retourner l'âge directement dans le tableau des patients
+     * @return mixed
      */
     public function getAge()
     {
-        $now = new \DateTime('now');
-        $age = $this->getDateNaissance();
-        $difference = $now->diff($age);
-
-        return $difference->format('%y ans');
+        return $this->age;
     }
+
+    /**
+     * @param mixed $age
+     * @return Utilisateur
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+        return $this;
+    }
+
 
     /**
      * @return mixed
@@ -328,7 +340,7 @@ class Utilisateur implements UserInterface, \Serializable
     }
 
     /**
-     * Transforme un objet User en chaîne de caractère
+     * Transforme un objet Utilisateur en chaîne de caractère
      * @return string
      */
     public function serialize(): string
@@ -341,13 +353,15 @@ class Utilisateur implements UserInterface, \Serializable
             $this->dateNaissance,
             $this->mail,
             $this->adresse,
+            $this->cp,
+            $this->ville,
             $this->commentaire,
             $this->password
         ]);
     }
 
     /**
-     * Transforme une chaîne générée par serialize en objet user
+     * Transforme une chaîne générée par serialize en objet utilisateur
      * @param string $serialized
      */
     public function unserialize($serialized)
@@ -360,6 +374,8 @@ class Utilisateur implements UserInterface, \Serializable
             $this->dateNaissance,
             $this->mail,
             $this->adresse,
+            $this->cp,
+            $this->ville,
             $this->commentaire,
             $this->password
             ) = unserialize($serialized);
