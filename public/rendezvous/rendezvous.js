@@ -2,7 +2,7 @@ $(function() {
 
     $('#calendar').fullCalendar({
         header: {
-            left: 'prec,suiv auj',
+            left: 'prev,next today',
             center: 'title',
             right: 'agendaDay,agendaWeek,month,listDay'
         },
@@ -42,19 +42,16 @@ $(function() {
         editable: true, // autorise à modifier les rdv, il faudrait qu'un user ne puisse modifier que SES rdv, admin peut tout modifier
         eventLimit: true, // allow "more" link when too many events
         // chargement des events pour affichage
-        events: 'load.php', // appelle la page php qui gere l'affichage
+        events: rdvs,//appelle le tableau de données
 
         // -------- fonction select -------- //
 
-        select: function(start, end) {
-            var eventData;
-            end = $.fullCalendar.moment(start);
-            end.add(duree, 'hours'); // duree dans la table motif
 
-            $.ajax({
-                url: '../../src/controller/RdvController.php',
-                type: "POST",
-                data: eventData = {
+        select: function(start) {
+            var eventData;
+
+            if (title) {
+                eventData = {
                     title: acte, // dans la table motif
                     start: start, // créé direct par fullcalendar?
                     end: end, // créé au dessus à partir de durée
@@ -62,43 +59,44 @@ $(function() {
                     nompatient: nomprenom, // chaine avec nom et prenom de la table utilisateur
                     commentaire: textelibre, // faudrait l'afficher que pour l'admin, table rdv
                     editable: true, // event editable ou pas
-                },
-            });
+                };
                 $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                $('#calendar').fullCalendar('addEventSource', eventData);
-                $('#calendar').fullCalendar('refetchEvents');
-
-
+            }
             $('#calendar').fullCalendar('unselect');
         },
 
+        eventRender: function(event, element) {
+            element.find('.fc-title').append("<br/>" + event.description);
+        },
 
 
-        events: function(start, end, timezone, callback) {
-            $.ajax({
-                url: '../../src/controller/RdvController.php',
+        /*
 
-                error: function() {
-                    $('#script-warning').show();
-                },
+                events: function(start, end, timezone, callback) {
+                    $.ajax({
+                        url: '../../src/controller/RdvController.php',
 
-                success: function(doc) {
-                    var events = [];
-                    $(doc).find('event').each(function() {
-                        events.push({
-                            title: $(this).attr('title'),
-                            start: $(this).attr('start') // will be parsed
-                        });
+                        error: function() {
+                            $('#script-warning').show();
+                        },
+
+                        success: function(doc) {
+                            var events = [];
+                            $(doc).find('event').each(function() {
+                                events.push({
+                                    title: $(this).attr('title'),
+                                    start: $(this).attr('start') // will be parsed
+                                });
+                            });
+                            callback(events);
+                        }
                     });
-                    callback(events);
                 }
-            });
-        }
+        */
 
 
 
-
-
+/*
 
     select: function(start, end, allDay) {
         var title = prompt('Event Title:');
@@ -126,7 +124,7 @@ $(function() {
         calendar.fullCalendar('unselect');
     }
 
-
+*/
 
 
 

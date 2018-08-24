@@ -28,7 +28,7 @@ class Rdv
 
     /**
      * @var Motif
-     * @ORM\ManyToOne(targetEntity="Motif")
+     * @ORM\ManyToOne(targetEntity="Motif", fetch="EAGER")
      */
     private $motif;
 

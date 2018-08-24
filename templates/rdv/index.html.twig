@@ -14,43 +14,47 @@
 {% endblock %}
 
 {% block body %}
-
-    <div id='script-warning'>
-        <code>../../src/controller/RdvController.php</code> n'a pas été trouvé.
-    </div>
-
-    <h1>Prise de rendez-vous</h1>
-
-    {% if app.user %}
-
-        {{ form_start(form) }}
-
-        {{ form_row(form.textelibre) }}
-        {{ form_row(form.motif) }}
-
-        <div class="form-btn-group text-right">
-            <button type="submit" class="btn btn-primary">
-                Valider
-            </button>
+    {#
+        <div id='script-warning'>
+            <code>../../src/controller/RdvController.php</code> n'a pas été trouvé.
         </div>
+    #}
+        <h1>Prise de rendez-vous</h1>
 
-        {{ form_end(form) }}
+        {% if app.user %}
 
-    {% else %}
-        <p>
-            Connectez vous pour prendre rendez vous !
-        </p>
-    {% endif %}
+            {{ form_start(form) }}
+
+            {{ form_row(form.textelibre) }}
+            {{ form_row(form.motif) }}
+
+            <div class="form-btn-group text-right">
+                <button type="submit" class="btn btn-primary">
+                    Valider
+                </button>
+            </div>
+
+            {{ form_end(form) }}
+
+        {% else %}
+            <p>
+                Connectez vous pour prendre rendez vous !
+            </p>
+        {% endif %}
 
     <div id='calendar'></div>
 
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+        var rdvs = {{ rdvs|raw }};
+        console.log(rdvs);
+    </script>
     {{ parent() }}
     <script src="{{ asset('lib/moment.min.js') }}"></script>
-    <script src="{{ asset('lib/jquery.min.js') }}"></script>
     <script src="{{ asset('lib/fullcalendar.min.js') }}"></script>
+
     <script src="{{ asset('rendezvous/rendezvous.js') }}"></script>
 {% endblock %}
 

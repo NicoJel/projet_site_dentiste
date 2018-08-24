@@ -14,61 +14,39 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RdvController extends AbstractController
 {
+
+
     /**
-     * @Route("/rendezvous")
+     * @Route("/rendezvous/{id}", defaults={"id": null}, requirements={"id"="\d+"})
      */
-    public function index()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository(Rdv::class);
-        $rdvs = $repository->findAll();
-
-
-        return $this->render('rdv/index.html.twig', [
-            'rdvs' => $rdvs,
-        ]);
-    }
-/*
-    public function load()
+    public function index(Request $request)
     {
 
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository(Rdv::class);
         $rdvs = $repository->findAll();
 
+        dump($rdvs);
 
-        foreach($rdvs as $rdv)
-        {
-         $data[] = array(
-             'start'        => $rdv->getDateheuredebut(), // dans la table rdv
-             'commentaire'  => $rdv->getTextelibre(), // dans la table rdv
-             'title'        => $rdv["acte"], // dans la table motif
-             'color'        => $rdv["couleur"], // dans la table motif
-             'nompatient'   => $rdv["Utilisateur"], // dans la table utilisateur, chaine avec nom et prenom
-             'editable'     => true, // event editable ou pas
-         );
+        $aRdvs = [];
+
+        foreach ($rdvs as $rdv) {
+            dump($rdv->getUtilisateur());
+            $end = clone $rdv->getDateheuredebut();
+            $interval = \DateInterval::createFromDateString($rdv->getMotif()->getDuree() . ' minutes');
+            $end->add($interval);
+
+            $aRdvs[] = [
+                'title'       => $rdv->getMotif()->getActe(),
+                'start'       => $rdv->getDateheuredebut()->format(\DateTime::ATOM),
+                'end'         => $end->format(\DateTime::ATOM),
+                'color'       => $rdv->getMotif()->getCouleur(),
+                'description' => (string)$rdv->getUtilisateur(),
+
+            ];
         }
 
-        echo json_encode($data);
-
-
-    }
-*/
-
-
-    public function insertionEnBdd(Request $request)
-    {
-
-        $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository(Rdv::class);
-        $rdvs = $repository->findAll();
-
-
-        $rdv = new Rdv();
-
-        /*$rdv->setDateheuredebut(); // date reçue via le cal?*/
-        /*$rdv->setUtilisateur($this->getUser());*/
-
+        dump($aRdvs);
 
         $form = $this->createForm(RdvType::class, $rdv);
 
@@ -82,19 +60,16 @@ class RdvController extends AbstractController
                 $em->persist($rdv);
                 $em->flush();
 
-                $this->addFlash('success', 'Votre rdv est pris');
                 return $this->redirectToRoute('app_rdv_index');
-            } else {
-                $this->addFlash(
-                    'error',
-                    'Le formulaire contient des erreurs'
-                );
             }
         }
 
         return $this->render('rdv/index.html.twig', [
             'form' => $form->createView(),
+            'rdvs' => json_encode($aRdvs),
         ]);
 
     }
+
+
 }
