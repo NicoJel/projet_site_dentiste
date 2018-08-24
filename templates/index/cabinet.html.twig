@@ -1,92 +1,162 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/cabinet.css') }}">
+{% endblock %}
+{% block body %}
 
-    {% block body %}
 
-    <h1>Mon cabinet</h1>
-
-    <h3>Adresse du cabinet :</h3>
-
-        <p>120 rue machinbidule, Nouméa</p>
-
-    <h2> Situez mon cabinet dentaire</h2>
-
-        <script type="text/javascript">
-            function carteVisibilite(id) {
-                var e = document.getElementById(id);
-                if(e.style.display == 'block')
-                    e.style.display = 'none';
-                else
-                    e.style.display = 'block';
-            }
-        </script>
-        <a href="#" onclick="carteVisibilite('carte');">Cliquez ici pour accéder à la carte</a>
-        <div id="carte" style="display:none">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14767.549024631055!2d166.45079140573554!3d-22.282260236749696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd748d1bab8fe7afe!2sDentiste+Noumea+-+Cabinet+Dentaire+du+Docteur+Philippe+SANCHIS!5e0!3m2!1sfr!2sfr!4v1534507887044" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LE TITRE PRINCIPAL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="jumbotron jumbotron-fluid" style="background-image: url('{{ asset('img/cabinet/cabinet_dentiste.jpg') }}');background-repeat: no-repeat;
+            background-size: 100% auto;height: inherit;">
+    <div class="container-fluid" style="background: rgba(0, 0, 0, 0.5);margin-top: 400px">
+ici
+        <h1>CENTRE DENTAIRE <img src="../../logos/cabinet/logocagou.png" width="60" height="40" alt="logo-cagou"></h1></br>
+        <h6>MON CABINET</h6>
+    </div>
+</div>
+    <!-- div class="container">
+        <img src="../../img/cabinet/cabinet_dentiste.jpg" alt="cabinet-dentaire">
+        <div class="sousTitre">
+                <h1>CENTRE DENTAIRE <img src="../../logos/cabinet/logocagou.png" width="60" height="40" alt="logo-cagou"></h1></br>
+                <h6>MON CABINET</h6>
         </div>
+    </div -->
 
-    <h3>Photo de mon cabinet</h3>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ L'ADRESSE DU CABINET ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <div class="divTitre">
+        <h3>Adresse du cabinet</h3>
+    </div>
+    <div class="adresse">
+        <img src="../../logos/cabinet/epinglecarte.png" alt="logo-epingle">
+        <h5>29 rue Clémenceau, immeuble Botticelli,</br>Nouméa 98800, Nouvelle-Calédonie</h5>
+    </div>
+        <h5>Mon centre dentaire vous accueille de 9h à 19h, du lundi au vendredi sur rendez-vous</h5>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LA CARTE DE GEOLOCALISATION DU CABINET ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!--
+    <div class="divTitre">
+        <h3> Situez mon cabinet dentaire</h3>
+    </div>
+
+    <script type="text/javascript">
+        function carteVisibilite(id) {
+            var e = document.getElementById(id);
+            if(e.style.display == 'block')
+                e.style.display = 'none';
+            else
+                e.style.display = 'block';
+        }
+    </script>
+
+    <div class="geolocalisation">
+        <a href="#" onclick="carteVisibilite('carte')"><img src="../../logos/cabinet/marqueurplan.png" alt="logo-carte"><button class="boutonCarte">Cliquez ici pour accéder à la carte</button></a>
+    </div>
+    <div id="carte" style="display:none">
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14767.549024631055!2d166.45079140573554!3d-22.282260236749696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd748d1bab8fe7afe!2sDentiste+Noumea+-+Cabinet+Dentaire+du+Docteur+Philippe+SANCHIS!5e0!3m2!1sfr!2sfr!4v1534507887044" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr>
+    -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14767.549024631055!2d166.45079140573554!3d-22.282260236749696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd748d1bab8fe7afe!2sDentiste+Noumea+-+Cabinet+Dentaire+du+Docteur+Philippe+SANCHIS!5e0!3m2!1sfr!2sfr!4v1534507887044" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+    <div class="urgence">
+        <p><strong>URGENCE DENTAIRE</strong></br></br>
+            Contactez-nous sans attendre, du lundi au vendredi</br>
+            de 9h à 19h sans interruption au 01.86.90.19.80</br>
+            pour un rendez-vous dans la journée.
+        </p>
+    </div>
+
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LE SLIDER DES PHOTOS DU CABINET ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <div class="divTitre">
+        <h3>Photos de mon cabinet</h3>
+    </div>
 
         <div>
-
             <div class="container">
-
-                <!-- Full-width images with number text -->
+                <!-- Photos grande taille numérotées -->
                 <div class="mySlides">
                     <div class="numbertext">1 / 4</div>
-                    <img src="{{ asset('images/1.jpg') }}" style="width:100%">
+                    <img src="{{ asset('img/cabinet/1.jpg') }}" style="width:100%">
                 </div>
-
                 <div class="mySlides">
                     <div class="numbertext">2 / 4</div>
-                    <img src="{{ asset('images/2.jpg') }}" style="width:100%">
+                    <img src="{{ asset('img/cabinet/2.jpg') }}" style="width:100%">
                 </div>
-
                 <div class="mySlides">
                     <div class="numbertext">3 / 4</div>
-                    <img src="{{ asset('images/3.jpg') }}" style="width:100%">
+                    <img src="{{ asset('img/cabinet/3.jpg') }}" style="width:100%">
                 </div>
-
                 <div class="mySlides">
                     <div class="numbertext">4 / 4</div>
-                    <img src="{{ asset('images/4.jpg') }}" style="width:100%">
+                    <img src="{{ asset('img/cabinet/4.jpg') }}" style="width:100%">
                 </div>
 
-                <!-- Next and previous buttons -->
+                <!-- Boutons previous et next -->
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-                <!-- Image text -->
+                <!-- Texte des images -->
                 <div class="caption-container">
                     <p id="caption"></p>
                 </div>
 
-                <!-- Thumbnail images -->
-                <div class="row" >
+                <!-- Images miniatures -->
+                <div class="row">
                     <div class="column">
-                        <img class="demo cursor" src="{{ asset('images/1.jpg') }}" style="width:100%" onclick="currentSlide(1)" alt="cabinet1">
+                        <img class="demo cursor" src="{{ asset('img/cabinet/1_tn.jpg') }}" style="width:100%" onclick="currentSlide(1)" alt="Le cabinet">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="{{ asset('images/2.jpg') }}" style="width:100%" onclick="currentSlide(2)" alt="cabinet2">
+                        <img class="demo cursor" src="{{ asset('img/cabinet/2_tn.jpg') }}" style="width:100%" onclick="currentSlide(2)" alt="L'accueil">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="{{ asset('images/3.jpg') }}" style="width:100%" onclick="currentSlide(3)" alt="cabinet3">
+                        <img class="demo cursor" src="{{ asset('img/cabinet/3_tn.jpg') }}" style="width:100%" onclick="currentSlide(3)" alt="La salle d'attente">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="{{ asset('images/4.jpg') }}" style="width:100%" onclick="currentSlide(4)" alt="cabinet4">
+                        <img class="demo cursor" src="{{ asset('img/cabinet/4_tn.jpg') }}" style="width:100%" onclick="currentSlide(4)" alt="Le matériel">
                     </div>
                 </div>
             </div>
-
         </div>
 
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ L'ANCRE VERS LE HAUT DE PAGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <button onclick="topFunction()" id="boutonHaut" title="haut de page"><img src="../../logos/cabinet/flecheHaut.png" alt="logo-fleche"></button>
+
+    <script>
+        // Lorsque l'utilisateur fait défiler au moins 20px à partir du haut de page, l'ancre s'affiche
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("boutonHaut").style.opacity = "1";
+            } else {
+                document.getElementById("boutonHaut").style.opacity = "0";
+            }
+        }
+
+        // Lorsque l'utilisateur clique sur le bouton, on accède en haut de la page
+        var button=document.getElementById('boutonHaut')
+
+        function topFunction() {
+            document.querySelector('#navbar').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+
 {% endblock %}
-
-
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/slider.js') }}"></script>
-    {% endblock %}
-    {% block stylesheets %}
-    {{  parent () }}
-    <link href="{{ asset('css/slider.css') }}">
 {% endblock %}

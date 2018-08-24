@@ -1,0 +1,234 @@
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DES SEPARATEURS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+hr {
+    border: none;
+    border-top: 3px double #007bff;
+    color: #0069d9;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+    margin: 15px 100px 15px 100px;
+}
+
+hr:after {
+    background: #fff;
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DES TITRES ET DE L'ADRESSE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+
+.container {
+    position: relative;
+    width: 100%; /* Maximum width */
+    margin: 0 auto; /* Center it */
+}
+
+.container .sousTitre {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 100%; /* Full width */
+    padding: 0px; /* Some padding */
+}
+
+
+.divTitre, .adresse {
+    display: flex;
+    justify-content: center;
+
+}
+
+h1, h3, h5 {
+    text-align: center;
+    color: #5eb5e0;
+}
+
+h1, h3 {
+    margin: 20px 0px 20px 0px;
+    border: 3px solid #007bff;
+    border-style: inset;
+    border-radius: 3em;
+    padding: 10px 30px 0px 30px;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DU SLIDER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    vertical-align: middle;
+}
+
+/* positionne le conteneur d'image (pour positionner les flèches gauche et droite) */
+.container {
+    position: relative;
+}
+
+/* cache les images par défaut */
+.mySlides {
+    display: none;
+}
+
+/* ajoute un pointeur au survol des images miniatures */
+.cursor {
+    cursor: pointer;
+}
+
+/* les boutons next & previous */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* position du bouton next à droite */
+.next {
+    right: 0;
+    margin-right: 15px;
+    border-radius: 3px 0 0 3px;
+}
+
+/* au survol ajoute une couleur de fond noir avec transparence */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* numérotation */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Container des titres des images */
+.caption-container {
+    text-align: center;
+    background-color: #b3d7ff;
+    padding: 15px 16px 2px;
+    color: darkslategrey;
+    font-size: x-large;
+    font-style: italic;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* quatre colonnes côte à côte pour les miniatures */
+.column {
+    float: left;
+    width: 25%;
+}
+
+/* ajout d'un effet de transparence pour les miniatures  */
+.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DE L'IFRAME ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+#carte {
+    max-width: 700px;
+    max-height: 550px;
+    margin: auto;
+}
+
+#carte div {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+#carte iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DU BOUTON D'AFFICHAGE DE LA CARTE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.boutonCarte {
+    background-color: #80bdff;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 25px;
+    opacity: 1;
+    transition: 0.3s;
+    border-radius: 25px;
+}
+
+.boutonCarte:hover {
+    opacity: 0.6;
+    transform: scale(1.2); /* (zoom à 120%) */
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DE LA CARTE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.geolocalisation {
+    display: flex;
+    justify-content: center;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DU BOUTON HAUT DE PAGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+#boutonHaut {
+    opacity: 0;
+    position: fixed; /* position fixe */
+    bottom: 20px; /* place le bouton en bas de page à partir de 20px */
+    right: 30px; /* place le bouton 30px à partir de la droite */
+    z-index: 99; /* évite le chevauchement */
+    border: none; /* enlève les bordures */
+    outline: none; /* Supprime le contour */
+    background-color: #4bb3bd;
+    cursor: pointer; /* Ajoute un pointeur de souris au survol */
+    padding: 15px;
+    border-radius: 10px;
+    transition: opacity ease-in-out 400ms;
+}
+
+#boutonHaut:hover {
+    background-color: #bee5eb; /* ajoute un effet au survol */
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CSS DE LA CARTE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.urgence {
+    text-align: center;
+    margin-top: 100px;
+}
