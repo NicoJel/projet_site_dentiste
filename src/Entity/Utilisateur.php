@@ -105,6 +105,11 @@ class Utilisateur implements UserInterface, \Serializable
      */
     private $cp;
 
+    /**
+     *
+     */
+    private $age;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,16 +152,23 @@ class Utilisateur implements UserInterface, \Serializable
     }
 
     /**
-     * Création de la méthode getAge pour retourner l'âge directement dans le tableau des patients
+     * @return mixed
      */
     public function getAge()
     {
-        $now = new \DateTime('now');
-        $age = $this->getDateNaissance();
-        $difference = $now->diff($age);
-
-        return $difference->format('%y ans');
+        return $this->age;
     }
+
+    /**
+     * @param mixed $age
+     * @return Utilisateur
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+        return $this;
+    }
+
 
     /**
      * @return mixed

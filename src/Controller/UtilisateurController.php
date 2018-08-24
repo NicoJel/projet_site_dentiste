@@ -25,7 +25,6 @@ use Symfony\Component\Routing\Annotation\Route;
         $verif = true;
 
 
-
         if (!empty($_POST)){
 
             if (empty($_POST['prenom'])){

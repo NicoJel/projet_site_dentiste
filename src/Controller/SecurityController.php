@@ -82,6 +82,12 @@ class SecurityController extends AbstractController
             $this->addFlash('error', 'Identifiants incorrects');
         }
 
+        if (!empty($_POST)){
+            if (empty($error)){
+                $this->addFlash('success', 'Vous êtes connecté(e)');
+            }
+        }
+
 
 
         return $this->render(

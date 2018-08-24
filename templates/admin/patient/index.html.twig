@@ -2,28 +2,24 @@
 
     {% block stylesheets %}
         {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/admin/patient.css') }}">
     {% endblock %}
 
 {% block body %}
     <div class="container">
 
-        <h4 class="p-4">Gestion des patients</h4>
+        <h4 id="titre" class="p-4">Gestion des patients</h4>
 
         <div class="">
-            <form id="recherche" method="POST">
+            <form method="POST">
                 <div class="input-group input-group-lg col-8">
-                    <input type="text" class="form-control" placeholder="Rechercher un patient...">
-                    <div class="input-group-append">
-                        <button class="btn btn-info" type="button" id="button-addon2">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                    <input id="inputRecherche" type="text" class="form-control" placeholder="Rechercher un patient...">
                 </div>
 
             </form>
         </div><br>
 
-        <div id="resultat"></div><br>
+
 
         <div class="">
             <table class="table table-striped col-sm-auto">
@@ -34,12 +30,18 @@
                     <th>Téléphone</th>
                     <th></th>
                 </thead>
-                <tbody>
+                <tbody id="resultatRecherche">
                 {% for patient in patients %}
                     <tr>
                         <td>{{ patient.nom }}</td>
                         <td>{{ patient.prenom }}</td>
-                        <td>{{ patient.age }}</td>
+                        {% if patient.age == '0 ans' %}
+                            <td>Non renseigné</td>
+                        {% elseif patient.age is null %}
+                            <td>Non renseigné</td>
+                        {% else %}
+                            <td>{{ patient.age }}</td>
+                        {% endif %}
                         <td>{{ patient.telephone }}</td>
                         <td>
                             <a href="{{ path('app_admin_patient_infos', {id: patient.id}) }}"
@@ -58,16 +60,21 @@
         </div>
 
         <div class="align-items-end">
-            <a href="#"
+            <a id="lienRemonte"
                class="btn btn-sm btn-outline-info align-items-end">
                 <i class="fas fa-chevron-up"></i>
             </a>
         </div>
     </div>
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('js/recherche.js') }}"></script>
-    {% endblock %}
 
 {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+        <script src="{{ asset('js/admin/patient.js') }}"></script>
+    {% endblock %}
