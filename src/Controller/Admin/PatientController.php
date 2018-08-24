@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -22,7 +23,26 @@ class PatientController extends AbstractController
         // -- tous les patients triées par nom croissant
         $patients = $repository->findBy([], ['nom' => 'asc']);
 
-        dump($patients);
+
+        foreach ($patients as $patient ){
+
+            if(!is_null($patient->getDateNaissance())) {
+
+                $anneePatient = $patient->getDateNaissance()->format('Y');
+
+                $now = new \DateTime();
+
+                $anneeNow = $now->format('Y');
+
+                $age = intval($anneeNow) - intval($anneePatient);
+
+                $age = $age . ' ans';
+
+                $patient->setAge($age);
+
+            }
+
+        }
 
 
         return $this->render(
@@ -59,8 +79,6 @@ class PatientController extends AbstractController
         $repository = $em->getRepository(Utilisateur::class);
         $patient = $repository->find($id);
 
-        dump($id);
-        dump($patient);
 
         return $this->render(
             'admin/patient/infos.html.twig',
@@ -68,6 +86,36 @@ class PatientController extends AbstractController
                 'patient' => $patient
             ]
         );
+    }
+
+    /**
+     * @Route("/recherche", options = { "expose" = true })
+     */
+    public function recherchePatient()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Utilisateur::class);
+
+
+/*
+        $patients = $repository->findByNameLike($_GET['str']);
+
+        foreach ($patients as $patient) {
+            echo $patient . '|';
+        }
+
+
+*/
+
+
+        return $this->render('admin/patient/recherchePatient.html.twig',
+            [
+
+            ]
+
+            );
+
     }
 
 }
