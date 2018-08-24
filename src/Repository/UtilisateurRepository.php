@@ -19,16 +19,17 @@ class UtilisateurRepository extends ServiceEntityRepository
         parent::__construct($registry, Utilisateur::class);
     }
 
-    public function findEntitiesByString($str){
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT e
-                FROM AppBundle:Entity e
-                WHERE e.foo LIKE :str'
-            )
-            ->setParameter('str', '%'.$str.'%')
-            ->getResult();
+    public function findByNameLike($name)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $cnx = $this->getEntityManager()->getConnection();
+        $qb
+            ->andWhere($qb->expr()->like('u.nom', $qb->expr()->literal('%' . $name . '%')))
+        ;
+
+        return $qb->getQuery()->getResult();
     }
+
 //    /**
 //     * @return Utilisateur[] Returns an array of Utilisateur objects
 //     */

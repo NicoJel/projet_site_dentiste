@@ -25,7 +25,7 @@
         </div>
 
         <div class="lien-rdv">
-            <a href="">Voir vos rendez-vous</a>
+            <a href="{{ path('app_utilisateur_listerdv', {id: app.user.id}) }}">Voir vos rendez-vous</a>
             <span>Aller voir vos rendez-vous</span>
         </div>
 
@@ -101,9 +101,14 @@
 
             <div class="boutons">
                 <div>
-                    <button class="btn btn-primary" id="modifier">
+                    <button class="btn btn-primary modifProfil" id="modifier">
                         Modifier votre profil
                     </button>
+                </div>
+                <div>
+                    <a href="{{ path('app_utilisateur_listerdv', {id: app.user.id}) }}" class="btn btn-info">
+                        Voir vos rendez-vous
+                    </a>
                 </div>
                 <div>
                     <a href="{{ path('app_index_index') }}" class="btn btn-outline-secondary">
