@@ -79,6 +79,8 @@ class PatientController extends AbstractController
         $repository = $em->getRepository(Utilisateur::class);
         $patient = $repository->find($id);
 
+        dump($id);
+        dump($patient);
 
         return $this->render(
             'admin/patient/infos.html.twig',

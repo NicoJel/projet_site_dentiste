@@ -17,14 +17,9 @@ class Rdv
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $date;
-
-    /**
-     * @ORM\Column(type="time")
-     */
-    private $heure;
+    private $dateheuredebut;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -39,36 +34,31 @@ class Rdv
 
     /**
      * @var Utilisateur
-     * @ORM\ManyToOne(targetEntity="utilisateur", inversedBy="rdv")
+     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="rdv")
      */
     private $utilisateur;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    /**
+     * @return mixed
+     */
+    public function getDateheuredebut()
     {
-        return $this->date;
+        return $this->dateheuredebut;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    /**
+     * @param mixed $dateheuredebut
+     * @return Rdv
+     */
+    public function setDateheuredebut($dateheuredebut)
     {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getHeure(): ?\DateTimeInterface
-    {
-        return $this->heure;
-    }
-
-    public function setHeure(\DateTimeInterface $heure): self
-    {
-        $this->heure = $heure;
-
+        $this->dateheuredebut = $dateheuredebut;
         return $this;
     }
 
@@ -83,22 +73,6 @@ class Rdv
 
         return $this;
     }
-    /**
-     * @return Motif
-     */
-    public function getMotif(): Motif
-    {
-        return $this->motif;
-    }/**
-     * @param Motif $motif
-     * @return Rdv
-     */
-    public function setMotif(Motif $motif): Rdv
-    {
-        $this->motif = $motif;
-        return $this;
-    }
-
     /**
      * @return Utilisateur
      */
@@ -117,7 +91,22 @@ class Rdv
         return $this;
     }
 
+    /**
+     * @return Motif
+     */
+    public function getMotif(): Motif
+    {
+        return $this->motif;
+    }
 
-
+    /**
+     * @param Motif $motif
+     * @return Rdv
+     */
+    public function setMotif(Motif $motif): Rdv
+    {
+        $this->motif = $motif;
+        return $this;
+    }
 
 }

@@ -36,7 +36,7 @@ $(document).ready(function(){
                 if (positionScroll > positionActuelle){
                     document.getElementById("barreNavigation").style.top = 0;
                 }else{
-                    document.getElementById("barreNavigation").style.top = '-100px';
+                    document.getElementById("barreNavigation").style.top = '-150px';
                 }
                 positionScroll = positionActuelle;
 
