@@ -34,7 +34,7 @@ body{
 }
 .liste-ul{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 }
 .list-utilisateur{
@@ -141,37 +141,64 @@ body{
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #e8ffff;
+    background-color: #055873;
+    color: white;
+}
+footer a:link, footer a:visited{
+    text-decoration: none;
+}
+footer a:hover{
+    color: #5bc0de;
 }
 .divRow{
     margin: 0;
+}
+footer p{
+    margin-bottom: 10px;
 }
 .adresseCabinet{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.adresseVille{
-    padding: 10px;
-    padding-left: 30px;
+.adressePostale{
+    margin: 3px;
+    font-size: 0.8rem;
+    color: #b2ebf2;
+    letter-spacing: 2px;
 }
 .map{
-    padding: 20px;
-    border-radius: 20px;
+    margin-top: 35px;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(75%);
+    filter: gradient(true,3);
 }
 .titreAdresse, .titreLien{
     text-align: center;
-    text-decoration: underline;
+    color: #21a7bc;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+.titreDocteur{
+    font-size: 0.9rem;
+    letter-spacing: 2px;
 }
 .liens{
     padding-top: 30px;
+    padding-left: -10px;
     display: flex;
     flex-direction: column;
     align-items: end;
 }
 .liens a{
-    margin: 10px;
-    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: #FFFFFF;
+}
+.logoFooter{
+    width: 400px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .copyright{
     display: flex;
