@@ -137,7 +137,7 @@ body{
 }
 
 /** L'animation de flip des logos **/
-.carie:hover, .conseils:hover, .mutuelle:hover, .calendrier:hover{
+.logo:hover .carie, .logo:hover .conseils, .logo:hover .mutuelle, .logo:hover .calendrier{
     animation: ease-in-out 500ms flip;
 }
 @keyframes flip {

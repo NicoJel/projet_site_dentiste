@@ -1,0 +1,92 @@
+.img{
+    overflow: hidden;
+    max-height: 300px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    animation: apparitionImg forwards ease-in-out;
+    animation-delay: 200ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionImg {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.table{
+    text-align: center;
+}
+.ajoutActe{
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #4c82ff;
+    text-decoration: underline;
+}
+.ajoutActe:hover{
+    cursor: pointer;
+}
+.couleurCalendrier{
+    font-weight: normal;
+    font-style: italic;
+    font-size: 0.9em;
+}
+.boutonRetour{
+    text-align: right;
+}
+
+
+/** Le formulaire **/
+.formulaireRapide{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 400px;
+    left: 30%;
+    background-color: white;
+    padding: 20px;
+    border: solid 1px black;
+    border-radius: 20px;
+    z-index: 99;
+    transform: scale(0) rotate(-12deg);
+    transition: all .25s;
+    box-shadow: 8px 8px 15px black;
+}
+.show{
+    transform: scale(1) rotate(0);
+}
+.boutons{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.bouton{
+    margin: 10px;
+}
+.tdCouleur{
+    display: flex;
+    justify-content: center;
+}
+.color{
+    height: 30px;
+    width: 10%;
+    border-radius: 20px;
+}
+
+.duree-color{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.couleur{
+    border-radius: 10px;
+}
+
+
+
+.footer{
+    margin-top: 150px;
+}

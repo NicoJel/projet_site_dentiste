@@ -1,5 +1,5 @@
 body{
-    margin-top: 62px;
+    margin-top: 120px;
 }
 .flashMessage{
     position: relative;
@@ -18,13 +18,16 @@ body{
 }
 .boutonFerme {
     margin-left: 15px;
-    color: white;
+    color: black;
     font-weight: bold;
     float: right;
     font-size: 22px;
     line-height: 20px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: color 0.3s;
+}
+.boutonFerme:hover{
+    color: white;
 }
 
 .msgAlert{
@@ -74,6 +77,9 @@ body{
 .lienNav:after{
     bottom: 0;
     transform: translateY(-10px);
+}
+.logoNavbar{
+    width: 160px;
 }
 .lienNav:hover:before, .lienNav:hover:after{
     opacity: 1;
@@ -236,7 +242,7 @@ main{
 #openBouton{
     position: fixed;
     z-index: 99;
-    top: 80px;
+    top: 100px;
     left: 20px;
     transition: ease-in-out top;
     transition-duration: 400ms;

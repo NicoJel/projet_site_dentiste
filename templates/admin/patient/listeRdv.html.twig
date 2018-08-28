@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/listeRdv.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="img">
+            <img src="{{ asset('../img/listeRdv/scotland.jpg') }}" alt="img-cabinet">
+        </div>
+
+        <h4 class="titre">Voici les rendez-vous de {{ utilisateur.prenom }} {{ utilisateur.nom }}</h4>
+
+        <div class="ajoutRdv" id="ajoutRdv">
+            <span>Ajouter un rendez vous</span>
+        </div>
+
+        <table class="table text-center">
+            <tr>
+                <th>Date</th>
+                <th>Horaire</th>
+                <th>Motif</th>
+                <th>Durée estimée</th>
+                <th>Remarques</th>
+                <th></th>
+            </tr>
+
+            {% for rdv in rdvs %}
+                <tr class="ligne">
+                    <td data-date="{{ rdv.dateheuredebut | date('Y-m-d') }}" class="input date">{{ rdv.dateheuredebut | date('d/m/Y') }}</td>
+                    <td data-time="{{ rdv.dateheuredebut | date('H:i') }}" class="input time">{{ rdv.dateheuredebut | date('H:i') }}</td>
+                    <td class="inputsMotif">{{ rdv.motif | capitalize }}</td>
+                    <td>{{ rdv.motif.duree }} min</td>
+                    <td class="input texteLibre">{{ rdv.textelibre }}</td>
+                    <td>
+                        <a href="" data-id="{{ rdv.id }}"
+                           class="btn btn-sm btn-outline-info lienModif">
+                            <i class="fas fa-file-medical-alt"></i>
+                        </a>
+                        <span class="btn btn-sm btn-outline-danger logoSupprimer">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+        <div class="boutons">
+            <a class="btn btn-outline-secondary bouton" href="{{ path('app_admin_patient_infos', {id: utilisateur.id}) }}">Voir son profil</a>
+            <a class="btn btn-primary bouton" href="{{ path('app_admin_patient_index') }}">Liste des patients</a>
+        </div>
+
+
+
+        <!-- Le formulaire -->
+
+        <form method="post" class="form-group formulaireRapide" id="formulaire">
+
+            <h5>Formulaire d'ajout/de modification rapide de rendez-vous</h5>
+
+            <div class="date-heure">
+                <div id="date" class="date">
+                    <label for="date">Date :</label>
+                    <input name="date" class="form-control inputForm" type="date" min="{{ aujourdhui | date('Y-m-d') }}" id="inputDate">
+                </div>
+                <div id="horaire" class="horaire">
+                    <label>Horaire : </label>
+                    <input name="horaire" class="form-control inputForm" type="time" min="9:00" max="20:00" id="inputTime">
+                </div>
+            </div>
+
+            <div class="motif">
+                <label for="motif">Motif :</label>
+                <select id="motif" class="form-control inputForm" name="motif">
+                    <option id="optionBidon" value="0" selected disabled>Selectionnez un motif</option>
+                    {% for motif in motifs %}
+                    <option class="optionSelect" value="{{ motif.acte }}">{{ motif.acte | capitalize }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="remarques">
+                <label for="remarques">Remarques :</label>
+                <textarea name="remarques"  rows="3" class="form-control" id="textareaCommentaires"></textarea>
+            </div>
+            <div class="hidden">
+                <input type="hidden" value="" id="inputHidden" name="idRdv">
+            </div>
+            <div class="boutons">
+                <button id="boutonSubmit" class="btn btn-primary bouton" type="submit">Envoyer</button>
+                <span class="btn btn-outline-secondary bouton" id="fermerForm">Retour</span>
+            </div>
+
+        </form>
+
+
+
+
+
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script src="{{ asset('js/admin/listeRdv.js') }}"></script>
+
+
+{% endblock %}
