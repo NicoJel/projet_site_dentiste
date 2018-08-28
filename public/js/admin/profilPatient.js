@@ -44,3 +44,40 @@ logo.addEventListener('click', function(){
     bouton.setAttribute('id', 'enregistrer');
 
 });
+
+
+
+// Clique sur le bouton supprimer (apparition de la modale)
+
+var boutonSupprimer = document.getElementById("boutonSupprimer");
+var logoSupprimmer = document.getElementById("logoSupprimer");
+var modale = document.getElementById("fenetreModale");
+var contenuModale = document.getElementsByClassName("contenu-fenetreModale")[0];
+
+boutonSupprimer.addEventListener('click', function(){
+
+    modale.classList.remove("hideModale");
+    modale.classList.add("showModal");
+
+});
+
+logoSupprimmer.addEventListener('click', function(){
+
+    modale.classList.remove("hideModale");
+    modale.classList.add("showModal");
+
+});
+
+
+// Les événements de la modale
+    // Fermer la modale
+var fermerModale = document.getElementsByClassName("fermerModale");
+
+for (let i = 0 ; i < fermerModale.length ; i++){
+
+    fermerModale[i].addEventListener('click', function(){
+
+        modale.classList.add("hideModale");
+
+    })
+}

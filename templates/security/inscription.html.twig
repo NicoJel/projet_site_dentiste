@@ -13,6 +13,8 @@
     <div class="info-perso centrer">
         <div class="msg-info-perso">Informations personnelles</div>
 
+        {{ form_start(form) }}
+
         <div class="civilite">
             <p>Civilite</p> {{ form_widget(form.civilite) }}
         </div>
@@ -79,9 +81,10 @@
 
 </div>
 
+
+{% endblock %}
+
     {% block javascripts %}
         {{ parent() }}
         <script src="{{ asset('js/inscription.js') }}"></script>
     {% endblock %}
-
-{% endblock %}

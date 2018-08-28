@@ -1,0 +1,136 @@
+/* Couleur bg-info de bootstrap : #17a2b8 */
+.navbar {
+    margin-bottom: 30px;
+}
+
+.row img {
+    padding-left: 8px;
+}
+
+.row h3 {
+    padding: 4px 0 0 10px;
+}
+
+.container2 {
+    margin-top: 40px;
+}
+
+#accordion2 {
+    border-radius: 7px;
+}
+
+.accordion-heading {
+    border: 3px solid #a7a7a7;
+    /*border-radius: 10px;*/
+    border-radius: 0 50px 0 0;
+    padding: 20px 0 20px 0;
+    background: rgb(48,151,209);
+    /*background: linear-gradient(90deg, rgba(48,151,209,1) 0%, rgba(23,162,184,1) 100%);*/
+    color: white;
+    position:relative;
+}
+
+.accordion-heading:hover {
+    background: rgb(30,78,187);
+    /*background: linear-gradient(90deg, rgba(30,78,187,1) 0%, rgba(30,78,187,1) 0%, rgba(23,162,184,1) 100%);*/
+    -webkit-transition: width 0.5s, height 0.5s, background 0.5s, -webkit-transform 0.5s;
+    transition: width 0.5s, height 0.5s, background 0.5s, transform 0.5s;
+}
+
+.accordion-heading a {
+    margin-left: 35px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.accordion-heading a:before {
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background-color:rgba(0,0,0,0);
+}
+
+.accordion-inner {
+    border: 3px solid #a7a7a7;
+    background: #d4f0ff;
+}
+
+.card {
+    height: 440px;
+    background: rgb(23,162,184);
+    background: linear-gradient(0deg, rgba(23,162,184,1) 0%, rgba(23,162,184,1) 36%, rgba(230,230,230,1) 36%);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 280px;
+}
+
+.card-body h5 {
+    font-size: 1em;
+}
+
+.card-body .btn {
+    font-weight: 600;
+    background: #00e4ac;
+    /*background: #69ffb6;*/
+    color: black;
+    box-shadow: 0px 0px 2px 1px rgba(194,194,194,1);
+    width: 80px;
+}
+
+.card-body .btn:hover {
+    background: white;
+    -webkit-transition: width 0.4s, height 0.4s, background-color 0.4s, -webkit-transform 0.4s;
+    transition: width 0.4s, height 0.4s, background-color 0.4s, transform 0.4s;
+}
+
+/* Pour les titres à 1 ligne */
+.card-title3, .card-title4, .card-title7, .card-title12, .card-title13, .card-title16, .card-title19, .card-title21, .card-title22, .card-title23, .card-title24, .card-title25, .card-title34, .card-title36, .card-title37, .card-title39 {
+    /*padding-bottom: 29px; si on ne veut pas aligner avec l'élément 4 lignes et tout aligner en bas */
+    padding-bottom: 62px;
+}
+
+/* Pour les titres à 2 lignes */
+.card-title1, .card-title2, .card-title5, .card-title6, .card-title8, .card-title9, .card-title10, .card-title11, .card-title14, .card-title15, .card-title17, .card-title18, .card-title20, .card-title26, .card-title28, .card-title29, .card-title30, .card-title31, .card-title32, .card-title35, .card-title38 {
+    /*padding-bottom: 10px; si on ne veut pas aligner avec l'élément 4 lignes et tout aligner en bas */
+    padding-bottom: 43px;
+}
+
+/* Pour les titres à 3 lignes */
+.card-title27, .card-title33 {
+    /*padding-bottom: 5px; si on ne veut pas aligner avec l'élément 4 lignes et tout aligner en bas */
+    padding-bottom: 24px;
+}
+
+/* Pour les titres à 4 lignes */
+.card-title40 {
+    padding-bottom: 5px;
+}
+
+
+/* UNIQUEMENT LORSQU'IL N'Y A PAS DE JS POUR ADAPTER LA TAILLE DES COLLAPSES AU CONTENU !!!! */
+/* Pour les collapses à 1 ligne */
+.content5 {
+    background: #d4f0ff;
+    /*height: 485px;*/
+}
+
+/* Pour les collapses à 2 lignes */
+.content1, .content2, .content3, .content6 {
+    background: #d4f0ff;
+    /*height: 945px;*/
+}
+
+/* Pour les collapses à 3 lignes */
+.content4 {
+    background: #d4f0ff;
+    /*height: 1400px;*/
+}

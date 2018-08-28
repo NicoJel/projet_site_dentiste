@@ -1,0 +1,346 @@
+/* Couleur bg-info de bootstrap : #17a2b8 */
+
+    /* ----- Titre de la page ----- */
+    .page-title h2 {
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    /* ----- Icône de sous-titre -----*/
+    .subtitle img {
+        padding-left: 8px;
+        padding-right: 15px;
+    }
+    /* ----- Sous-titre de la page ----- */
+    .subtitle {
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    /* ----- Titre des catégories ----- */
+    .title {
+        border-radius: 10px;
+        padding: 20px 0 20px 0;
+        background: rgb(255, 255, 255);
+        color: white;
+        position: relative;
+    }
+
+    .title:hover {
+        background: rgb(5, 88, 115);
+        -webkit-transition: width 0.5s, height 0.5s, background 0.5s, -webkit-transform 0.5s;
+        transition: width 0.5s, height 0.5s, background 0.5s, transform 0.5s;
+        color: #7dff89;
+    }
+
+    .title a {
+        margin-left: 35px;
+        color: black;
+        font-weight: 600;
+        font-size: 1.1em;
+        text-decoration:none;
+    }
+
+    .title a:hover {
+        color: #b2ebf2;
+        text-decoration:none;
+    }
+
+    .title a:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    /* ----- La séparation visuelle des différentes parties des catégories ----- */
+    .title1 {
+        border-bottom: 3px solid #19aac2;
+    }
+
+    .title2, .title3, .title4, .title5 {
+        border-top: 3px solid #19aac2;
+        border-bottom: 3px solid #19aac2;
+    }
+
+    .title6 {
+        border-top: 3px solid #19aac2;
+    }
+
+    /* ----- Le fond de couleur de l'intérieur des sections, entre les différentes cartes ----- */
+    .content1, .content2, .content3, .content4, .content5, .content6 {
+        background: #d4f0ff;
+    }
+
+    /* ----- Les cartes de contenu ----- */
+    .card {
+        height: 440px;
+        background: rgb(23, 162, 184);
+        background: white;
+                /*linear-gradient(0deg, rgba(23, 162, 184, 1) 0%, rgba(23, 162, 184, 1) 36%, rgba(255, 255, 255, 1) 36%);*/
+    }
+
+    .card:hover {
+        z-index: 1;
+        transition: all 0.3s;
+        transform: scale(1.05);
+    }
+
+    /* ----- Les vignettes incorporées dans les cartes ----- */
+    .card-img-top {
+        height: 280px;
+    }
+
+    /* ----- Titre de la carte ----- */
+    .card-body h5 {
+        font-size: 1em;
+        color: black;
+    }
+
+    /* ----- Bouton cliquable en bas de carte ----- */
+    .card-body .btn {
+        font-weight: 600;
+        border: 1px #17a2b8 solid;
+        width: 80px;
+    }
+
+/* ----- RESPONSIVE DESIGN ----- */
+
+/* ----- Pour les très grands écrans (ex : TV) ----- */
+@media screen and (min-width: 1200px) {
+    /* Pour les titres à 1 ligne */
+    .card-title3, .card-title4, .card-title7, .card-title12, .card-title13, .card-title16, .card-title19, .card-title21, .card-title22, .card-title23, .card-title24, .card-title25, .card-title34, .card-title36, .card-title37, .card-title39 {
+        padding-bottom: 62px;
+    }
+
+    /* Pour les titres à 2 lignes */
+    .card-title1, .card-title2, .card-title5, .card-title6, .card-title8, .card-title9, .card-title10, .card-title11, .card-title14, .card-title15, .card-title17, .card-title18, .card-title20, .card-title26, .card-title28, .card-title29, .card-title30, .card-title31, .card-title32, .card-title35, .card-title38 {
+        padding-bottom: 43px;
+    }
+
+    /* Pour les titres à 3 lignes */
+    .card-title27, .card-title33 {
+        padding-bottom: 24px;
+    }
+
+    /* Pour les titres à 4 lignes */
+    .card-title40 {
+        padding-bottom: 5px;
+    }
+}
+
+/* ----- Pour les écrans d'ordinateurs ----- */
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+
+    #collapse1, #collapse2, #collapse3, #collapse4, #collapse5, #collapse6 {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card {
+        width: 50%;
+        height: 400px;
+        justify-content: center;
+    }
+
+    .card-img-top {
+        height: 250px;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body h5 {
+        text-align: center;
+    }
+
+    /* Pour les titres à 1 ligne */
+    .card-title3, .card-title4, .card-title7, .card-title, .card-title13, .card-title16, .card-title21, .card-title24, .card-title36, .card-title37 {
+        padding-bottom: 46px;
+    }
+
+    /* Pour les titres à 2 lignes */
+    .card-title1, .card-title2, .card-title5, .card-title9, .card-title10, .card-title11, .card-title12, .card-title14, .card-title15, .card-title17, .card-title19, .card-title20, .card-title22, .card-title23, .card-title25, .card-title26, .card-title28, .card-title30, .card-title34, .card-title35, .card-title38, .card-title39 {
+        padding-bottom: 27px;
+    }
+
+    /* Pour les titres à 3 lignes */
+    .card-title6, .card-title8, .card-title18, .card-title27, .card-title29, .card-title31, .card-title32 {
+        padding-bottom: 8px;
+    }
+
+    /* Pour les titres à 4 lignes : on réduit légèrement la taille de police -> bascule sur 3 lignes */
+    .card-body .card-title33 {
+        font-size: 0.9em;
+        padding-bottom: 14px;
+    }
+
+    /* Pour les titres à 5 lignes : on réduit la taille de police -> bascule sur 4 lignes */
+    .card-body .card-title40 {
+        font-size: 0.87em;
+        padding-bottom: 1px;
+    }
+}
+
+/* ----- Pour les grandes tablettes, appareils hybrides 2 en 1 et petits écrans d'ordinateurs -----  */
+@media screen and (min-width: 768px) and (max-width: 992px) {
+
+    #collapse1, #collapse2, #collapse3, #collapse4, #collapse5, #collapse6 {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card{
+        width: 50%;
+        justify-content: center;
+    }
+
+    .card-img-top {
+        height: 280px;
+        width: 220px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body h5 {
+        text-align: center;
+    }
+
+    /* Pour les titres à 1 ligne */
+    .card-title1, .card-title2, .card-title3, .card-title4, .card-title5, .card-title7, .card-title11, .card-title12, .card-title13, .card-title14, .card-title15, .card-title16, .card-title17, .card-title19, .card-title20, .card-title21, .card-title22, .card-title23, .card-title24, .card-title25, .card-title28, .card-title30, .card-title34, .card-title35, .card-title36, .card-title37, .card-title39 {
+        padding-bottom: 46px;
+    }
+
+    /* Pour les titres à 2 lignes */
+    .card-title6, .card-title8, .card-title9, .card-title10, .card-title18, .card-title26, .card-title27, .card-title29, .card-title31, .card-title32, .card-title38 /*verif 33 */ {
+        padding-bottom: 27px;
+    }
+
+    /* Pour les titres à 3 lignes */
+    .card-title33 {
+        padding-bottom: 8px;
+    }
+
+    /* Pour les titres à 4 lignes : on réduit légèrement la taille de police */
+    .card-body .card-title40 {
+        font-size: 0.99em;
+        padding-bottom: 3px;
+    }
+}
+
+/* ----- Pour les grands smartphones et tablettes ----- */
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .subtitle img {
+        display: none;
+    }
+
+    .subtitle {
+        font-size: 0.98em;
+    }
+
+    #collapse1, #collapse2, #collapse3, #collapse4, #collapse5, #collapse6 {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-img-top {
+        height: 280px;
+        width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body h5 {
+        text-align: center;
+    }
+
+    /* Pour les titres à 1 ligne */
+    .card-title1, .card-title2, .card-title3, .card-title4, .card-title5, .card-title6, .card-title7, .card-title8, .card-title9, .card-title10, .card-title11, .card-title12, .card-title13, .card-title14, .card-title15, .card-title16, .card-title17, .card-title18, .card-title19, .card-title20, .card-title21, .card-title22, .card-title23, .card-title24, .card-title25, .card-title26, .card-title27, .card-title28, .card-title29, .card-title30, .card-title31, .card-title32, .card-title34, .card-title35, .card-title36, .card-title37, .card-title38, .card-title39 {
+        padding-bottom: 46px;
+    }
+
+    /* Pour les titres à 2 lignes */
+    .card-title33 {
+        padding-bottom: 27px;
+    }
+
+    /* Pour les titres à 3 lignes */
+    .card-title40 {
+        padding-bottom: 8px;
+    }
+}
+
+/* ----- Pour les smartphones ----- */
+@media screen and (max-width: 576px) {
+    .subtitle img {
+        display: none;
+    }
+
+    .subtitle {
+        font-size: 0.94em;
+    }
+
+    #collapse1, #collapse2, #collapse3, #collapse4, #collapse5, #collapse6 {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-img-top {
+        height: 280px;
+        width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-body h5 {
+        text-align: center;
+    }
+
+    /* Pour les titres à 1 ligne */
+    .card-title1, .card-title2, .card-title3, .card-title4, .card-title5, .card-title6, .card-title7, .card-title8, .card-title9, .card-title10, .card-title11, .card-title12, .card-title13, .card-title14, .card-title15, .card-title16, .card-title17, .card-title18, .card-title19, .card-title20, .card-title21, .card-title22, .card-title23, .card-title24, .card-title25, .card-title26, .card-title28, .card-title29, .card-title30, .card-title31, .card-title32, .card-title34, .card-title35, .card-title36, .card-title37, .card-title38, .card-title39 {
+        padding-bottom: 46px;
+    }
+
+    /* Pour les titres à 2 lignes */
+    .card-title27, .card-title33 {
+        padding-bottom: 27px;
+    }
+
+    /* Pour les titres à 3 lignes */
+    .card-title40 {
+        padding-bottom: 8px;
+    }
+}

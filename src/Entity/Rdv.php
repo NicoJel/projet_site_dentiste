@@ -28,7 +28,7 @@ class Rdv
 
     /**
      * @var Motif
-     * @ORM\ManyToOne(targetEntity="Motif", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Motif", cascade={"persist"})
      */
     private $motif;
 
