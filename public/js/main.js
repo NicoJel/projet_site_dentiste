@@ -81,14 +81,11 @@ $(document).ready(function(){
 
     var openBouton = document.getElementById("openBouton");
 
-    openBouton.addEventListener('click', function(){
-        openNavbarAdmin(this, listeLienAdmin);
-
-
-
-
-    })
-
+    if (openBouton != null) {
+        openBouton.addEventListener('click', function() {
+            openNavbarAdmin(this, listeLienAdmin);
+        });
+    }
 
 
 

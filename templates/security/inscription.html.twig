@@ -17,6 +17,7 @@
             <p>Civilite</p> {{ form_widget(form.civilite) }}
         </div>
 
+        {{ form_start(form) }}
 
         <div class="nom-prenom">
             {{ form_row(form.nom) }}
@@ -78,9 +79,10 @@
 
 </div>
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('js/inscription.js') }}"></script>
-    {% endblock %}
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/inscription.js') }}"></script>
 {% endblock %}
