@@ -5,7 +5,8 @@
     {{ parent() }}
     <link href="{{ asset('lib/fullcalendar.min.css') }}" rel='stylesheet' />
     <link href="{{ asset('lib/fullcalendar.print.min.css') }}" rel='stylesheet' media='print' />
-    <link href="{{ asset('rendezvous/rendezvous.css') }}" rel='stylesheet' />
+    <link href="{{ asset('css/rendezvous.css') }}" rel='stylesheet' />
+    <link href="{{ asset('css/bootstrap4themecereulean.css') }}" rel='stylesheet' />
 
 {% endblock %}
 
@@ -21,41 +22,63 @@
     #}
         <h1>Prise de rendez-vous</h1>
 
-        {% if app.user %}
+    {% if app.user %}
 
             {{ form_start(form) }}
+                <div class="cadreform">
 
-            {{ form_row(form.textelibre) }}
             {{ form_row(form.motif) }}
+            {{ form_row(form.debut) }}
+            {{ form_row(form.textelibre) }}
+
 
             <div class="form-btn-group text-right">
-                <button type="submit" class="btn btn-primary">
-                    Valider
+                <button id="button-rdv" type="submit" class="btn btn-primary" disabled>
+                    Valider mon rendez vous
                 </button>
+                </div>
             </div>
+        {{ form_end(form) }}
+    {% else %}
+        <div class="container">
+            <div class="cadre-con">
+                <p>Vous devez vous connecter pour prendre rendez-vous !</p>
+                <div class="center">
+                        <a class="btn btn-primary" href="{{ path('app_security_login') }}">
+                            Connexion
+                        </a>
+                        <a class="btn btn-info" href="{{ path('app_security_inscription') }}">
+                            Inscription gratuite en pas longtemps promis juré
+                        </a>
+                </div>
+            </div>
+        </div>
 
-            {{ form_end(form) }}
 
-        {% else %}
-            <p>
-                Connectez vous pour prendre rendez vous !
-            </p>
-        {% endif %}
+    {% endif %}
 
+
+
+<div id="cadre-cal">
+    {#<div id="imagegris"></div>#}
+    <img id="imagegris" src="{{ asset('img/rdv/cadregris.jpg') }}" alt="">
     <div id='calendar'></div>
-
+</div>
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
+
     <script>
         var rdvs = {{ rdvs|raw }};
-        console.log(rdvs);
     </script>
-    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('lib/moment.min.js') }}"></script>
     <script src="{{ asset('lib/fullcalendar.min.js') }}"></script>
-
-    <script src="{{ asset('rendezvous/rendezvous.js') }}"></script>
+    <script src="{{ asset('js/rendezvous.js') }}"></script>
+    <script src='{{ asset('js/fr.js') }}'></script>
 {% endblock %}
+
 
 

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
+    <link href="{{ asset('css/admin/listerdv.css') }}" rel='stylesheet' />
+
+{% endblock %}
+{% block body %}
+<div class="container">
+
+    <div class="modale" id="fenetreModale">
+        <div class="contenu-fenetreModale">
+            <div class="divBoutonFermer">
+                <span class="bouton-fermerModale fermerModale">&times;</span>
+            </div>
+                <p>Etes vous certain(e) de vouloir supprimer ce profil?</p>
+            <div>
+                <a class="fermerModale btn btn-danger">Annuler</a>
+                <a class="btn btn-success" id="boutonValider">Valider</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>Gestion de vos rdv</h1>
+
+    <table id="tablerdv" class="table">
+        <thead>
+            <tr>
+                <th onclick="w3.sortHTML('#tablerdv', '.item', 'td:nth-child(1)')" style="cursor:pointer">Patient</th>
+                <th onclick="w3.sortHTML('#tablerdv', '.item', 'td:nth-child(2)')" style="cursor:pointer">Date</th>
+                <th onclick="w3.sortHTML('#tablerdv', '.item', 'td:nth-child(3)')" style="cursor:pointer">Horaire</th>
+                <th onclick="w3.sortHTML('#tablerdv', '.item', 'td:nth-child(4)')" style="cursor:pointer">Motif</th>
+                <th onclick="w3.sortHTML('#tablerdv', '.item', 'td:nth-child(5)')" style="cursor:pointer">Durée estimée</th>
+                <th onclick="w3.sortHTML('#tablerdv', '.item', 'td:nth-child(6)')" style="cursor:pointer">Remarque</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for rdv in rdvs %}
+            <tr class="item">
+                <td>{{ rdv.utilisateur }}</td>
+                <td>{{ rdv.dateheuredebut| date( 'd/m/Y' ) }}</td>
+                <td>{{ rdv.dateheuredebut| date( 'H:i' ) }}</td>
+                <td>{{ rdv.motif.acte}}</td>
+                <td>{{ rdv.motif.duree }} mn</td>
+                <td>{{ rdv.textelibre }}</td>
+                <td>
+                    {#<a href="{{ path('app_admin_patient_listerdv', {id: rdv.id}) }}"#}
+                       {#class="btn btn-sm btn-outline-info">#}
+                        {#<i class="fas fa-file-medical-alt"></i>#}
+                    {#</a>#}
+                    <a href="{{ path('app_rdv_delete', {id: rdv.id}) }}"
+                       class="btn btn-sm btn-outline-danger logoSupprimer">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="{{ asset('js/admin/listerdv.js') }}"></script>
+
+
+{% endblock %}

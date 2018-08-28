@@ -54,6 +54,9 @@ body{
     z-index: 1;
     width: 100%;
 }
+.logoNavbar{
+    width: 160px;
+}
 .lienNav{
     position: relative;
 }

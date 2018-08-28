@@ -2,22 +2,25 @@
 
 namespace App\Controller;
 
+use App\Entity\Motif;
 use App\Entity\Rdv;
 use App\Form\RdvType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class RdvController
  * @package App\Controller
+ * @Route("/rendezvous")
  */
 class RdvController extends AbstractController
 {
 
 
     /**
-     * @Route("/rendezvous/{id}", defaults={"id": null}, requirements={"id"="\d+"})
+     * @Route("/")
      */
     public function index(Request $request)
     {
@@ -26,12 +29,10 @@ class RdvController extends AbstractController
         $repository = $em->getRepository(Rdv::class);
         $rdvs = $repository->findAll();
 
-        dump($rdvs);
 
         $aRdvs = [];
 
         foreach ($rdvs as $rdv) {
-            dump($rdv->getUtilisateur());
             $end = clone $rdv->getDateheuredebut();
             $interval = \DateInterval::createFromDateString($rdv->getMotif()->getDuree() . ' minutes');
             $end->add($interval);
@@ -46,7 +47,10 @@ class RdvController extends AbstractController
             ];
         }
 
-        dump($aRdvs);
+
+        $rdv = new Rdv();
+
+        $rdv->setUtilisateur($this->getUser());
 
         $form = $this->createForm(RdvType::class, $rdv);
 
@@ -55,10 +59,12 @@ class RdvController extends AbstractController
         if ($form->isSubmitted()) {
 
             if($form->isValid()) {
-
+                dump($request->request->get('rdv')['debut']);
+                $rdv->setDateheuredebut(new \DateTime($request->request->get('rdv')['debut']));
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($rdv);
                 $em->flush();
+                $this->addFlash('success', "Votre rendez-vous est bien validé");
 
                 return $this->redirectToRoute('app_rdv_index');
             }
@@ -67,9 +73,79 @@ class RdvController extends AbstractController
         return $this->render('rdv/index.html.twig', [
             'form' => $form->createView(),
             'rdvs' => json_encode($aRdvs),
+
         ]);
+    }
+
+    /**
+     * @Route("/newrdv", options = { "expose" = true })
+     */
+    public function newRdv(Request $request)
+    {
+        $repo = $this->getDoctrine()->getRepository(Motif::class);
+        $motif = $repo->find($request->query->get('id'));
+
+        dump('id');
+        $response = [
+            'couleur' => $motif->getCouleur(),
+            'duree' => $motif->getDuree(),
+            'acte' => $motif->getActe()
+        ];
+
+        return new JsonResponse($response);
+        dump($response);
 
     }
+
+    /**
+     * @Route("/getstart", options = { "expose" = true })
+     */
+    public function getStart(Request $request)
+    {
+
+        $response = [
+            'start' => $request->query->get('start'),
+        ];
+
+        return new JsonResponse($response);
+
+    }
+
+    /**
+     * @Route("/listerdv")
+     */
+    public function listeRdv()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Rdv::class);
+        $rdvs = $repository->findAll();
+
+        return $this->render(
+            'admin/rendezvous/gestionrdv.html.twig',
+            [
+                'rdvs' => $rdvs
+            ]
+        );
+    }
+
+    /**
+     * @Route("/suppression/{id}")
+     */
+    public function delete(Rdv $rdv)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($rdv);
+        $em->flush();
+
+        $this->addFlash(
+            'success',
+            'Le rendez-vous est supprimé'
+        );
+
+        return $this->redirectToRoute('app_rdv_listerdv');
+    }
+
 
 
 }
