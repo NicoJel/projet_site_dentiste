@@ -1,0 +1,212 @@
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INDICATEUR DE DEFILEMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+/* position fixe en haut de page */
+.defilement {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+/* barre de progression en fond gris */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+}
+
+/* l'indicateur de barre de progression */
+.progress-bar {
+    height: 8px;
+    background: #4caf50;
+    width: 0%;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ L'ACCUEIL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.titrePrincipal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photoAccueil {
+    z-index: 0;
+    position: relative;
+}
+
+.sousTitre {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    align-self: center;
+    background: rgba(0, 0, 0, 0.5); /*  0.5 opacité */
+    width: 100%;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TITRES ET L'ADRESSE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.divTitre, .adresse {
+    display: flex;
+    justify-content: center;
+}
+
+h1, h3, h5 {
+    text-align: center;
+    color: #5eb5e0;
+}
+h5 {
+    vertical-align: top;
+}
+
+h3 {
+    margin: 20px 0px 20px 0px;
+    padding: 10px 30px 0px 30px;
+    text-decoration: underline;
+}
+
+.urgence {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.adresseDuCabinet {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    flex-direction: column;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ L'effet Typewriter ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.sousTitre h1, .sousTitre h5 {
+    overflow: hidden; /* S'assurer que le contenu n'est pas révélé jusqu'à l'animation */
+    border-right: .15em solid dodgerblue; /* Le curseur typwriter */
+    white-space: nowrap; /* Conserve le contenu sur une seule ligne */
+    margin: 0 auto; /* effet de défilement au fur et à mesure de la frappe */
+    letter-spacing: .15em; /* Ajustez au besoin */
+    animation:
+            typing 3.5s steps(40, end) forwards,
+            blink-caret .75s step-end infinite;
+}
+
+/* effet de frappe */
+@keyframes typing {
+    from { width: 0 }
+    to {
+        white-space: normal;
+        width: 100%;
+    }
+}
+
+/* curseur effet clignotant */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: blue;animation: none; }
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SPECIALITE DU CABINET ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.specialite {
+    background-color: #4bb3bd;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+
+.chirurgie:hover, .implantologie:hover, .orthodontie:hover, .pedodontie:hover{
+    animation: ease-in-out 1000ms flip;
+}
+@keyframes flip {
+    from{
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(360deg);
+    }
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BOUTON HAUT DE PAGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+#boutonHaut {
+    opacity: 0.5;
+    position: fixed; /* position fixe */
+    bottom: 20px; /* place le bouton en bas de page à partir de 20px */
+    right: 30px; /* place le bouton 30px à partir de la droite */
+    z-index: 99; /* évite le chevauchement */
+    border: none; /* enlève les bordures */
+    outline: none; /* Supprime le contour */
+    background-color: #4bb3bd;
+    cursor: pointer; /* Ajoute un pointeur de souris au survol */
+    padding: 15px;
+    border-radius: 50px;
+    transition: opacity ease-in-out 400ms;
+}
+
+#boutonHaut:hover {
+    background-color: #bee5eb; /* ajoute un effet au survol */
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ URGENCE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.urgence {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ galerie photos ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+/* La grille: Quatre colonnes de taille égales flottantes côte à côte */
+.column {
+    width: 25%;
+}
+
+/* pour les images à l'intérieur de la grille */
+.column img {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.column img:hover {
+    opacity: 1;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ overlay des photos ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+.overlay1, .overlay2,.overlay3,.overlay4 {
+
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* opacité en noir */
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+
+    text-align: center;
+}
+.column:hover .overlay1, .column:hover .overlay2, .column:hover  .overlay3, .column:hover  .overlay4 {
+    opacity: 1;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Responsive ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+
+@media screen and (max-width: 700px) {
+    .specialite{
+        flex-wrap: wrap;
+        color: #0069d9;
+    }
+    .row {
+        flex-direction: column;
+
+    }
+    .column {
+        width: 100%;
+    }
+}

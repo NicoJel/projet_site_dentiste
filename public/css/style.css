@@ -50,6 +50,9 @@ body{
 }
 
 /** La nav bar **/
+.logoNavbar{
+    width: 160px;
+}
 #barreNavigation{
     position: fixed;
     top: 0;
