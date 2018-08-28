@@ -57,6 +57,9 @@ body{
     z-index: 1;
     width: 100%;
 }
+.logoNavbar{
+    width: 160px;
+}
 .lienNav{
     position: relative;
 }
@@ -87,6 +90,7 @@ body{
 }
 .liste-ul, .list-utilisateur{
     align-items: center;
+    justify-content: center;
 }
 .dropdown-menu{
     width: 30%;
@@ -160,37 +164,68 @@ body{
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #e8ffff;
+    background-color: #055873;
+    color: white;
+}
+footer a:link, footer a:visited{
+    text-decoration: none;
+}
+footer a:hover{
+    color: #5bc0de;
 }
 .divRow{
     margin: 0;
+}
+footer p{
+    margin-bottom: 10px;
 }
 .adresseCabinet{
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 10%;
 }
-.adresseVille{
-    padding: 10px;
-    padding-left: 30px;
+.adressePostale{
+    margin: 3px;
+    font-size: 0.8rem;
+    color: #b2ebf2;
+    letter-spacing: 2px;
 }
 .map{
-    padding: 20px;
-    border-radius: 20px;
+    margin-top: 40px;
+    -webkit-filter: grayscale(75%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(75%);
+    filter: gradient(true,6);
 }
 .titreAdresse, .titreLien{
     text-align: center;
-    text-decoration: underline;
+    color: #21a7bc;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.titreDocteur{
+    font-size: 0.9rem;
+    letter-spacing: 2px;
 }
 .liens{
     padding-top: 30px;
+    padding-left: -10px;
     display: flex;
     flex-direction: column;
     align-items: end;
+    min-width: 10%;
 }
 .liens a{
-    margin: 10px;
-    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: #FFFFFF;
+}
+.logoFooter{
+    width: 350px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    min-width: 10%;
 }
 .copyright{
     display: flex;
@@ -273,14 +308,6 @@ main{
         width: 30%;
     }
     .list-utilisateur{
-        flex-direction: column;
-    }
-}
-
-
-
-@media screen and (max-width: 560px) {
-    .adresseCabinet{
         flex-direction: column;
     }
 }
