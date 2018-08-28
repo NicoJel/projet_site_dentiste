@@ -54,6 +54,9 @@ body{
     z-index: 1;
     width: 100%;
 }
+.logoNavbar{
+    width: 160px;
+}
 .lienNav{
     position: relative;
 }
@@ -81,6 +84,7 @@ body{
 }
 .liste-ul, .list-utilisateur{
     align-items: center;
+    justify-content: center;
 }
 .dropdown-menu{
     width: 30%;
@@ -173,6 +177,7 @@ footer p{
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 10%;
 }
 .adressePostale{
     margin: 3px;
@@ -181,16 +186,17 @@ footer p{
     letter-spacing: 2px;
 }
 .map{
-    margin-top: 35px;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    margin-top: 40px;
+    -webkit-filter: grayscale(75%); /* Safari 6.0 - 9.0 */
     filter: grayscale(75%);
-    filter: gradient(true,3);
+    filter: gradient(true,6);
 }
 .titreAdresse, .titreLien{
     text-align: center;
     color: #21a7bc;
     letter-spacing: 2px;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 .titreDocteur{
     font-size: 0.9rem;
@@ -202,6 +208,7 @@ footer p{
     display: flex;
     flex-direction: column;
     align-items: end;
+    min-width: 10%;
 }
 .liens a{
     font-size: 0.8rem;
@@ -209,9 +216,10 @@ footer p{
     color: #FFFFFF;
 }
 .logoFooter{
-    width: 400px;
+    width: 350px;
     padding-top: 30px;
     padding-bottom: 30px;
+    min-width: 10%;
 }
 .copyright{
     display: flex;
@@ -294,14 +302,6 @@ main{
         width: 30%;
     }
     .list-utilisateur{
-        flex-direction: column;
-    }
-}
-
-
-
-@media screen and (max-width: 560px) {
-    .adresseCabinet{
         flex-direction: column;
     }
 }

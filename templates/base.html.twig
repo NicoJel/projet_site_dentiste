@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Dr Céline Filitika - Chirurgien Dentiste{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{{ asset('img/P-prosternation.gif') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('logos/navbar/favicon.png') }}">
         {% block stylesheets %}
             <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-info" id="barreNavigation">
         <div class="container navbar-nav">
             <a href="{{ path('app_index_index') }}" class="navbar-brand">
-                <img src="{{ asset('/logos/navbar/logo-gauche.png') }}" alt="logo" class="logo">
+                <img src="{{ asset('/logos/navbar/logo-gauche.png') }}" alt="logo" class="logoNavbar">
             </a>
             <button id="boutonReponsive" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,13 +39,8 @@
             <div class="collapse navbar-collapse" id="navbarsExample05">
                 <ul class="navbar-nav liste-ul navigation">
                     <li class="nav-item">
-                        <a class="nav-link lienNav" href="">
+                        <a class="nav-link lienNav" href="{{ path('app_index_cabinet') }}">
                             Cabinet
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link lienNav" href="">
-                            Bio
                         </a>
                     </li>
                     <li class="nav-item">
@@ -109,7 +104,9 @@
 
     </div>
 
-
+{% block body %}
+    {# NE PAS SUPPRIMER PENDANT LE MERGING PLEASE => ACCUEIL & COMPETENCES AT STAKE #}
+{% endblock %}
 
     <footer class="footer">
             <div class="row divRow">
@@ -126,7 +123,7 @@
                 </div>
 
                 <div class="map col-sm-3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.1612662659736!2d166.43824778166834!3d-22.27188020907397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6c27e291fa133de1%3A0xa5423fd9ce3a37a6!2s18+Rue+Anatole+France%2C+Noumea%2C+Nouvelle-Cal%C3%A9donie!5e0!3m2!1sfr!2sfr!4v1535105946472" width="280" height="200" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.1612662659736!2d166.43824778166834!3d-22.27188020907397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6c27e291fa133de1%3A0xa5423fd9ce3a37a6!2s18+Rue+Anatole+France%2C+Noumea%2C+Nouvelle-Cal%C3%A9donie!5e0!3m2!1sfr!2sfr!4v1535105946472" width="200" height="200" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div class="liens col-sm-2">
@@ -140,7 +137,7 @@
                     <a href="http://www.ufsbd.fr">
                         UFSBD
                     </a>
-                    <a href="">
+                    <a href="{{ path('app_index_mentionslegales') }}">
                         Mentions légales
                     </a>
                 </div>
