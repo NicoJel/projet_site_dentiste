@@ -1,0 +1,144 @@
+
+/** La modale pour supprimer **/
+.modale{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -1000px;
+    width: 100%;
+    height: 100%;
+    transition: top ease-in-out 0.5s;
+}
+.divBoutonFermer{
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    position: relative;
+}
+.contenu-fenetreModale{
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenu-fenetreModale p{
+    font-size: 1.4em;
+    text-align: center;
+}
+.contenu-fenetreModale a{
+    color: white !important;
+}
+.bouton-fermerModale{
+    color: #aaa;
+    text-align: right;
+    font-size: 28px;
+    font-weight: bold;
+    align-self: flex-end;
+    position: absolute;
+    top: -22px;
+}
+.bouton-fermerModale:hover, .bouton-fermerModale:focus{
+    color: black;
+    cursor: pointer;
+}
+.showModal{
+    animation: ease-in-out forwards apparitionModale;
+    animation-duration: 0.5s;
+}
+@keyframes apparitionModale {
+    from{
+        top: -1000px;
+    }
+    to{
+        top: 50px;
+    }
+}
+.hideModale{
+    animation: ease-in-out forwards disparitionModale;
+    animation-duration: 0.5s;
+}
+@keyframes disparitionModale {
+    from{
+        top: 50px;
+    }
+    to{
+        top: -1000px;
+    }
+}
+
+.lienUp{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+}
+.plus{
+    margin-left: 28px;
+}
+.ajoutPatient{
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.ajoutPatient span{
+    margin-left: 28px;
+    color: #3a87ad;
+    text-decoration: underline;
+}
+.ajoutPatient:hover{
+    cursor: pointer;
+}
+.pasDeRdv{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/** Le formulaire rapide **/
+
+.formulaireRapide{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 150px;
+    left: 30%;
+    background-color: white;
+    padding: 20px;
+    border: solid 1px black;
+    border-radius: 20px;
+    z-index: 99;
+    transform: scale(0) rotate(-12deg);
+    transition: all .25s;
+    box-shadow: 8px 8px 15px black;
+}
+.show{
+    transform: scale(1) rotate(0);
+}
+.nom-prenom, .email-motDePasse, .date-heure{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+.rdv, .date-heure, .remarques{
+    margin-bottom: 10px;
+}
+.boutons{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+.bouton{
+    margin: 5px;
+}
+.lienDetails{
+    align-self: left;
+}
+
+.footer{
+    margin-top: 20px;
+}

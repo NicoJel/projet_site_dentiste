@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/gestionActes.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="img">
+            <img src="{{ asset('../img/listeRdv/scotland.jpg') }}" alt="img-cabinet">
+        </div>
+
+        <h4 class="titre">Gestion des actes</h4>
+
+        <div class="ajoutActe" id="ajoutActe">
+            <span>Ajouter un acte</span>
+        </div>
+
+
+        <table class="table">
+
+            <tr>
+                <th>Nom</th>
+                <th>Durée</th>
+                <th>Couleur <br> <span class="couleurCalendrier">(pour le calendrier)</span></th>
+                <th></th>
+            </tr>
+            {% for motif in motifs %}
+            <tr>
+               <td>{{ motif.acte | capitalize }}</td>
+                <td>{{ motif.duree }} minutes</td>
+                <td class="tdCouleur">
+                    <div class="color" style="background-color: {{ motif.couleur }}"></div>
+                </td>
+                <td>
+                    <a href=""
+                       class="btn btn-sm btn-outline-info">
+                        <i class="fas fa-file-medical-alt"></i>
+                    </a>
+                    <span class="btn btn-sm btn-outline-danger logoSupprimer">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>Pas d'acte enregistré</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="boutonRetour">
+            <a href="{{ path('app_index_index') }}" class="btn btn-info">Retour à l'accueil</a>
+        </div>
+
+
+        <form method="post" class="form-group formulaireRapide" id="formulaire">
+            <div class="acte">
+                <label for="acte">Nom de l'acte :</label>
+                <input class="form-control inputForm" type="text" name="acte">
+            </div>
+            <div class="duree-color">
+                <div class="duree">
+                    <label for="duree">Durée (en minutes) :</label>
+                    <input class="form-control inputForm" type="number" name="duree" min="10" max="600">
+                </div>
+                <div class="couleur">
+                    <label for="couleur">Couleur :</label>
+                    <input name="couleur" class="form-control" type="color" value="#918889">
+                </div>
+            </div>
+            <div class="boutons">
+                <button type="submit" class="btn btn-primary bouton" id="boutonValider">Enregistrer</button>
+                <span class="btn btn-info bouton" id="boutonFermer">Retour</span>
+            </div>
+        </form>
+
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script src="{{ asset('js/admin/gestionActes.js') }}"></script>
+
+
+{% endblock %}

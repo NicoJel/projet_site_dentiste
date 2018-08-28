@@ -2,13 +2,32 @@
 
     {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" href="{{ asset('css/admin/patient.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/admin/patientIndex.css') }}">
     {% endblock %}
 
 {% block body %}
     <div class="container">
 
+        <div class="modale" id="fenetreModale">
+            <div class="contenu-fenetreModale">
+                <div class="divBoutonFermer">
+                    <span class="bouton-fermerModale fermerModale">&times;</span>
+                </div>
+
+                <p>Etes vous certain(e) de vouloir supprimer ce profil?</p>
+                <div>
+                    <a class="fermerModale btn btn-danger">Annuler</a>
+                    <a class="btn btn-success" id="boutonValider">Valider</a>
+                </div>
+            </div>
+        </div>
+
+
         <h4 id="titre" class="p-4">Gestion des patients</h4>
+
+        <div class="ajoutPatient" id="lienFormulaire">
+            <span>Ajouter un patient</span>
+        </div>
 
         <div class="">
             <form method="POST">
@@ -19,22 +38,23 @@
             </form>
         </div><br>
 
-        <div id="resultat"></div><br>
-
         <div class="">
-            <table class="table table-striped col-sm-auto">
+            <table class="table col-sm-auto text-center">
                 <thead>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Âge</th>
                     <th>Téléphone</th>
+                    <th>Rendez-vous</th>
                     <th></th>
                 </thead>
                 <tbody id="resultatRecherche">
                 {% for patient in patients %}
+                    {% if patient.role == 'ROLE_ADMIN' %}
+                    {% else %}
                     <tr>
-                        <td>{{ patient.nom }}</td>
-                        <td>{{ patient.prenom }}</td>
+                        <td>{{ patient.nom | capitalize}}</td>
+                        <td>{{ patient.prenom | capitalize }}</td>
                         {% if patient.age == '0 ans' %}
                             <td>Non renseigné</td>
                         {% elseif patient.age is null %}
@@ -43,30 +63,87 @@
                             <td>{{ patient.age }}</td>
                         {% endif %}
                         <td>{{ patient.telephone }}</td>
+                        {% if patient.rdv.count == 0 %}
+                            <td class="pasDeRdv">
+                                <span>Pas de rdv prévus</span>
+                                <a href="{{ path('app_admin_patient_listerdv', {id: patient.id}) }}">Ajouter un rdv</a>
+                            </td>
+                        {% else %}
+                            <td><a href="{{ path('app_admin_patient_listerdv', {id: patient.id}) }}">{{ patient.rdv.count }}</a></td>
+                        {% endif %}
                         <td>
                             <a href="{{ path('app_admin_patient_infos', {id: patient.id}) }}"
                                class="btn btn-sm btn-outline-info">
                                 <i class="fas fa-file-medical-alt"></i>
                             </a>
-                            <a href="{{ path('app_admin_patient_delete', {id: patient.id}) }}"
-                               class="btn btn-sm btn-outline-danger">
+                            <span
+                               class="btn btn-sm btn-outline-danger logoSupprimer" href="{{ path ('app_admin_patient_supprimer', {id: patient.id}) }}">
                                 <i class="fas fa-trash"></i>
-                            </a>
+                            </span>
                         </td>
                     </tr>
+
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
         </div>
 
-        <div class="align-items-end">
+        <div class="lienUp">
             <a id="lienRemonte"
                class="btn btn-sm btn-outline-info align-items-end">
                 <i class="fas fa-chevron-up"></i>
             </a>
         </div>
-    </div>
 
+
+
+    <!-- Le formulaire en modal -->
+
+        <form method="post" class="form-group formulaireRapide" id="formulaire">
+
+            <h5>
+                Formulaire d'ajout rapide de patient
+            </h5>
+
+            <div class="nom-prenom">
+                <div id="prenom" class="prenom">
+                    <label for="prenom">Prénom :</label>
+                    <input name="prenom" class="form-control inputForm" type="text" >
+                </div>
+                <div id="nom" class="nom">
+                    <label>Nom : </label>
+                    <input name="nom" class="form-control inputForm" type="text">
+                </div>
+            </div>
+
+            <div class="email-motDePasse">
+                <div id="email" class="email">
+                    <label for="email">Email :</label>
+                    <input type="email" name="email" class="form-control inputForm">
+                </div>
+                <div id="motDePasse">
+                    <label for="motDePasse">Mot de passe :</label>
+                    <input type="password" class="form-control inputForm" name="motDePasse">
+                </div>
+            </div>
+            <hr>
+            <div class="remarques">
+                <label for="remarques">Remarques :</label>
+                <textarea name="remarques"  rows="3" class="form-control"></textarea>
+            </div>
+            <div class="lienDetails">
+                <a href="{{ path('app_security_inscription') }}">Vers une inscription complète</a>
+            </div>
+            <div class="boutons">
+
+                <button id="boutonSubmit" class="btn btn-primary bouton" type="submit">Envoyer</button>
+                <span class="btn btn-outline-secondary bouton" id="fermerForm">Retour</span>
+            </div>
+
+        </form>
+
+    </div>
 
 {% endblock %}
 
@@ -74,7 +151,6 @@
         {{ parent() }}
         <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-
 
         <script src="{{ asset('js/admin/patient.js') }}"></script>
     {% endblock %}

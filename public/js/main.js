@@ -72,7 +72,7 @@ $(document).ready(function(){
                 liste[i].classList.remove("show");
             }
 
-            element.style.top = "80px";
+            element.style.top = "100px";
 
         }
 
