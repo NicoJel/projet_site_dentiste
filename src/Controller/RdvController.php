@@ -64,11 +64,22 @@ class RdvController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($rdv);
                 $em->flush();
-                $this->addFlash('success', "Votre rendez-vous est bien validé");
+
+                $date = substr($request->request->get('rdv')['debut'], 0, 10);
+
+                $arrayDate = explode("-", $date);
+
+                $date = $arrayDate[2] . "/" . $arrayDate[1] . "/" . $arrayDate[0];
+
+                $heure = substr($request->request->get('rdv')['debut'], 11, 5);
+
+
+                $this->addFlash('success', "Votre rendez-vous est bien validé pour le " . $date . " à " . $heure);
 
                 return $this->redirectToRoute('app_rdv_index');
             }
         }
+
 
         return $this->render('rdv/index.html.twig', [
             'form' => $form->createView(),

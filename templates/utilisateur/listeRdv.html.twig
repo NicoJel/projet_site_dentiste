@@ -15,7 +15,7 @@
 
     <h4 class="titre">Voici vos rendez-vous {{ utilisateur.prenom }} {{ utilisateur.nom }}</h4>
 
-    <table class="table">
+    <table class="table text-center">
         <tr>
             <th>Date</th>
             <th>Horaire</th>
@@ -25,12 +25,11 @@
 
         {% for rdv in rdvs %}
             <tr>
-                <td>rdv.date</td>
-                <td>rdv.heure</td>
-                <td>rdv.motif</td>
+                <td>{{ rdv.dateheuredebut | date('d-m-Y')}}</td>
+                <td>{{ rdv.dateheuredebut | date('H:i') }}</td>
+                <td>{{ rdv.motif }}</td>
                 <td>
-                    <a class="btn btn-primary" href="">Modifier</a>
-                    <a class="btn btn-danger" href="">Supprimer</a>
+                    <a class="btn btn-danger" href="{{ path('app_utilisateur_supprimerrdv', {id: rdv.id}) }}">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}
