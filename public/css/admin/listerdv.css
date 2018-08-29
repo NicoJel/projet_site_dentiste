@@ -1,84 +1,170 @@
-#tablerdv{
-    max-width: 80vw;
+/** Image d'illustration **/
+
+.img{
+    overflow: hidden;
+    max-height: 260px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    animation: apparitionImg forwards ease-in-out;
+    animation-delay: 300ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionImg {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.img img{
+    display: block;
+    margin: 0 auto;
+}
+.titre{
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: apparitionTitre forwards ease-in-out;
+    animation-delay: 600ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionTitre {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.ajoutRdv{
+    display: inline-block;
+}
+.ajoutRdv span{
+    text-decoration: underline;
+    color: #477da0;
+}
+.ajoutRdv:hover{
+    cursor: pointer;
+}
+.ajoutRdv{
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: apparitionAjoutRdv forwards ease-in-out;
+    animation-delay: 800ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionAjoutRdv {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
-.modale{
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: -1000px;
-    width: 100%;
-    height: 100%;
-    transition: top ease-in-out 0.5s;
+.table{
+    opacity: 0;
+    animation: apparitionTable forwards ease-in-out;
+    animation-delay: 900ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionTable {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.boutons{
+    text-align: right;
+    opacity: 0;
+    animation: apparitionBoutons forwards ease-in-out;
+    animation-delay: 1200ms;
+    animation-duration: 1s;
+}
+@keyframes apparitionBoutons {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
-.divBoutonFermer{
+.table td{
+    width: 200px;
+}
+
+
+
+/** Le formulaire **/
+
+.formulaireRapide{
+    width: 50%;
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 200px;
+    left: 30%;
+    background-color: white;
+    padding: 20px;
+    border: solid 1px black;
+    border-radius: 20px;
+    z-index: 99;
+    transform: scale(0) rotate(-12deg);
+    transition: all .25s;
+    box-shadow: 8px 8px 15px black;
+}
+.show{
+    transform: scale(1) rotate(0);
+}
+.nom-prenom, .email-motDePasse, .date-heure{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+.rdv, .date-heure, .remarques{
+    margin-bottom: 10px;
+}
+.boutons{
+    display: flex;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+.bouton{
+    margin: 5px;
+}
+.lienDetails{
+    align-self: left;
+}
+
+
+/** Les inputs qui apparaissent **/
+
+.form{
+    margin: 10px auto;
     position: relative;
 }
 
-.contenu-fenetreModale{
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.contenu-fenetreModale p{
-    font-size: 1.4em;
-    text-align: center;
-}
-
-.contenu-fenetreModale a{
-    color: white !important;
-}
-
-.bouton-fermerModale{
-    color: #aaa;
-    text-align: right;
-    font-size: 28px;
-    font-weight: bold;
-    align-self: flex-end;
+.boutonValider{
     position: absolute;
-    top: -22px;
+    top: 38px;
+    left: 95px;
+    transform: scale(0) rotate(-12deg);
+    transition: all .25s;
+    box-shadow: 8px 8px 15px black;
+}
+.form:hover .boutonValider{
+    transform: scale(1) rotate(0);
+    opacity: 1;
+}
+.hidden{
+    display: none;
 }
 
-.bouton-fermerModale:hover, .bouton-fermerModale:focus{
-    color: black;
-    cursor: pointer;
-}
-
-.showModal{
-    animation: ease-in-out forwards apparitionModale;
-    animation-duration: 0.5s;
-}
-
-@keyframes apparitionModale {
-    from{
-        top: -1000px;
-    }
-    to{
-        top: 50px;
-    }
-}
-
-.hideModale{
-    animation: ease-in-out forwards disparitionModale;
-    animation-duration: 0.5s;
-}
-
-@keyframes disparitionModale {
-    from{
-        top: 50px;
-    }
-    to{
-        top: -1000px;
-    }
+.footer{
+    margin-top: 150px;
 }

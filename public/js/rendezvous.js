@@ -96,14 +96,6 @@ $(function() {
         select: function(start, end) {
 
 
-            // if (!confirm("choisir cette heure ?")) {
-            //     $("#calendar").fullCalendar('removeEvent', function (eventObject) {
-            //         return true;
-            //     });
-            // }
-            // else {
-
-
             console.log(start);
             console.log(eventData);
 
@@ -112,15 +104,6 @@ $(function() {
 
             eventData[ "start" ] = start;
             eventData[ "end" ] = end;
-
-            // eventData = {
-            //     title: acte, // récuperé en ajax
-            //     start: start, // créé direct par fullcalendar
-            //     end: end, // calculé via start + duree
-            //     color: color, // recup en ajax
-            //     description: "description",
-            //     editable: true, // event editable ou pas
-            // };
 
             var start = moment(start).format('YYYY-MM-DD HH:mm');
             console.log(start);
@@ -142,23 +125,8 @@ $(function() {
                     //console.log(response);
                 }
             );
-        // }
         },
 
-
-        // -------- fonction eventClick -------- //
-
-        eventClick: function(date, jsEvent, view, element) {
-
-            // alert('Clicked on: ' + date.format());
-            //
-            // alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            //
-            // alert('Current view: ' + view.name);
-
-            element.find(".fc-content").append("<div>YOUPIIIIIIIII</div>");
-
-        },
 
         // -------- fonction eventDrop -------- //
 
@@ -178,12 +146,13 @@ $(function() {
         // -------- fonction eventrender -------- //
 
         eventRender: function(event, element, view) {
-            element.find('.fc-title').append("<br/>" + event.description);
 
                 if (view.name == 'listDay') {
-                    element.find(".fc-list-item-time").append("<span class='closeon'>X</span>");
+                    element.find(".fc-list-item-time").append("<span class='closeon text-right'>&nbsp<i class=\"fas fa-times\"></i></span><br/>");
+                    ;
                 } else {
-                    element.find(".fc-content").prepend("<span class='closeon'>X</span>");
+                    element.find(".fc-content").prepend("<span class='closeon text-right'>&nbsp<i class=\"fas fa-times\"></i></span>");
+                    element.find('.fc-time').append("<br/>" + event.description)
                 }
                 element.find(".closeon").on('click', function () {
                     $('#calendar').fullCalendar('removeEvents', event._id);
