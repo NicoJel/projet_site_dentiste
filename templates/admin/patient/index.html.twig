@@ -62,7 +62,11 @@
                         {% else %}
                             <td>{{ patient.age }}</td>
                         {% endif %}
+                        {% if patient.telephone is null %}
+                            <td>Non renseigné</td>
+                            {% else %}
                         <td>{{ patient.telephone }}</td>
+                            {% endif %}
                         {% if patient.rdv.count == 0 %}
                             <td class="pasDeRdv">
                                 <span>Pas de rdv prévus</span>

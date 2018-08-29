@@ -1,3 +1,77 @@
+/** la modale pour supprimer **/
+
+/** La modale pour supprimer **/
+.modale{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -1000px;
+    width: 100%;
+    height: 100%;
+    transition: top ease-in-out 0.5s;
+}
+.divBoutonFermer{
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    position: relative;
+}
+.contenu-fenetreModale{
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenu-fenetreModale p{
+    font-size: 1.4em;
+    text-align: center;
+}
+.contenu-fenetreModale a{
+    color: white !important;
+}
+.bouton-fermerModale{
+    color: #aaa;
+    text-align: right;
+    font-size: 28px;
+    font-weight: bold;
+    align-self: flex-end;
+    position: absolute;
+    top: -22px;
+}
+.bouton-fermerModale:hover, .bouton-fermerModale:focus{
+    color: black;
+    cursor: pointer;
+}
+.showModal{
+    animation: ease-in-out forwards apparitionModale;
+    animation-duration: 0.5s;
+}
+@keyframes apparitionModale {
+    from{
+        top: -1000px;
+    }
+    to{
+        top: 50px;
+    }
+}
+.hideModale{
+    animation: ease-in-out forwards disparitionModale;
+    animation-duration: 0.5s;
+}
+@keyframes disparitionModale {
+    from{
+        top: 50px;
+    }
+    to{
+        top: -1000px;
+    }
+}
+
 /** Image d'illustration **/
 
 .img{

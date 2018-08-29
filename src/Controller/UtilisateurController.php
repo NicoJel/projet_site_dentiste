@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Rdv;
 use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -97,6 +98,31 @@ use Symfony\Component\Routing\Annotation\Route;
              'rdvs' => $rdvs,
              'utilisateur' => $utilisateur
          ]);
+
+     }
+
+     /**
+      * @Route("/supprimer-rdv/{id}")
+      */
+     public function supprimerRdv(Rdv $rdv)
+     {
+
+         $em = $this->getDoctrine()->getManager();
+         if (is_null($rdv)){
+             throw new NotFoundHttpException();
+         }
+
+         $utilisateur = $rdv->getUtilisateur();
+
+         $em->remove($rdv);
+         $em->flush();
+
+         $this->addFlash('success', "le rendez vous est bien supprimé");
+
+         return $this->redirectToRoute('app_utilisateur_listerdv', [
+             'id' => $utilisateur->getId()
+         ]);
+
 
      }
 }

@@ -262,7 +262,7 @@ class PatientController extends AbstractController
 
             if ($verif){
 
-                if (!is_null($_POST['idRdv'])){
+                if (!empty($_POST['idRdv'])){
 
                     $repository = $em->getRepository(Rdv::class);
 
@@ -316,6 +316,28 @@ class PatientController extends AbstractController
         ]);
 
     }
+    /**
+     * @Route("/supprimer-rdv/{id}")
+     */
+    public function supprimerRdv(Rdv $rdv){
+
+        $em = $this->getDoctrine()->getManager();
+        if (is_null($rdv)){
+            throw new NotFoundHttpException();
+        }
+
+        $utilisateur = $rdv->getUtilisateur();
+
+        $em->remove($rdv);
+        $em->flush();
+
+        $this->addFlash('success', "Le rendez vous est bien supprimé");
+
+        return $this->redirectToRoute('app_admin_patient_listerdv', [
+            'id' => $utilisateur->getId()
+        ]);
+
+    }
 
 
     /**
@@ -328,8 +350,6 @@ class PatientController extends AbstractController
         $repository = $em->getRepository(Motif::class);
 
         $motifs = $repository->findAll();
-
-        dump($motifs);
 
         $verif = true;
 
@@ -344,11 +364,22 @@ class PatientController extends AbstractController
                 $verif = false;
             }
 
-            dump(intval($_POST['duree']));
 
             if ($verif){
 
-                $motif = new Motif();
+                if (!empty($_POST['idMotif'])){
+
+                    $repository = $em->getRepository(Motif::class);
+
+                    $motif = $repository->findOneBy([
+                        'id' => $_POST['idMotif']
+                    ]);
+
+                }else{
+                    $motif = new Motif();
+                }
+
+
                 $motif  ->setActe($_POST['acte'])
                         ->setDuree(intval($_POST['duree']))
                         ->setCouleur($_POST['couleur']);
@@ -370,6 +401,31 @@ class PatientController extends AbstractController
 
     }
 
+    /**
+     * @Route("/supprimer-motif/{id}")
+     */
+    public function supprimerMotif(Motif $motif){
+
+        if ($motif->getRdv()->isEmpty()){
+
+            $em = $this->getDoctrine()->getManager();
+            if (is_null($motif)){
+                throw new NotFoundHttpException();
+            }
+
+
+            $em->remove($motif);
+            $em->flush();
+
+            $this->addFlash('success', "L'acte est bien supprimé");
+
+        }else{
+            $this->addFlash('error', "L'acte ne peut être supprimé car il a encore des rendez-vous");
+        }
+
+        return $this->redirectToRoute('app_admin_patient_gestionactes');
+
+    }
 
 }
 

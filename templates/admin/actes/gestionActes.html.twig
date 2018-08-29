@@ -9,6 +9,23 @@
 {% block body %}
     <div class="container">
 
+        <!-- La modale -->
+        <div class="modale" id="fenetreModale">
+            <div class="contenu-fenetreModale">
+                <div class="divBoutonFermer">
+                    <span class="bouton-fermerModale fermerModale">&times;</span>
+                </div>
+
+                <p>Etes vous certain(e) de vouloir supprimer cette Acte?</p>
+                <div>
+                    <a class="fermerModale btn btn-danger">Annuler</a>
+                    <a class="btn btn-success" id="boutonValider">Valider</a>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="img">
             <img src="{{ asset('../img/listeRdv/scotland.jpg') }}" alt="img-cabinet">
         </div>
@@ -30,17 +47,17 @@
             </tr>
             {% for motif in motifs %}
             <tr>
-               <td>{{ motif.acte | capitalize }}</td>
-                <td>{{ motif.duree }} minutes</td>
-                <td class="tdCouleur">
+                <td class="actes" data-acte="{{ motif.acte | capitalize }}">{{ motif.acte | capitalize }}</td>
+                <td class="durees" data-duree="{{ motif.duree }}">{{ motif.duree }} minutes</td>
+                <td class="tdCouleur couleurs" data-couleur="{{ motif.couleur }}">
                     <div class="color" style="background-color: {{ motif.couleur }}"></div>
                 </td>
                 <td>
-                    <a href=""
-                       class="btn btn-sm btn-outline-info">
+                    <a href="" data-id="{{ motif.id }}"
+                       class="btn btn-sm btn-outline-info liensModif">
                         <i class="fas fa-file-medical-alt"></i>
                     </a>
-                    <span class="btn btn-sm btn-outline-danger logoSupprimer">
+                    <span class="btn btn-sm btn-outline-danger logoSupprimer" href="{{ path ('app_admin_patient_supprimermotif', {id: motif.id}) }}">
                         <i class="fas fa-trash"></i>
                     </span>
                 </td>
@@ -57,20 +74,24 @@
         </div>
 
 
+        <!-- Le formulaire -->
         <form method="post" class="form-group formulaireRapide" id="formulaire">
             <div class="acte">
                 <label for="acte">Nom de l'acte :</label>
-                <input class="form-control inputForm" type="text" name="acte">
+                <input id="inputActe" class="form-control inputForm" type="text" name="acte" >
             </div>
             <div class="duree-color">
                 <div class="duree">
                     <label for="duree">Durée (en minutes) :</label>
-                    <input class="form-control inputForm" type="number" name="duree" min="10" max="600">
+                    <input id="inputDuree" class="form-control inputForm" type="number" name="duree" min="10" max="600">
                 </div>
                 <div class="couleur">
                     <label for="couleur">Couleur :</label>
-                    <input name="couleur" class="form-control" type="color" value="#918889">
+                    <input id="inputCouleur" name="couleur" class="form-control" type="color" value="#918889"> <!---->
                 </div>
+            </div>
+            <div class="hidden">
+                <input type="hidden" value="" name="idMotif" id="inputHidden">
             </div>
             <div class="boutons">
                 <button type="submit" class="btn btn-primary bouton" id="boutonValider">Enregistrer</button>

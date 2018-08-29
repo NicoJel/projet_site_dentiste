@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -19,6 +20,7 @@ class Motif
     private $id;
 
     /**
+     *
      * @ORM\Column(type="string", length=100)
      */
     private $acte;
@@ -32,6 +34,11 @@ class Motif
      * @ORM\Column(type="string", length=100)
      */
     private $couleur;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Rdv", mappedBy="motif")
+     */
+    private $rdv;
 
 
     public function getId(): ?int
@@ -74,6 +81,26 @@ class Motif
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRdv() :Collection
+    {
+        return $this->rdv;
+    }
+
+    /**
+     * @param Collection $rdv
+     * @return Motif
+     */
+    public function setRdv(Collection $rdv): Motif
+    {
+        $this->rdv = $rdv;
+        return $this;
+    }
+
+
 
     public function __toString()
     {

@@ -28,7 +28,7 @@ class Rdv
 
     /**
      * @var Motif
-     * @ORM\ManyToOne(targetEntity="Motif", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Motif", inversedBy="rdv")
      */
     private $motif;
 
