@@ -50,6 +50,9 @@ body{
 }
 
 /** La nav bar **/
+.logoNavbar{
+    width: 160px;
+}
 #barreNavigation{
     position: fixed;
     top: 0;
@@ -309,5 +312,8 @@ main{
     }
     .list-utilisateur{
         flex-direction: column;
+    }
+    .map{
+        display: none;
     }
 }

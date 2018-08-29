@@ -34,19 +34,12 @@ class PatientController extends AbstractController
             if(!is_null($patient->getDateNaissance())) {
 
                 $anneePatient = $patient->getDateNaissance()->format('Y');
-
                 $now = new \DateTime();
-
                 $anneeNow = $now->format('Y');
-
                 $age = intval($anneeNow) - intval($anneePatient);
-
                 $age = $age . ' ans';
-
                 $patient->setAge($age);
-
             }
-
         }
 
         $utilisateur = new Utilisateur();

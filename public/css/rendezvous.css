@@ -1,0 +1,112 @@
+a{
+    color: white;
+}
+footer a{
+    color: dodgerblue;
+}
+
+.fc-time-grid .fc-slats td {
+    height:30px;
+    border-bottom:0
+}
+
+.fc-time, .fc-title{
+    width: 80%;
+}
+
+#calendar{
+    width: 80vw;
+    margin: 2vw;
+}
+
+form, h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+}
+
+.form-group{
+    margin: 5px;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    margin: 10px;
+}
+
+#rdv_motif{
+    width: 20vw;
+}
+
+.cadreform{
+    border: 2px solid rgb(51, 207, 230);
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+}
+
+#cadre-cal{
+    z-index: 2;
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#calendar{
+    z-index: 1;
+}
+
+#cadre-cal img{
+    position: absolute;
+    /*width: 100%;*/
+    max-height: 100%;
+    z-index: 99;
+    animation: apparition-img ease-in-out forwards;
+    transition: all ease-in-out 0.7s;
+    border-radius: 5px;
+}
+
+@keyframes apparition-img {
+    from {opacity: 0;}
+    to {opacity: 0.7;}
+}
+
+.footer{
+    animation: apparition-footer ease-in-out forwards;
+    animation-delay: 3s;
+    animation-duration: 300ms;
+    opacity: 0;
+
+}
+
+@keyframes apparition-footer {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.container{
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+}
+
+.cadre-con{
+    border: 2px solid rgb(51, 207, 230);
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px 20px 10px 20px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cadre-con button{
+    margin: 7px 7px 0px 7px
+}

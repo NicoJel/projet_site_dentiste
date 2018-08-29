@@ -20,12 +20,13 @@ class Motif
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=150, unique=true)
+     *
+     * @ORM\Column(type="string", length=100)
      */
     private $acte;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $duree;
 

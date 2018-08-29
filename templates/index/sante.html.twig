@@ -2,149 +2,379 @@
 
 {% block title %}Dr Filitika, Chirurgien dentiste à Nouméa - Nouvelle Calédonie{% endblock %}
 
+{% block stylesheets %}
+    {{ parent () }}
+    <link rel="stylesheet" href="{{ asset('css/sante.css') }}">
+{% endblock %}
+
 {% block body %}
-
-    <h3 class="p-4">Santé dentaire : les réponses aux questions les plus fréquentes que vous vous posez</h3>
-
-
-    <div class="card text-center">
-        <div class="card-header">
-            <ul class="nav nav-pills card-header-pills">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
+    {# On crée un conteneur qui englobe tout se qui va se trouver dans le corps de la page #}
+    <div class="container">
+        <div class="page-title">
+            <h2>Santé dentaire</h2>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Les 5 idées reçues à combattre</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
-                    </div>
-                </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/2.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Recommandations au quotidien</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
-                    </div>
-                </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/3.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Le fil dentaire</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
-                    </div>
-                </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/4.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Le Fluor</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
-                    </div>
-                </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/5.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Alimentation saine et équilibrée</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
-                    </div>
-                </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/6.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Evaluez votre dépendance à la nicotine</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
-                    </div>
-                </div>
-            </div>
+        <div class="subtitle">
+            <img src="img/sante/icons8-popup-d'info-48-modif3.png" alt="Info santé dentaire">
+            <span>Les réponses aux questions les plus fréquentes que vous vous posez :</span>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/7.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Les dents du bébé</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
+        {# On crée un second conteneur qui contient uniquement l'accordéon #}
+        <div class="container2">
+            <div id="accordion">
+                {# Entête de la première section #}
+                <div class="title title1">
+                    <a href="#collapse1">Recommandations générales</a>
+                </div>
+                {# Début de la première section en elle-même #}
+                <div id="collapse1">
+                    <div class="content1">
+                        <div class="card-body">
+                            <div class="row">
+                                {# Début de la première carte d'information #}
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/1.png" alt="5 idées reçues à combattre">
+                                    <div class="card-body">
+                                        <h5 class="card-title1">Les 5 idées reçues à combattre</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2017/03/fiche-IdeesRecues_180117_v2.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/2.png" alt="Recommandations au quotidien">
+                                    <div class="card-body">
+                                        <h5 class="card-title2">Recommandations au quotidien</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2018/03/fiche-RECO-2018.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/3.png" alt="Le fil dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title3">Le fil dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/12/fiche-FilDentaire_251116.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/4.png" alt="Le Fluor">
+                                    <div class="card-body">
+                                        <h5 class="card-title4">Le Fluor</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/fiche-conseil-FLUOR.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/5.png" alt="Alimentation saine et équilibrée">
+                                    <div class="card-body">
+                                        <h5 class="card-title5">Alimentation saine et équilibrée</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-MANGER-SAIN-ET-EQUILIBRE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/6.png" alt="Evaluez votre dépendance à la nicotine">
+                                    <div class="card-body">
+                                        <h5 class="card-title6">Evaluez votre dépendance à la nicotine</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2017/01/fiche-Nicotine_251116.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/8.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Les dents de l'enfant : de la naissance à 6 ans</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
+                <div class="title title2">
+                    <a href="#collapse2">Bébés, enfants, adolescents</a>
+                </div>
+                <div id="collapse2">
+                    <div class="content2">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/7.png" alt="Les dents du bébé">
+                                    <div class="card-body">
+                                        <h5 class="card-title7">Les dents du bébé</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/fiche-conseil-LES-DENTS-DE-MON-BEBE-avec-video-.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/8.png" alt="Les dents de l'enfant : de la naissance à 6 ans">
+                                    <div class="card-body">
+                                        <h5 class="card-title8">Les dents de l'enfant : de la naissance à 6 ans</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/Fiche-conseil-ENFANT-NAISSANCE-A-6-ANS-avec-video-.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/9.png" alt="Santé bucco-dentaire chez le jeune enfant">
+                                    <div class="card-body">
+                                        <h5 class="card-title9">Santé bucco-dentaire chez le jeune enfant</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2018/03/JEUNE-ENFANT_Fiche-profil-PDS2018_GP_vsOK.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/10.png" alt="Comment brosser les dents de vos enfants">
+                                    <div class="card-body">
+                                        <h5 class="card-title10">Comment brosser les dents de vos enfants</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/fiche-conseil-COMMENT-BROSSER-LES-DENTS-DE-VOS-ENFANTS-avec-video-.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/11.png" alt="Alimentation et carie chez l'enfant">
+                                    <div class="card-body">
+                                        <h5 class="card-title11">Alimentation et carie chez l'enfant</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2017/01/ficheAlimentation-carie-enfant_251116.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/12.png" alt="Les scellements de sillons">
+                                    <div class="card-body">
+                                        <h5 class="card-title12">Les scellements de sillons</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2017/10/Sillons_201017.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/13.png" alt="Orthodontie">
+                                    <div class="card-body">
+                                        <h5 class="card-title13">Orthodontie</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/fiche-conseil-ORTHODONTIE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/9.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Santé bucco-dentaire chez le jeune enfant</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
+                <div class="title title3">
+                    <a href="#collapse3">Adultes</a>
+                </div>
+                <div id="collapse3">
+                    <div class="content3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/14.png" alt="Les dents pendant la grossesse">
+                                    <div class="card-body">
+                                        <h5 class="card-title14">Les dents pendant la grossesse</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/fiche-conseil-BONNES-DENTS-PENDANT-MA-GROSSESSE-avec-video-.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/15.png" alt="Santé bucco-dentaire et grossesse">
+                                    <div class="card-body">
+                                        <h5 class="card-title15">Santé bucco-dentaire et grossesse</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2018/03/FEMMES-ENCEINTES_Fiche-profil-PDS2018_GP_vsOK.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/16.png" alt="Personnes âgées">
+                                    <div class="card-body">
+                                        <h5 class="card-title16">Personnes âgées</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/fiche-conseil-PERSONNES-AGEES-avec-video-.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/17.png" alt="Séniors et santé bucco-dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title17">Séniors et santé bucco-dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2018/03/SENIORS_Fiche-profil-PDS2018_GP_vsOK.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/18.png" alt="Crême fixative : une alliée pour sa prothèse">
+                                    <div class="card-body">
+                                        <h5 class="card-title18">Crême fixative : une alliée pour sa prothèse</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2017/01/fiche-CREME-FIXATIVE-251116.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/19.png" alt="Personnes handicapées">
+                                    <div class="card-body">
+                                        <h5 class="card-title19">Personnes handicapées</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2013/07/fiche-conseil-PERSONNES-HANDICAPEES.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/20.png" alt="Santé bucco-dentaire et stress">
+                                    <div class="card-body">
+                                        <h5 class="card-title20">Santé bucco-dentaire et stress</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2018/03/STRESS_Fiche-profil-PDS-2018_GP_vsOK.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/10.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Comment brosser les dents de vos enfants</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
+                <div class="title title4">
+                    <a href="#collapse4">Pathologies</a>
+                </div>
+                <div id="collapse4">
+                    <div class="content4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/21.png" alt="La carie">
+                                    <div class="card-body">
+                                        <h5 class="card-title21">La carie</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/Fiche-conseil-CARIE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/22.png" alt="Se débarasser d'un aphte">
+                                    <div class="card-body">
+                                        <h5 class="card-title22">Se débarasser d'un aphte</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-COMMENT-SE-DEBARASSER-D-UN-APHTE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/23.png" alt="Hypersensibilité dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title23">Hypersensibilité dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-HYPERSENSIBILITE-DENTAIRE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/24.png" alt="Maladie parodontale">
+                                    <div class="card-body">
+                                        <h5 class="card-title24">Maladie parodontale</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2017/01/fiche-parodontale_081216.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/25.png" alt="Halitose : mauvaise haleine">
+                                    <div class="card-body">
+                                        <h5 class="card-title25">Halitose : mauvaise haleine</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/05/Fiche-conseil-HALITOSE-N-EST-PAS-UNE-FATALITE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/26.png" alt="Maladie cardiaque et santé bucco-dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title26">Maladie cardiaque et santé bucco-dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-MALADIE-CARDIAQUE-ET-SANTE-BUCCO-DENTAIRE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/27.png" alt="Maladie cardiaque et santé bucco-dentaire : témoignages">
+                                    <div class="card-body">
+                                        <h5 class="card-title27">Maladie cardiaque et santé bucco-dentaire : témoignages</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2018/03/CARDIO-VASCULAIRE_Ficheprofil-PDS2018_GP_vsOK.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/28.png" alt="Diabète et santé bucco-dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title28">Diabète et santé bucco-dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/Fiche-conseil-DIABETE-avec-video-.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/29.png" alt="Diabète et santé bucco-dentaire : témoignages">
+                                    <div class="card-body">
+                                        <h5 class="card-title29">Diabète et santé bucco-dentaire : témoignages</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2018/03/DIABETE_Fiche-profil-PDS2018_GP_vsOK.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/11.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Alimentation et carie chez l'enfant</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
+                <div class="title title5">
+                    <a href="#collapse5">Sport</a>
+                </div>
+                <div id="collapse5">
+                    <div class="content5">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/30.png" alt="Les traumatismes bucco-dentaires">
+                                    <div class="card-body">
+                                        <h5 class="card-title30">Les traumatismes bucco-dentaires</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/05/fiche-conseil-LES-TRAUMATISMES-BUCCO-DENTAIRES.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/31.png" alt="Performances sportives et santé bucco-dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title31">Performances sportives et santé bucco-dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-SPORT.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/32.png" alt="Le protège-dents ou protection intra-buccale">
+                                    <div class="card-body">
+                                        <h5 class="card-title32">Le protège-dents ou protection intra-buccale</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-PROTEGE-DENTS.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/33.png" alt="Tendinites, troubles musculo-squelettiques et santé bucco-dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title33">Tendinites, troubles musculo-squelettiques et santé bucco-dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-TENDINITES-TMS.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/12.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Les scellements de sillons</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
-                    </div>
+                <div class="title title6">
+                    <a href="#collapse6">Soins</a>
                 </div>
-                <div class="card text-center text-white bg-info mb-3 col-3" style="width: 18rem;">
-                    <img class="card-img-top" src="img/13.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Orthodontie</h5>
-                        <p class="card-text">{##}</p>
-                        <a href="#" class="btn btn-dark">Voir</a>
+                <div id="collapse6">
+                    <div class="content6">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/34.png" alt="Les extractions dentaires">
+                                    <div class="card-body">
+                                        <h5 class="card-title34">Les extractions dentaires</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-LES-EXTRACTIONS-DENTAIRES.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/35.png" alt="Implant pour remplacer une dent">
+                                    <div class="card-body">
+                                        <h5 class="card-title35">Implant pour remplacer une dent</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/05/Fiche-patient-IMPLANT-POUR-REMPLACER-UNE-DENT.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/36.png" alt="Amalgame dentaire">
+                                    <div class="card-body">
+                                        <h5 class="card-title36">Amalgame dentaire</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/05/fiche-conseil-AMALGAME-DENTAIRE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/37.png" alt="Les couronnes">
+                                    <div class="card-body">
+                                        <h5 class="card-title37">Les couronnes</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/Fiche-conseil-POURQUOI-AI-JE-BESOIN-D-UNE-COURONNE-1.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/38.png" alt="Retrouver un beau sourire : les facettes">
+                                    <div class="card-body">
+                                        <h5 class="card-title38">Retrouver un beau sourire : les facettes</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/06/fiche-conseil-RETROUVER-UN-BEAU-SOURIRE.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/39.png" alt="Les prothèses dentaires">
+                                    <div class="card-body">
+                                        <h5 class="card-title39">Les prothèses dentaires</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2016/08/fiche-conseil-PROTHESES.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                                <div class="card text-center text-white rounded mb-3 col-lg-3">
+                                    <img class="card-img-top" src="img/sante/40.png" alt="Le bilan dentaire pré-opératoire (avant une opération de la hanche par exemple)">
+                                    <div class="card-body">
+                                        <h5 class="card-title40">Le bilan dentaire<br>pré-opératoire<br>(avant une opération de la hanche par exemple)</h5>
+                                        <a href="http://www.ufsbd.fr/wp-content/uploads/2017/01/Fiche-Bilan-PreOperatoire_251116.pdf" class="btn btn-info border-0" target="_blank" alt="consulter">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-   
-
 {% endblock %}
 
-
-{% block stylesheets %}
-    {{ parent () }}
-    <link href="{{ asset('css/sante.css') }}">
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% endblock %}
