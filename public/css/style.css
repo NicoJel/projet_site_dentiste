@@ -304,4 +304,7 @@ main{
     .list-utilisateur{
         flex-direction: column;
     }
+    .map{
+        display: none;
+    }
 }
