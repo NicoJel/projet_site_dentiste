@@ -9,6 +9,23 @@
 {% block body %}
     <div class="container">
 
+        <!-- La modale -->
+        <div class="modale" id="fenetreModale">
+            <div class="contenu-fenetreModale">
+                <div class="divBoutonFermer">
+                    <span class="bouton-fermerModale fermerModale">&times;</span>
+                </div>
+
+                <p>Etes vous certain(e) de vouloir supprimer ce rendez vous?</p>
+                <div>
+                    <a class="fermerModale btn btn-danger">Annuler</a>
+                    <a class="btn btn-success" id="boutonValider">Valider</a>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="img">
             <img src="{{ asset('../img/listeRdv/scotland.jpg') }}" alt="img-cabinet">
         </div>
@@ -41,10 +58,14 @@
                            class="btn btn-sm btn-outline-info lienModif">
                             <i class="fas fa-file-medical-alt"></i>
                         </a>
-                        <span class="btn btn-sm btn-outline-danger logoSupprimer">
+                        <span class="btn btn-sm btn-outline-danger logoSupprimer" id="boutonSupprimer" href="{{ path ('app_admin_patient_supprimerrdv', {id: rdv.id}) }}">
                             <i class="fas fa-trash"></i>
                         </span>
                     </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>Pas de rendez vous enregistré</td>
                 </tr>
             {% endfor %}
 
