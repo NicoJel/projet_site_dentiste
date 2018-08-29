@@ -21,7 +21,7 @@ form{
     opacity: 0;
     color: #4bb3bd;
 }
-.container:hover .msg-info-perso{
+body:hover .msg-info-perso{
     animation: ease-in-out 900ms apparitionPerso forwards;
 }
 @keyframes apparitionPerso {
@@ -66,7 +66,7 @@ form{
     border-right: 2px solid #4bb3bd;
     transform: scale3d(1,0,1);
 }
-.container:hover .centrer::before, .container:hover .centrer::after{
+body:hover .centrer::before, body:hover .centrer::after{
     transform: scale3d(1,1,1);
     transition: transform 1s;
 }
@@ -139,7 +139,7 @@ form{
     opacity: 0;
     color: #4bb3bd;
 }
-.container:hover .msg-info-connexion{
+body:hover .msg-info-connexion{
     animation: ease-in-out 900ms apparitionConnexion forwards;
 }
 @keyframes apparitionConnexion {
@@ -188,7 +188,7 @@ form{
     border-right: 2px solid #4bb3bd;
     transform: scale3d(1,0,1);
 }
-.container:hover .centrer-connexion::before, .container:hover .centrer-connexion::after{
+body:hover .centrer-connexion::before, body:hover .centrer-connexion::after{
     transform: scale3d(1,1,1);
     transition: transform 1s;
 }
@@ -226,4 +226,64 @@ form{
         width: 100%;
     }
 }
+
+/** Animations d'apparition **/
+
+h4{
+    opacity: 0;
+    animation: apparitionTitre forwards ease-in-out;
+    animation-delay: 300ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionTitre {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.info-perso{
+    opacity: 0;
+    animation: apparitionInfoPerso forwards ease-in-out;
+    animation-delay: 500ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionInfoPerso {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.info-connexion{
+    opacity: 0;
+    animation: apparitionInfoConnexion forwards ease-in-out;
+    animation-delay: 700ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionInfoConnexion {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.div-boutons{
+    opacity: 0;
+    animation: apparitionBoutons forwards ease-in-out;
+    animation-delay: 900ms;
+    animation-duration: 0.6s;
+}
+@keyframes apparitionBoutons {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
 

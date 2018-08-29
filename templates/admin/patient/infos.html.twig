@@ -1,53 +1,143 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/patient.css') }}">
-{% endblock %}
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('css/admin/profilPatient.css') }}">
+        {% endblock %}
 
 {% block body %}
     <div class="container">
 
-        <h4 class="p-5 text-center">{{ patient.nom }} {{ patient.prenom }}</h4>
+        <div id="fenetreModale" class="modale">
+            <div class="contenu-fenetreModale">
+                <div class="divBoutonFermer">
+                    <span id="croixFermerModale" class="bouton-fermerModale fermerModale">&times;</span>
+                </div>
 
-        <dl class="row">
-
-                <dt class="col-sm-3">Patient</dt>
-                <dd class="col-sm-9">{{ patient.civilite }} {{ patient.prenom }} {{ patient.nom }}</dd>
-
-                <dt class="col-sm-3">Adresse Postale</dt>
-                <dd class="col-sm-9">
-                    <p>{{ patient.adresse }}</p>
-                    <p>{{ patient.cp }} {{ patient.ville }}</p>
-                </dd>
-
-                <dt class="col-sm-3">Date de naissance</dt>
-                <dd class="col-sm-9">{{ patient.dateNaissance|date("d/m/Y") }} ({{ patient.age }})</dd>
-
-
-                <dt class="col-sm-3">Téléphone</dt>
-                <dd class="col-sm-9">{{ patient.telephone }}</dd>
-
-                <dt class="col-sm-3">Mail</dt>
-                <dd class="col-sm-9">
-                    <a class="text-dark"
-                        href="mailto:{{ patient.mail }}">
-                        {{ patient.mail }}
-                    </a>
-                </dd>
-
-                <dt class="col-sm-3">Commentaire</dt>
-                <dd class="col-sm-9">{{ patient.commentaire }}</dd>
-
-                <dt class="col-sm-3">Rendez-vous</dt>
-                <dd class="col-sm-9"></dd>
-            </dl>
-
-        <div class="text-center">
-            <a href="{{ path('app_admin_patient_index') }}"
-               class="btn btn-lg btn-outline-info">
-                <i class="fas fa-undo"></i>
-            </a>
+                <p>Etes vous certain(e) de vouloir supprimer ce profil?</p>
+                <div>
+                    <a class="fermerModale btn btn-danger">Annuler</a>
+                    <a class="btn btn-success" href="{{ path('app_admin_patient_supprimer', {id: patient.id}) }}">Valider</a>
+                </div>
+            </div>
         </div>
+
+        <div class="img">
+            <img src="{{ asset('../img/admin/profilPatient/illustration.jpg') }}" alt="img-illustration">
+        </div>
+
+        <div class="titre">
+            <h4>Bienvenue sur le profil de {{ patient.prenom }} {{ patient.nom }}</h4>
+            <div class="info-bulle" id="logo">
+                <img src="{{ asset('../logos/profil/edition.png') }}" alt="">
+                <span>Modifier son profil</span>
+            </div>
+            <div class="info-bulleSupprimer">
+                <a id="logoSupprimer"><img src="{{ asset('../logos/admin/profilPatient/poubelle.png') }}" alt=""></a>
+                <span>Supprimer son profil</span>
+            </div>
+        </div>
+
+        <div class="lien-rdv">
+            <a href="{{ path('app_admin_patient_listerdv', {id: patient.id}) }}">Voir les rendez-vous de {{ patient.prenom }} {{ patient.nom }}</a>
+            <span>Aller voir ses rendez-vous</span>
+        </div>
+
+
+        <form method="post" class="form-group">
+
+            <div class="nom-prenom">
+                <div id="prenom" class="prenom">
+                    <label for="prenom">Prénom : </label>
+                    <input name="prenom" class="form-control" disabled type="text" value="{{ patient.prenom }}">
+                </div>
+                <div id="nom" class="nom">
+                    <label>Nom : </label>
+                    <input name="nom" class="form-control" disabled type="text" value="{{ patient.nom }}">
+                </div>
+            </div>
+
+            <div class="dateNaissance-telephone">
+                <div id="dateNaissance" class="dateNaissance">
+                    <label>Date de naissance : </label>
+                    <input name="dateNaissance" class="form-control" disabled type="date" max="{{ aujourdhui | date('Y-m-d') }}" min="1920-01-01"
+                            {% if patient.dateNaissance is null %}
+                           placeholder="non renseigné">
+                    {% else %}
+                        value="{{ patient.dateNaissance | date('Y-m-d') }}"
+                        placeholder="{{ patient.dateNaissance | date('Y-m-d') }}">
+                    {% endif %}
+                </div>
+                <div id="telephone" class="telephone">
+                    <label>Telephone : </label>
+                    <input name="telephone" class="form-control" disabled type="text"
+                            {% if patient.telephone is null %}
+                           placeholder="non renseigné">
+                    {% else %}
+                        value="{{ patient.telephone }}">
+                    {% endif %}
+                </div>
+            </div>
+            <div id="adresse" class="adresse">
+                <label>Adresse : </label>
+                <input name="adresse" disabled class="form-control" type="text"
+                        {% if patient.adresse is null %}
+                       placeholder="non renseigné">
+                {% else %}
+                    value="{{ patient.adresse }}">
+                {% endif %}
+            </div>
+            <div class="ville-cp">
+                <div id="ville" class="ville">
+                    <label>Ville : </label>
+                    <input name="ville" disabled class="form-control" type="text"
+                            {% if patient.ville is null %}
+                           placeholder="non renseigné">
+                    {% else %}
+                        value="{{ patient.ville }}">
+                    {% endif %}
+                </div>
+                <div id="cp" class="cp">
+                    <label>Code postal : </label>
+                    <input name="cp" disabled class="form-control" type="text"
+                            {% if patient.cp is null %}
+                           placeholder="non renseigné">
+                    {% else %}
+                        value="{{ patient.cp }}">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="commentaire">
+                <label for="commentaire">Commentaire : </label>
+                <textarea disabled class="form-control" name="commentaire" id="commentaire" rows="10">{% if patient.commentaire is null %}{% else %}{{ patient.commentaire }}{% endif %}</textarea>
+            </div>
+
+            <div class="boutons">
+                <div>
+                    <button class="btn btn-primary modifProfil" id="modifier">
+                        Modifier son profil
+                    </button>
+                </div>
+                <div>
+                    <a id="boutonSupprimer" class="btn btn-danger">
+                        Supprimer son profil
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ path('app_admin_patient_index') }}" class="btn btn-outline-secondary">
+                        Retour
+                    </a>
+                </div>
+
+            </div>
+
+        </form>
+
     </div>
 {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/admin/profilPatient.js') }}"></script>
+    {% endblock %}

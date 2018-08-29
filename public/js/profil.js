@@ -38,7 +38,7 @@ logo.addEventListener('click', function(){
     }
     commentaire.removeAttribute("disabled");
 
-    bouton.textContent = "Enregistré";
+    bouton.textContent = "Enregistrer";
     bouton.setAttribute("type", "submit");
 
     bouton.setAttribute('id', 'enregistrer');

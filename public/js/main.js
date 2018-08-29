@@ -72,7 +72,7 @@ $(document).ready(function(){
                 liste[i].classList.remove("show");
             }
 
-            element.style.top = "80px";
+            element.style.top = "100px";
 
         }
 
@@ -89,7 +89,13 @@ $(document).ready(function(){
 
     })
 
-
+    $( function() {
+        $( "#accordion" ).accordion({
+            heightStyle: "content",
+            collapsible: true,
+            active: false
+        });
+    } );
 
 
 }); // Fin du DOM ready

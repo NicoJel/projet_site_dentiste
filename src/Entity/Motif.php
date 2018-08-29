@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MotifRepository")
+ * @UniqueEntity(fields={"acte"}, message="Il existe déjà un acte avec ce nom")
  */
 class Motif
 {
@@ -17,12 +19,12 @@ class Motif
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $acte;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $duree;
 
@@ -30,6 +32,7 @@ class Motif
      * @ORM\Column(type="string", length=100)
      */
     private $couleur;
+
 
     public function getId(): ?int
     {
@@ -70,5 +73,10 @@ class Motif
         $this->couleur = $couleur;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->acte;
     }
 }

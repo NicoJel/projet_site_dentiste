@@ -5,8 +5,8 @@
         <title>{% block title %}Dr Céline Filitika - Chirurgien Dentiste{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('logos/navbar/favicon.png') }}">
         {% block stylesheets %}
-            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
     </head>
@@ -18,10 +18,10 @@
         <a class="linkAdmin" href="{{ path('app_admin_patient_index') }}">
             Gestion des patients
         </a>
-        <a class="linkAdmin" href="">
+        <a class="linkAdmin" href="{{ path('app_rdv_listerdv') }}">
             Planning des rendez-vous
         </a>
-        <a class="linkAdmin" href="">
+        <a class="linkAdmin" href="{{ path('app_admin_patient_gestionactes') }}">
             Gestion des actes
         </a>
     </nav>
@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link lienNav" href="">
+                        <a class="nav-link lienNav" href="{{ path('app_rdv_index') }}">
                             Prendre un rendez-vous
                         </a>
                     </li>
@@ -104,9 +104,9 @@
 
     </div>
 
-{% block body %}
-    {# NE PAS SUPPRIMER PENDANT LE MERGING PLEASE => ACCUEIL & COMPETENCES AT STAKE #}
-{% endblock %}
+        {% block body %}
+
+        {% endblock %}
 
     <footer class="footer">
             <div class="row divRow">
@@ -153,10 +153,10 @@
                 <p>This website is the property of WF3 Elite Group™ - designed in 2018 - All rights reserved ©</p>
             </div>
     </footer>
-
+</main>
 
         {% block javascripts %}
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="{{ asset('lib/jquery.min.js') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
             <script src="{{ asset('js/main.js') }}"></script>

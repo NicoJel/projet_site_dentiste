@@ -34,7 +34,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                dump($utilisateur);
+
                 /*
                  * -- encode le mdp à partir de la config encoders pour l'objet
                  * Utilisateur à partir de son mdp en clair reçu du formulaire

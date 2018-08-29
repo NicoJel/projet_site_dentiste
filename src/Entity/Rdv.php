@@ -28,7 +28,7 @@ class Rdv
 
     /**
      * @var Motif
-     * @ORM\ManyToOne(targetEntity="Motif")
+     * @ORM\ManyToOne(targetEntity="Motif", cascade={"persist"})
      */
     private $motif;
 
@@ -76,7 +76,7 @@ class Rdv
     /**
      * @return Utilisateur
      */
-    public function getUtilisateur(): Utilisateur
+    public function getUtilisateur(): ?Utilisateur
     {
         return $this->utilisateur;
     }
@@ -85,7 +85,7 @@ class Rdv
      * @param Utilisateur $utilisateur
      * @return Rdv
      */
-    public function setUtilisateur(Utilisateur $utilisateur): Rdv
+    public function setUtilisateur(?Utilisateur $utilisateur): Rdv
     {
         $this->utilisateur = $utilisateur;
         return $this;
@@ -94,7 +94,7 @@ class Rdv
     /**
      * @return Motif
      */
-    public function getMotif(): Motif
+    public function getMotif(): ?Motif
     {
         return $this->motif;
     }
@@ -103,7 +103,7 @@ class Rdv
      * @param Motif $motif
      * @return Rdv
      */
-    public function setMotif(Motif $motif): Rdv
+    public function setMotif(?Motif $motif): Rdv
     {
         $this->motif = $motif;
         return $this;
