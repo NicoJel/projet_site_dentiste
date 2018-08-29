@@ -15,12 +15,8 @@
 {% endblock %}
 
 {% block body %}
-    {#
-        <div id='script-warning'>
-            <code>../../src/controller/RdvController.php</code> n'a pas été trouvé.
-        </div>
-    #}
-        <h1>Prise de rendez-vous</h1>
+
+        <h2 class="titrePage">Prise de rendez-vous</h2>
 
     {% if app.user %}
 
@@ -53,11 +49,15 @@
                 </div>
             </div>
         </div>
-
-
     {% endif %}
 
+    <div id="eventContent" title="Event Details">
+        <div id="eventDate"></div>
+        <div id="eventActe"></div>
+        <div id="eventPatient"></div>
+        <div id="eventInfo"></div>
 
+    </div>
 
 <div id="cadre-cal">
     {#<div id="imagegris"></div>#}

@@ -64,7 +64,6 @@ form, h1{
 
 #cadre-cal img{
     position: absolute;
-    /*width: 100%;*/
     max-height: 100%;
     z-index: 99;
     animation: apparition-img ease-in-out forwards;
@@ -109,4 +108,12 @@ form, h1{
 
 .cadre-con button{
     margin: 7px 7px 0px 7px
+}
+
+.fc-title{
+    display: none;
+}
+
+.eventContent{
+    display: none;
 }
